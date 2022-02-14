@@ -9,7 +9,7 @@ Edited/Made by Human Tree92 ([Velociti Entertainment Customs & Wiki]( http://www
 
 # Requirements:
 * Optional:
-  * [esx_advancedholdup]( https://github.com/HumanTree92/VENT_ESX_Scripts )
+  * [esx_advancedholdup]( https://github.com/HumanTree92/VENT_ESX_Scripts/tree/main/esx_advancedholdup )
 
 # Download & Installation:
 1) Place `esx_advancedbanking` in your ESX Directory

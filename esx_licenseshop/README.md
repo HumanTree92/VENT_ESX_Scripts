@@ -6,8 +6,8 @@ Made by Human Tree92 ([Velociti Entertainment Customs & Wiki]( http://www.veloci
 
 # Requirements:
 * Optional:
-  * [esx_advancedvehicleshop]( https://github.com/HumanTree92/VENT_ESX_Scripts )
-  * [esx_advancedweaponshop]( https://github.com/HumanTree92/VENT_ESX_Scripts )
+  * [esx_advancedvehicleshop]( https://github.com/HumanTree92/VENT_ESX_Scripts/tree/main/esx_advancedvehicleshop )
+  * [esx_advancedweaponshop]( https://github.com/HumanTree92/VENT_ESX_Scripts/tree/main/esx_advancedweaponshop )
   * [esx_dmvschool]( https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_dmvschool )
   * [esx_drugs]( https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_drugs )
   * [esx_vehicleshop]( https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_vehicleshop )

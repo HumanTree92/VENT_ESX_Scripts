@@ -21,9 +21,9 @@ Edited/Made by Human Tree92 ([Velociti Entertainment Customs & Wiki]( http://www
   * FiveM Client/Server Build 4267 or Higher
   * Set Game Build to Tuner Update `+set sv_enforceGameBuild tuner`
 * Optional:
-  * [esx_advancedgarage]( https://github.com/HumanTree92/VENT_ESX_Scripts )
+  * [esx_advancedgarage]( https://github.com/HumanTree92/VENT_ESX_Scripts/tree/main/esx_advancedgarage )
   * [esx_dmvschool]( https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_dmvschool )
-  * [esx_licenseshop]( https://github.com/HumanTree92/VENT_ESX_Scripts )
+  * [esx_licenseshop]( https://github.com/HumanTree92/VENT_ESX_Scripts/tree/main/esx_licenseshop )
 
 # Download & Installation:
 1) Edit the `config.lua` before starting the script. By default everything is turned off.

@@ -15,10 +15,8 @@ ESX Scripts Made by Human Tree92 ([Velociti Entertainment Customs & Wiki]( http:
   * [ESX Legacy V1.3 Final]( https://github.com/esx-framework/esx-legacy/tree/1.3.0-final )
 
 # Download & Installation:
-1) Download Master & Extract the .zip or Open the .zip
-1.1) Or [Click Me]( https://github.com/HumanTree92/VENT_ESX_Scripts/archive/refs/heads/main.zip )
-2) Add `setr esx_MenuAlign "top-right"` to your server.cfg
-2.1) Change top-right to whatever side you want
+1) Download Master & Extract the .zip or Open the .zip Or [Click Me]( https://github.com/HumanTree92/VENT_ESX_Scripts/archive/refs/heads/main.zip )
+2) Add `setr esx_MenuAlign "top-right"` to your server.cfg & Change top-right to whatever side you want
 3) Read the README's of whatever script you plan on using.
 
 # KNOWN BUGS:

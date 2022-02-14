@@ -9,7 +9,7 @@ Edited/Made by Human Tree92 ([Velociti Entertainment Customs & Wiki]( http://www
 
 # Requirements:
 * Optional:
-  * [esx_licenseshop]( https://github.com/HumanTree92/VENT_ESX_Scripts )
+  * [esx_licenseshop]( https://github.com/HumanTree92/VENT_ESX_Scripts/tree/main/esx_licenseshop )
 
 # Download & Installation:
 1) Import the `esx_advancedweaponshop.sql` into your database.

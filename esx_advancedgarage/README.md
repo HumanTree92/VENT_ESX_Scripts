@@ -15,7 +15,7 @@ Made by Human Tree92 ([Velociti Entertainment Customs & Wiki]( http://www.veloci
 
 # Requirements:
 * Required:
-  * [esx_advancedvehicleshop]( https://github.com/HumanTree92/VENT_ESX_Scripts )
+  * [esx_advancedvehicleshop]( https://github.com/HumanTree92/VENT_ESX_Scripts/tree/main/esx_advancedvehicleshop )
 * Optional:
   * [esx_property]( https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_property )
   * [esx_mechanicjob]( https://github.com/esx-framework/esx-legacy/tree/main/%5Besx_addons%5D/esx_mechanicjob )
