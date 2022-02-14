@@ -1,0 +1,193 @@
+<html>
+	<head>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+		<style>
+			.general {display: none;}
+			  .main {display: none;}
+			.deposit {display: none;}
+			  .depositUI {display: none;} 
+			  .withdrawUI {display: none;}
+				.balanceUI {display: none;}
+				.transferUI {display: none;}
+		</style>
+	</head>
+	<body>
+		<div class="general">
+			<div class="main">            
+				<h3 style="color: #000000;"class="sans">Hello, <span class="username1"></span></h3>
+				<h4 style="color: #000000;"class="sans">Balance: <span class="curbalance"></span></h4>
+				<button id="deposit">Deposit</button>
+				<button id="withdraw">Withdraw</button>
+				<button id="balance">Balance</button>
+				<button id="transfer">Transfer</button>
+				<button id="exitbank">Exit</button>
+			</div>
+		</div>
+		<div class='depositUI'>
+			<form id="deposit1">
+					<h3 style="color: #000000;"class="sans">Hello, <span class="username1"></span></h3>
+					<h4 style="color: #000000;"class="sans">Balance: <span class="curbalance"></span></h4>
+					<input id="amount" type="text" placeholder="Amount to Deposit | Example: 100"><br>
+					<button id="deposit1" type="submit">Submit Deposit</button>
+					<button id="canceldeposit" type="button">Back</button> 	
+			</form>
+		</div>
+		<div class='withdrawUI'>
+			<form id="withdraw1">
+				<h3 style="color: #000000;"class="sans">Hello, <span class="username1"></span></h3>
+				<h4 style="color: #000000;"class="sans">Balance: <span class="curbalance"></span></h4>
+				<input id="amountw" type="text" placeholder="Amount to Withdraw | Example: 100"><br>
+				<button id="withdraw1" type="submit">Submit Withdraw</button>
+				<button id="cancelwithdraw" type="button">Back</button> 	
+			</form>
+		</div>
+		<div class='balanceUI'>
+			<h3 style="color: #000000;"class="sans">Hello, <span class="username1"></span></h3>
+			<span class="curbalance" id="balanceX"></span>
+			<button id="cancelbalance" type="button">Back</button> 	
+		</div>
+		<div class='transferUI'>
+			<form id="transfer1">
+				<h3 style="color: #000000;"class="sans">Hello, <span class="username1"></span></h3>
+				<h4 style="color: #000000;"class="sans">Balance: <span class="curbalance"></span></h4>
+				<input id="target" type="text" placeholder="To Player ID | Example: 1"><br>
+				<input id="amountt" type="text" placeholder="Amount to Transfer | Example: 100"><br>
+				<button id="transfer1" type="submit">Submit Transfer</button>
+				<button id="canceltransfer" type="button">Back</button> 	
+			</form>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		$(function() {
+			/* open the UI for user */
+			window.addEventListener('message', function(event) {
+				if (event.data.type == "openGeneral"){
+					$('.main').css('display', 'block')
+					$('.general').css('display', 'block')
+					$('.deposit').css('display', 'none')
+				} else if(event.data.type == "balanceHUD") {
+					$('.username1').html(event.data.player);
+					$('.curbalance').html('<span style="color:green">' + '$' + '</span>' + '<span style="color:black">' + event.data.balance + '</span>')
+				} else if (event.data.type == "closeAll"){
+					$('.main').css('display', 'none')
+					$('.general').css('display', 'none')
+					$('.deposit').css('display', 'none')
+				}
+			});
+		});
+	</script>
+
+	<script type="text/javascript">	
+		$('#exitbank').click(function(){
+			$('.general').css('display', 'none')
+			$('.main').css('display', 'none')
+			$.post('http://esx_advancedbanking/NUIFocusOff', JSON.stringify({}));
+		})
+
+		$('#deposit').click(function(){
+            $('.general').css('display', 'none')
+            $('.depositUI').css('display', 'block')
+			$('#deposit1').css('display', 'block')
+		})
+
+		$('#cancelbalance').click(function(){
+			$('.general').css('display', 'block')
+			$('.balanceUI').css('display', 'none')
+		})
+		
+		$('#balance').click(function(){
+			$('.general').css('display', 'none')
+			$('.balanceUI').css('display', 'block')
+		})
+
+		$('#withdraw').click(function(){
+			$('.general').css('display', 'none')
+			$('.withdrawUI').css('display', 'block')
+			$('#withdraw1').css('display', 'block')
+		})
+
+		$('#canceldeposit').click(function(){
+			$('.general').css('display', 'block')
+			$('.depositUI').css('display', 'none')
+		})
+
+		$('#cancelwithdraw').click(function(){
+			$('.general').css('display', 'block')
+			$('.withdrawUI').css('display', 'none')
+		})
+
+		$("#deposit1").submit(function(e) {
+			e.preventDefault(); // Prevent form from submitting
+			$.post('http://esx_advancedbanking/deposit', JSON.stringify({
+				amount: $("#amount").val()
+			}));
+			$('.general').css('display', 'none')
+			$('.depositUI').css('display', 'none')
+			$('#deposit1').css('display', 'none')
+			$.post('http://esx_advancedbanking/NUIFocusOff', JSON.stringify({}));
+		});
+
+		$("#transfer1").submit(function(h) {
+			h.preventDefault(); // Prevent form from submitting
+			$.post('http://esx_advancedbanking/transfer', JSON.stringify({
+				target: $("#target").val(),
+				amountt: $("#amountt").val()
+			}));
+			$('.general').css('display', 'none')
+			$('.depositUI').css('display', 'none')
+			$('#deposit1').css('display', 'none')
+			$('.transferUI').css('display', 'none')
+			$('#transfer1').css('display', 'none')
+			$('.withdrawUI').css('display', 'none')
+			$('.withdraw11').css('display', 'none')
+			$.post('http://esx_advancedbanking/NUIFocusOff', JSON.stringify({}));
+		});
+
+		$("#withdraw1").submit(function(g) {
+			g.preventDefault(); // Prevent form from submitting
+			$.post('http://esx_advancedbanking/withdrawl', JSON.stringify({
+				amountw: $("#amountw").val()
+			}));
+			$('.general').css('display', 'none')
+			$('.depositUI').css('display', 'none')
+			$('#deposit1').css('display', 'none')
+			$('.withdrawUI').css('display', 'none')
+			$('.withdraw11').css('display', 'none')
+			$.post('http://esx_advancedbanking/NUIFocusOff', JSON.stringify({}));
+		});
+
+		$('#balance').click(function(){
+			$('.general').css('display', 'none')
+			$('.balanceUI').css('display', 'block')
+			$.post('http://esx_advancedbanking/balance', JSON.stringify({}));
+		})
+
+		$('#transfer').click(function(){
+			$('.general').css('display', 'none')
+			$('.transferUI').css('display', 'block')
+			$('#transfer1').css('display', 'block')
+		})
+
+		$('#canceltransfer').click(function(){
+			$('.general').css('display', 'block')
+			$('.transferUI').css('display', 'none')
+		})
+
+		document.onkeyup = function(data){
+			if (data.which == 27){
+				$('.main').css('display', 'none')
+				$('.general').css('display', 'none')
+				$('.deposit').css('display', 'none')
+				$('.withdraw').css('display', 'none')
+				$('.transferUI').css('display', 'none')
+				$('.depositUI').css('display', 'none')
+				$('#deposit1').css('display', 'none')
+				$('.withdrawUI').css('display', 'none')
+				$('.withdraw11').css('display', 'none')
+				$.post('http://esx_advancedbanking/NUIFocusOff', JSON.stringify({}));
+			}
+		}
+	</script>
+</html>

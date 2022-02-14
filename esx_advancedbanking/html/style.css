@@ -1,0 +1,192 @@
+body, html {
+	overflow-y: hidden;
+}
+/* main.css */
+
+button{ 
+	color: white;
+	background-color: #000000;
+	font-family: 'Segoe UI';
+	font-size: 20px;
+	background-size: 50px;
+	margin: 15px auto;
+	padding: 15px 24px;
+	cursor: pointer;
+	text-transform: uppercase;
+	width: 40%;
+	height: 14%;
+	display: inline-block;
+	position: relative;
+	left: 10%;
+	bottom: -100px;
+}
+
+#exitbank{
+	width: 81%;
+}
+
+h3{
+	position: absolute;
+	left: 8%;
+	bottom: 80%;
+}
+
+h4{
+	position: absolute;
+	left: 65%;
+	bottom: 80%;
+}
+
+#balanceX{
+	position: absolute;
+	margin: 10px auto;
+	left: 40%;
+	top: 40%;
+	font-size:30px;
+}
+
+#cancelbalance{
+	position: absolute;
+	left: 31%;
+	bottom: 20%;
+}
+
+.general{
+    background-image: url('img/BG_White.png');
+	background-repeat: no-repeat;
+	font-family: 'Segoe UI';
+	background-size: 620px 430px;
+	width: 600px;
+	height: 400px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+    padding: 10px;
+	position: absolute;
+	margin-top: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 20px;
+}
+
+.depositUI{
+    background-image: url('img/BG_White.png');
+	background-repeat: no-repeat;
+	font-family: 'Segoe UI';
+	background-size: 620px 430px;
+	width: 600px;
+	height: 400px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+    padding: 10px;
+	position: absolute;
+	margin-top: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 20px;
+}
+
+.withdrawUI{
+    background-image: url('img/BG_White.png');
+	background-repeat: no-repeat;
+	font-family: 'Segoe UI';
+	background-size: 620px 430px;
+	width: 600px;
+	height: 400px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+    padding: 10px;
+	position: absolute;
+	margin-top: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 20px;
+}
+
+.balanceUI{
+    background-image: url('img/BG_White.png');
+	background-repeat: no-repeat;
+	font-family: 'Segoe UI';
+	background-size: 620px 430px;
+	width: 600px;
+	height: 400px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+    padding: 10px;
+	position: absolute;
+	margin-top: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 20px;
+}
+
+.transferUI{
+    background-image: url('img/BG_White.png');
+	background-repeat: no-repeat;
+	font-family: 'Segoe UI';
+	background-size: 620px 430px;
+	width: 600px;
+	height: 400px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+    padding: 10px;
+	position: absolute;
+	margin-top: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 20px;
+}
+
+#from, #target, #amountt {
+	position: relative;
+	top: 100px;
+	left: 62px;
+	font-family: 'Segoe UI';
+	width: 40%;
+	height: 8%;
+	padding: 5px 5px;
+	margin: 15px 0;
+	box-sizing: border-box;
+}
+
+h1{
+	font-family: 'Segoe UI';
+	color: black;
+	position: relative;
+	left: 48%;
+	top: 39%;
+}
+
+.b{
+	font-family: 'Segoe UI';
+	color: black;
+	position: relative;
+	left: 30%;
+	top: 30%;
+}
+
+#backbalnace {
+	position:relative;
+	top: 60%;
+	left: 30%;
+}
+
+input[type=text] {
+	position: relative;
+	top: 100px;
+	left: 62px;
+	font-family: 'Segoe UI';
+	width: 80%;
+	height: 15%;
+	padding: 5px 5px;
+	margin: 40px 0;
+	box-sizing: border-box;
+}
+
+button:hover{
+	background-color: #D3D3D3;
+}
