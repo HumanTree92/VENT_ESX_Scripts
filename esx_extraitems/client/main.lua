@@ -1,10 +1,22 @@
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
 	ESX.PlayerData = xPlayer
+	ESX.PlayerLoaded = true
 
 	if Config.GPS.VehicleGPS then
 		DisplayRadar(false)
 	end
+end)
+
+RegisterNetEvent('esx:onPlayerLogout')
+AddEventHandler('esx:onPlayerLogout', function()
+	ESX.PlayerLoaded = false
+	ESX.PlayerData = {}
+end)
+
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
+	ESX.PlayerData.job = job
 end)
 
 -- Start of Dark Net
@@ -281,7 +293,7 @@ AddEventHandler('esx_extraitems:defib', function(source)
 						end)
 					end
 
-					if chance <= 66 then
+					if chance <= 50 then
 						TriggerServerEvent('esx_ambulancejob:revive', GetPlayerServerId(closestPlayer))
 						ESX.ShowNotification(_U('defib_worked'))
 					else
@@ -402,6 +414,68 @@ AddEventHandler('esx_extraitems:firstaidkit', function()
 end)
 -- End of First Aid Kit
 
+-- Start of Life Raft
+RegisterNetEvent('esx_extraitems:liferaft')
+AddEventHandler('esx_extraitems:liferaft', function()
+	local playerPed = GetPlayerPed(-1)
+	local playerCoords = GetEntityCoords(playerPed)
+	local playerHeading = GetEntityHeading(playerPed)
+	local model = GetHashKey('lraft')
+	
+	if IsPedSwimming(playerPed) then
+		ESX.Game.SpawnVehicle(model, playerCoords, playerHeading, function(vehicle)
+			TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+			TriggerServerEvent('esx_extraitems:removeliferaft')
+		end)
+	else
+		ESX.ShowNotification(_U('must_water'))
+	end
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(0)
+
+		if Config.LifeRaft.Use then
+			local playerPed = GetPlayerPed(-1)
+			local playerVeh = GetVehiclePedIsIn(playerPed, false)
+			local attempt = 0
+
+			if DoesEntityExist(playerVeh) and (GetPedInVehicleSeat(playerVeh, -1) == playerPed) and LifeRaftList() == true then
+				ESX.ShowHelpNotification(_U('life_raft_use'))
+
+				if IsControlJustReleased(0, 38) and (GetPedInVehicleSeat(playerVeh, -1) == playerPed) and LifeRaftList() == true then
+					while not NetworkHasControlOfEntity(playerVeh) and attempt < 100 and DoesEntityExist(playerVeh) do
+						Citizen.Wait(100)
+						NetworkRequestControlOfEntity(playerVeh)
+						attempt = attempt + 1
+					end
+					
+					if DoesEntityExist(playerVeh) and NetworkHasControlOfEntity(playerVeh) then
+						ESX.Game.DeleteVehicle(playerVeh)
+						TriggerServerEvent('esx_extraitems:giveliferaft')
+					end
+				end
+			else
+				Citizen.Wait(500)
+			end
+		end
+	end
+end)
+
+function LifeRaftList()
+    local playerPed = PlayerPedId()
+    local currentVehicle = GetVehiclePedIsIn(playerPed)
+
+    for i,model in pairs(Config.LifeRaft.Vehs) do
+		if IsVehicleModel(currentVehicle, GetHashKey(model)) then
+			return true
+		end
+	end
+	return false
+end
+-- End of Life Raft
+
 -- Start of Lock Pick
 RegisterNetEvent('esx_extraitems:lockpick')
 AddEventHandler('esx_extraitems:lockpick', function()
@@ -422,7 +496,7 @@ AddEventHandler('esx_extraitems:lockpick', function()
 		local alarm = math.random(100)
 
 		if DoesEntityExist(vehicle) then
-			if alarm <= 33 then
+			if alarm <= 50 then
 				SetVehicleAlarm(vehicle, true)
 				StartVehicleAlarm(vehicle)
 			end
@@ -432,7 +506,7 @@ AddEventHandler('esx_extraitems:lockpick', function()
 			Citizen.CreateThread(function()
 				Citizen.Wait(Config.Wait.LockPick)
 
-				if chance <= 66 then
+				if chance <= 50 then
 					SetVehicleDoorsLocked(vehicle, 1)
 					SetVehicleDoorsLockedForAllPlayers(vehicle, false)
 					ClearPedTasksImmediately(playerPed)
@@ -462,6 +536,8 @@ end)
 -- End of Lock Pick
 
 -- Start of Oxygen Mask
+local oxygenMask = false
+
 RegisterNetEvent('esx_extraitems:oxygenmask')
 AddEventHandler('esx_extraitems:oxygenmask', function()
 	local playerPed = GetPlayerPed(-1)
@@ -469,37 +545,48 @@ AddEventHandler('esx_extraitems:oxygenmask', function()
 	local boneIndex = GetPedBoneIndex(playerPed, 12844)
 	local boneIndex2 = GetPedBoneIndex(playerPed, 24818)
 
-	ESX.Game.SpawnObject('p_s_scuba_mask_s', {
-		x = coords.x,
-		y = coords.y,
-		z = coords.z - 3
-	}, function(object)
-		ESX.Game.SpawnObject('p_s_scuba_tank_s', {
+	if not oxygenMask then
+		TriggerServerEvent('esx_extraitems:removeoxygenmask')
+		oxygenMask = true
+
+		ESX.Game.SpawnObject('p_s_scuba_mask_s', {
 			x = coords.x,
 			y = coords.y,
 			z = coords.z - 3
-		}, function(object2)
-			AttachEntityToEntity(object2, playerPed, boneIndex2, -0.30, -0.22, 0.0, 0.0, 90.0, 180.0, true, true, false, true, 1, true)
-			AttachEntityToEntity(object, playerPed, boneIndex, 0.0, 0.0, 0.0, 0.0, 90.0, 180.0, true, true, false, true, 1, true)
-			SetPedDiesInWater(playerPed, false)
+		}, function(object)
+			ESX.Game.SpawnObject('p_s_scuba_tank_s', {
+				x = coords.x,
+				y = coords.y,
+				z = coords.z - 3
+			}, function(object2)
+				AttachEntityToEntity(object2, playerPed, boneIndex2, -0.30, -0.22, 0.0, 0.0, 90.0, 180.0, true, true, false, true, 1, true)
+				AttachEntityToEntity(object, playerPed, boneIndex, 0.0, 0.0, 0.0, 0.0, 90.0, 180.0, true, true, false, true, 1, true)
+				SetPedDiesInWater(playerPed, false)
 
-			ESX.ShowNotification(_U('dive_suit_on') .. '%.')
+				ESX.ShowNotification(_U('dive_suit_on') .. '%.')
 
-			Citizen.Wait(50000)
-			ESX.ShowNotification(_U('oxygen_notify', '~y~', '50') .. '%.')
+				Citizen.Wait(Config.Scuba.Wait1 * 60000)
+				ESX.ShowNotification(_U('oxygen_notify', '~y~', '75') .. '%.')
 
-			Citizen.Wait(25000)
-			ESX.ShowNotification(_U('oxygen_notify', '~o~', '25') .. '%.')
+				Citizen.Wait(Config.Scuba.Wait2 * 60000)
+				ESX.ShowNotification(_U('oxygen_notify', '~o~', '50') .. '%.')
 
-			Citizen.Wait(25000)
-			ESX.ShowNotification(_U('oxygen_notify', '~r~', '0') .. '%.')
+				Citizen.Wait(Config.Scuba.Wait3 * 60000)
+				ESX.ShowNotification(_U('oxygen_notify', '~o~', '25') .. '%.')
 
-			SetPedDiesInWater(playerPed, true)
-			DeleteObject(object)
-			DeleteObject(object2)
-			ClearPedSecondaryTask(playerPed)
+				Citizen.Wait(Config.Scuba.Wait4 * 60000)
+				ESX.ShowNotification(_U('oxygen_notify', '~r~', '0') .. '%.')
+
+				SetPedDiesInWater(playerPed, true)
+				DeleteObject(object)
+				DeleteObject(object2)
+				ClearPedSecondaryTask(playerPed)
+				oxygenMask = false
+			end)
 		end)
-	end)
+	else
+		ESX.ShowNotification(_U('oxygen_failed'))
+	end
 end)
 -- End of Oxygen Mask
 
@@ -517,9 +604,23 @@ AddEventHandler('esx_extraitems:repairkit', function()
 			TaskStartScenarioInPlace(playerPed, 'PROP_HUMAN_BUM_BIN', 0, true)
 			Citizen.CreateThread(function()
 				Citizen.Wait(Config.Wait.RepairKit)
-				SetVehicleFixed(vehicle)
-				SetVehicleDeformationFixed(vehicle)
-				SetVehicleUndriveable(vehicle, false)
+
+				if Config.RepairKit.EngOnly then
+					if ESX.PlayerData.job and ESX.PlayerData.job.name == 'ambulance' and Config.RepairKit.Emergency or ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' and Config.RepairKit.Emergency then
+						SetVehicleUndriveable(vehicle, false)
+						SetVehicleEngineHealth(vehicle, Config.RepairKit.EmergEngHealth)
+						print('Engine Health Repaired to: ' .. Config.RepairKit.EmergEngHealth)
+					else
+						SetVehicleUndriveable(vehicle, false)
+						SetVehicleEngineHealth(vehicle, Config.RepairKit.EngHealth)
+						print('Engine Health Repaired to: ' .. Config.RepairKit.EngHealth)
+					end
+				else
+					SetVehicleUndriveable(vehicle, false)
+					SetVehicleFixed(vehicle)
+					SetVehicleDeformationFixed(vehicle)
+				end
+
 				ClearPedTasksImmediately(playerPed)
 				TriggerServerEvent('esx_extraitems:removerepairkit')
 				ESX.ShowNotification(_U('repair_done'))
@@ -614,9 +715,9 @@ AddEventHandler('esx_extraitems:vape', function()
 			Wait(1)
 		end
 
-		local chance = math.random(1, Config.Vape.FailurePerc)
+		local chance = math.random(Config.Vape.FailurePerc)
 
-		if chance == 1 then
+		if chance <= 1 then
 			TaskPlayAnim(playerPed, 'mp_player_inteat@burger', 'mp_player_int_eat_burger', 8.00, -8.00, -1, (2 + 16 + 32), 0.00, 0, 0, 0)
 			PlaySoundFrontend(-1, 'Beep_Red', 'DLC_HEIST_HACKING_SNAKE_SOUNDS', 1)
 			Wait(250)

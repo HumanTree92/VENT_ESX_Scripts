@@ -9,6 +9,7 @@ Config.Removeables = {
 	Drill = false,
 	Firework = true,
 	FirstAidKit = true,
+	LifeRaft = true,
 	OxygenMask = true,
 	CleanKit = true,
 	RepairKit = true,
@@ -31,8 +32,28 @@ Config.Wait = {
 Config.Heal = true -- true = Will allow First Aid Kits to Heal Players | false = Will give 3 Bandages
 Config.BandageHP = 10
 
+Config.RepairKit = {
+	EngOnly = true, -- true = Will only Repair Engine | false = Will Repair the Entire Vehicle
+	EngHealth = 365.0, -- If EngOnly is true how much should the Engine Health be Repaired to. Value must be between 1.0 - 1000.0
+	Emergency = true, -- true = Will give Emergency Services more Engine Health | false = Will give Emergency Services the Above Value
+	EmergEngHealth = 805.0
+}
+
+Config.Scuba = {
+	Wait1 = 2.5, -- How long in Minutes before it gets to 75% Oxygen
+	Wait2 = 2.5, -- How long in Minutes before it gets to 50% Oxygen
+	Wait3 = 2.5, -- How long in Minutes before it gets to 25% Oxygen
+	Wait4 = 2.5 -- How long in Minutes before it gets to 0% Oxygen
+}
+
 -- Binoculars
 Config.BinocularsPutAway = 177 -- Backspace Key
+
+-- Life Raft
+Config.LifeRaft = {
+	Use = false,
+	Vehs = {'lraft'}
+}
 
 -- Weapon Ammos
 Config.AmmoBoxes = {
@@ -111,6 +132,33 @@ Config.ComponentList = {
 		{weapon = 'WEAPON_MARKSMANRIFLE', components = {true, true, true, true, true, true, true}},
 		{weapon = 'WEAPON_MARKSMANRIFLE_MK2', components = {true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true}},
 		{weapon = 'WEAPON_SNIPERRIFLE', components = {true, true, true, true}}
+	}
+}
+
+Config.WeaponUpgrades = {
+	Pistols = {
+		{weapon = 'WEAPON_REVOLVER', upgrade = 'WEAPON_REVOLVER_MK2'},
+		{weapon = 'WEAPON_PISTOL', upgrade = 'WEAPON_PISTOL_MK2'},
+		{weapon = 'WEAPON_SNSPISTOL', upgrade = 'WEAPON_SNSPISTOL_MK2'},
+	},
+	SMGs = {
+		{weapon = 'WEAPON_SMG', upgrade = 'WEAPON_SMG_MK2'},
+	},
+	Shotguns = {
+		{weapon = 'WEAPON_PUMPSHOTGUN', upgrade = 'WEAPON_PUMPSHOTGUN_MK2'},
+	},
+	Rifles = {
+		{weapon = 'WEAPON_ASSAULTRIFLE', upgrade = 'WEAPON_ASSAULTRIFLE_MK2'},
+		{weapon = 'WEAPON_BULLPUPRIFLE', upgrade = 'WEAPON_BULLPUPRIFLE_MK2'},
+		{weapon = 'WEAPON_CARBINERIFLE', upgrade = 'WEAPON_CARBINERIFLE_MK2'},
+		{weapon = 'WEAPON_SPECIALCARBINE', upgrade = 'WEAPON_SPECIALCARBINE_MK2'},
+	},
+	MGs = {
+		{weapon = 'WEAPON_COMBATMG', upgrade = 'WEAPON_COMBATMG_MK2'},
+	},
+	Snipers = {
+		{weapon = 'WEAPON_HEAVYSNIPER', upgrade = 'WEAPON_HEAVYSNIPER_MK2'},
+		{weapon = 'WEAPON_MARKSMANRIFLE', upgrade = 'WEAPON_MARKSMANRIFLE_MK2'},
 	}
 }
 

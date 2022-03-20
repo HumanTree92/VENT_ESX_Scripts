@@ -31,6 +31,7 @@ Locales ['en'] = {
 	-- Oxygen Mask
 	['dive_suit_on'] = 'You put on the diving mask & secure the oxygen tank. Oxygen level: ~g~100~w~',
 	['oxygen_notify'] = 'Remaining ~b~oxygen~y~ in the tank: %s%s~w~',
+	['oxygen_failed'] = 'You are already wearing an Oxygen Mask!',
 	-- Clean Kit
 	['clean_done'] = '~g~You have Cleaned the Vehicle.',
 	-- Repair Kit
@@ -40,6 +41,11 @@ Locales ['en'] = {
 	-- Ammo Boxes
 	['no_weapon'] = 'You do not have a weapon in your hand.',
 	['not_suitable'] = 'These ammunitions are not suitable for this weapon.',
+	-- Life Raft
+	['life_raft_use'] = 'press ~INPUT_CONTEXT~ to Pack Up the ~y~Life Raft~s~',
+	['life_raft_unpack'] = '~g~You have Unpacked the Life Raft.',
+	['life_raft_pack'] = '~g~You have Packed Up the Life Raft.',
+	['must_water'] = '~r~You must be in water to do this.',
 	-- Lock Pick
 	['veh_unlocked'] = '~g~Vehicle Unlocked.',
 	['hijack_failed'] = '~r~Hijack Failed.',

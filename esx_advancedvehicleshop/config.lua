@@ -2,9 +2,13 @@ Config = {}
 Config.Locale = 'en'
 
 Config.Main = {
-	DrawDistance = 20,
+	DrawDistanceE = 20, -- Enter Marker Draw Distance
+	DrawDistanceR = 50, -- Resell Marker Draw Distance
 	PlateUseSpace = true, -- true = 'LLL  NNN' | false = 'LLLLNNNN' | Where L is a Random Letter & N is a Random Number.
-	LegacyFuel = false
+	MaxMigrates = 6, -- Higher Value will cause Deadlocks on the Database. 
+	LegacyFuel = false,
+	Financing = false, -- WIP Feature | Keep false for now
+	Limit = false -- WIP Feature | Keep false for now
 }
 
 -- Shop = true means Use Shop | false means doesn't Use Shop

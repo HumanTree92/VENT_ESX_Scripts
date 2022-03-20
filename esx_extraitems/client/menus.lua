@@ -701,21 +701,21 @@ function OpenCompMenu()
 				local CurrentWeaponHash = GetSelectedPedWeapon(playerPed)
 
 				if action2 == 'tint_default' then
-					SetPedWeaponTintIndex(PlayerPed, CurrentWeaponHash, 0)
+					SetPedWeaponTintIndex(playerPed, CurrentWeaponHash, 0)
 				elseif action2 == 'tint_green' then
-					SetPedWeaponTintIndex(PlayerPed, CurrentWeaponHash, 1)
+					SetPedWeaponTintIndex(playerPed, CurrentWeaponHash, 1)
 				elseif action2 == 'tint_gold' then
-					SetPedWeaponTintIndex(PlayerPed, CurrentWeaponHash, 2)
+					SetPedWeaponTintIndex(playerPed, CurrentWeaponHash, 2)
 				elseif action2 == 'tint_pink' then
-					SetPedWeaponTintIndex(PlayerPed, CurrentWeaponHash, 3)
+					SetPedWeaponTintIndex(playerPed, CurrentWeaponHash, 3)
 				elseif action2 == 'tint_army' then
-					SetPedWeaponTintIndex(PlayerPed, CurrentWeaponHash, 4)
+					SetPedWeaponTintIndex(playerPed, CurrentWeaponHash, 4)
 				elseif action2 == 'tint_lspd' then
-					SetPedWeaponTintIndex(PlayerPed, CurrentWeaponHash, 5)
+					SetPedWeaponTintIndex(playerPed, CurrentWeaponHash, 5)
 				elseif action2 == 'skin_orange' then
-					SetPedWeaponTintIndex(PlayerPed, CurrentWeaponHash, 6)
+					SetPedWeaponTintIndex(playerPed, CurrentWeaponHash, 6)
 				elseif action2 == 'tint_platinum' then
-					SetPedWeaponTintIndex(PlayerPed, CurrentWeaponHash, 7)
+					SetPedWeaponTintIndex(playerPed, CurrentWeaponHash, 7)
 				end
 			end, function(data2, menu2)
 				menu2.close()

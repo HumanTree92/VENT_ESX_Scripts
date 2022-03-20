@@ -406,35 +406,47 @@ function BuyVehicleShopMenu(pJobC, sTypeC)
 		align = GetConvar('esx_MenuAlign', 'top-left'),
 		elements = elements
 	}, function(data, menu)
+		local elements2 = {}
 		local vehicleData = vehiclesByCategory[data.current.name][data.current.value + 1]
+
+		if Config.Main.Financing then
+			table.insert(elements2, {label = _U('finance'), value = 'finance'})
+			table.insert(elements2, {label = _U('payfull'), value = 'payfull'})
+			table.insert(elements2, {label = _U('cancel'), value = 'cancel'})
+		else
+			table.insert(elements2, {label = _U('payfull'), value = 'payfull'})
+			table.insert(elements2, {label = _U('cancel'), value = 'cancel'})
+		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_confirm', {
 			title = _U('buy_vehicle', vehicleData.name, ESX.Math.GroupDigits(vehicleData.price)),
 			align = GetConvar('esx_MenuAlign', 'top-left'),
-			elements = {
-				{label = _U('no'), value = 'no'},
-				{label = _U('yes'), value = 'yes'}
-		}}, function(data2, menu2)
-			if data2.current.value == 'yes' and not YesAlready then
+			elements = elements2
+		}, function(data2, menu2)
+			local purchaseChoice = data2.current.value
+
+			if purchaseChoice == 'finance' and not YesAlready or purchaseChoice == 'payfull' and not YesAlready then
 				YesAlready = true
 				spawnloc, spawnhead = thisShop.Outside, thisShop.OutsideH
 				local generatedPlate = GeneratePlate()
 
 				if pJobC == 'ambulance' and sTypeC == 'car' or pJobC == 'police' and sTypeC == 'car' or pJobC == 'mechanic' and sTypeC == 'car' or pJobC == 'taxi' and sTypeC == 'car' then
-					if ESX.PlayerData.job and ESX.PlayerData.job.name == pJobC and not ESX.PlayerData.job.grade_name == vehicleData.category then
+					if ESX.PlayerData.job and ESX.PlayerData.job.name == pJobC and ESX.PlayerData.job.grade_name == vehicleData.category then
+						ContinuePurchase = true
+					else
 						ContinuePurchase = false
 						ESX.ShowNotification(_U('your_rank'))
-					else
-						ContinuePurchase = true
 					end
 				elseif pJobC == 'ambulance' and sTypeC == 'division' or pJobC == 'police' and sTypeC == 'division' then
 					if vehicleData.model == Config.Division.Heli1 then
-							ContinuePurchase = true
-							spawnloc, spawnhead = thisShop.Outside2, thisShop.OutsideH2
+						ContinuePurchase = true
+						spawnloc, spawnhead = thisShop.Outside2, thisShop.OutsideH2
 					end
 				else
 					ContinuePurchase = true
 				end
+
+				Citizen.Wait(500)
 
 				if ContinuePurchase then
 					if ESX.Game.IsSpawnPointClear(spawnloc, 5.0) then
@@ -459,11 +471,13 @@ function BuyVehicleShopMenu(pJobC, sTypeC)
 							else
 								ESX.ShowNotification(_U('not_enough_money'))
 							end
-						end, pJobC, sTypeC, vehicleData.model, generatedPlate, vehicleData.category, vehicleData.name, vehicleData.image)
+						end, purchaseChoice, pJobC, sTypeC, vehicleData.model, generatedPlate, vehicleData.category, vehicleData.name, vehicleData.image)
 					else
 						YesAlready, ContinuePurchase = false, false
 						ESX.ShowNotification(_U('spawnpoint_blocked'))
 					end
+				else
+					print('Purchase has been Cancelled')
 				end
 			else
 				menu2.close()
@@ -1033,7 +1047,7 @@ Citizen.CreateThread(function()
 					local distance = #(playerCoords - v.Enter)
 					local distance2 = #(playerCoords - v.Resell)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceE then
 						letSleep = false
 
 						if Config.Ambulance.Markers.Enter.Type ~= -1 then
@@ -1045,7 +1059,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance2 < Config.Main.DrawDistance then
+					if distance2 < Config.Main.DrawDistanceR then
 						letSleep = false
 
 						if Config.Ambulance.Markers.Resell.Type ~= -1 then
@@ -1068,7 +1082,7 @@ Citizen.CreateThread(function()
 					local distance = #(playerCoords - v.Enter)
 					local distance2 = #(playerCoords - v.Resell)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceE then
 						letSleep = false
 
 						if Config.Police.Markers.Enter.Type ~= -1 then
@@ -1080,7 +1094,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance2 < Config.Main.DrawDistance then
+					if distance2 < Config.Main.DrawDistanceR then
 						letSleep = false
 
 						if Config.Police.Markers.Resell.Type ~= -1 then
@@ -1104,7 +1118,7 @@ Citizen.CreateThread(function()
 					local distance2 = #(playerCoords - v.Resell)
 					local distance3 = #(playerCoords - v.Resell2)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceE then
 						letSleep = false
 
 						if Config.Division.Markers.Enter.Type ~= -1 then
@@ -1116,7 +1130,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance2 < Config.Main.DrawDistance then
+					if distance2 < Config.Main.DrawDistanceR then
 						letSleep = false
 
 						if Config.Division.Markers.Resell.Type ~= -1 then
@@ -1130,7 +1144,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance3 < Config.Main.DrawDistance then
+					if distance3 < Config.Main.DrawDistanceR then
 						letSleep = false
 
 						if Config.Division.Markers.Resell.Type ~= -1 then
@@ -1153,7 +1167,7 @@ Citizen.CreateThread(function()
 					local distance = #(playerCoords - v.Enter)
 					local distance2 = #(playerCoords - v.Resell)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceE then
 						letSleep = false
 
 						if Config.Mechanic.Markers.Enter.Type ~= -1 then
@@ -1165,7 +1179,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance2 < Config.Main.DrawDistance then
+					if distance2 < Config.Main.DrawDistanceR then
 						letSleep = false
 
 						if Config.Mechanic.Markers.Resell.Type ~= -1 then
@@ -1188,7 +1202,7 @@ Citizen.CreateThread(function()
 					local distance = #(playerCoords - v.Enter)
 					local distance2 = #(playerCoords - v.Resell)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceE then
 						letSleep = false
 
 						if Config.Taxi.Markers.Enter.Type ~= -1 then
@@ -1200,7 +1214,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance2 < Config.Main.DrawDistance then
+					if distance2 < Config.Main.DrawDistanceR then
 						letSleep = false
 
 						if Config.Taxi.Markers.Resell.Type ~= -1 then
@@ -1222,7 +1236,7 @@ Citizen.CreateThread(function()
 				local distance = #(playerCoords - v.Enter)
 				local distance2 = #(playerCoords - v.Resell)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceE then
 					letSleep = false
 
 					if Config.Aircraft.Markers.Enter.Type ~= -1 then
@@ -1234,7 +1248,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				if distance2 < Config.Main.DrawDistance then
+				if distance2 < Config.Main.DrawDistanceR then
 					letSleep = false
 
 					if Config.Aircraft.Markers.Resell.Type ~= -1 then
@@ -1255,7 +1269,7 @@ Citizen.CreateThread(function()
 				local distance = #(playerCoords - v.Enter)
 				local distance2 = #(playerCoords - v.Resell)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceE then
 					letSleep = false
 
 					if Config.Boat.Markers.Enter.Type ~= -1 then
@@ -1267,7 +1281,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				if distance2 < Config.Main.DrawDistance then
+				if distance2 < Config.Main.DrawDistanceR then
 					letSleep = false
 
 					if Config.Boat.Markers.Resell.Type ~= -1 then
@@ -1288,7 +1302,7 @@ Citizen.CreateThread(function()
 				local distance = #(playerCoords - v.Enter)
 				local distance2 = #(playerCoords - v.Resell)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceE then
 					letSleep = false
 
 					if Config.Car.Markers.Enter.Type ~= -1 then
@@ -1300,7 +1314,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				if distance2 < Config.Main.DrawDistance then
+				if distance2 < Config.Main.DrawDistanceR then
 					letSleep = false
 
 					if Config.Car.Markers.Resell.Type ~= -1 then
@@ -1321,7 +1335,7 @@ Citizen.CreateThread(function()
 				local distance = #(playerCoords - v.Enter)
 				local distance2 = #(playerCoords - v.Resell)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceE then
 					letSleep = false
 
 					if Config.Truck.Markers.Enter.Type ~= -1 then
@@ -1333,7 +1347,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				if distance2 < Config.Main.DrawDistance then
+				if distance2 < Config.Main.DrawDistanceR then
 					letSleep = false
 
 					if Config.Truck.Markers.Resell.Type ~= -1 then
@@ -1354,7 +1368,7 @@ Citizen.CreateThread(function()
 				local distance = #(playerCoords - v.Enter)
 				local distance2 = #(playerCoords - v.Resell)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceE then
 					letSleep = false
 
 					if Config.VIPAircraft.Markers.Enter.Type ~= -1 then
@@ -1366,7 +1380,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				if distance2 < Config.Main.DrawDistance then
+				if distance2 < Config.Main.DrawDistanceR then
 					letSleep = false
 
 					if Config.VIPAircraft.Markers.Resell.Type ~= -1 then
@@ -1387,7 +1401,7 @@ Citizen.CreateThread(function()
 				local distance = #(playerCoords - v.Enter)
 				local distance2 = #(playerCoords - v.Resell)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceE then
 					letSleep = false
 
 					if Config.VIPBoat.Markers.Enter.Type ~= -1 then
@@ -1399,7 +1413,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				if distance2 < Config.Main.DrawDistance then
+				if distance2 < Config.Main.DrawDistanceR then
 					letSleep = false
 
 					if Config.VIPBoat.Markers.Resell.Type ~= -1 then
@@ -1420,7 +1434,7 @@ Citizen.CreateThread(function()
 				local distance = #(playerCoords - v.Enter)
 				local distance2 = #(playerCoords - v.Resell)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceE then
 					letSleep = false
 
 					if Config.VIPCar.Markers.Enter.Type ~= -1 then
@@ -1432,7 +1446,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				if distance2 < Config.Main.DrawDistance then
+				if distance2 < Config.Main.DrawDistanceR then
 					letSleep = false
 
 					if Config.VIPCar.Markers.Resell.Type ~= -1 then

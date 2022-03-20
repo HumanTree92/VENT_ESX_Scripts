@@ -2,7 +2,8 @@ Config = {}
 Config.Locale = 'en'
 
 Config.Main = {
-	DrawDistance = 20, -- Draw Distance to Markers.
+	DrawDistanceP = 20, -- Point/Pound Marker Draw Distance.
+	DrawDistanceD = 50, -- Delete Marker Draw Distance.
 	Commands = false, -- Will allow players to do /getproperties instead of having to log out & back in to see Private Garages.
 	ParkVehicles = false, -- true = Automatically Park all Vehicles in Garage on Server/Script Restart | false = Opposite of true but players will have to go to Pound to get their Vehicle Back.
 	KickCheaters = true, -- true = Kick Player that tries to Cheat Garage by changing Vehicle Hash/Plate.

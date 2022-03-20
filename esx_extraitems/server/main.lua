@@ -155,6 +155,34 @@ AddEventHandler('esx_extraitems:removefirstaidkit', function()
 	end
 end)
 
+-- Life Raft
+ESX.RegisterUsableItem('liferaft', function(source)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	TriggerClientEvent('esx_extraitems:liferaft', source)
+end)
+
+RegisterNetEvent('esx_extraitems:removeliferaft')
+AddEventHandler('esx_extraitems:removeliferaft', function()
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
+	if Config.Removeables.LifeRaft then
+		xPlayer.removeInventoryItem('liferaft', 1)
+		xPlayer.showNotification(_U('life_raft_unpack'))
+	end
+end)
+
+RegisterNetEvent('esx_extraitems:giveliferaft')
+AddEventHandler('esx_extraitems:giveliferaft', function()
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
+	if Config.Removeables.LifeRaft and xPlayer.canCarryItem('liferaft', 1) then
+		xPlayer.showNotification(_U('life_raft_pack'))
+		xPlayer.addInventoryItem('liferaft', 1)
+	else
+		xPlayer.showNotification(_U('player_cannot_hold', 'Life Raft'))
+	end
+end)
+
 -- Lock Pick
 ESX.RegisterUsableItem('lockpick', function(source)
 	local xPlayer = ESX.GetPlayerFromId(source)
@@ -175,6 +203,12 @@ end)
 ESX.RegisterUsableItem('oxygenmask', function(source)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	TriggerClientEvent('esx_extraitems:oxygenmask', source)
+end)
+
+RegisterNetEvent('esx_extraitems:removeoxygenmask')
+AddEventHandler('esx_extraitems:removeoxygenmask', function()
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
 	if Config.Removeables.OxygenMask then
 		xPlayer.removeInventoryItem('oxygenmask', 1)
 		xPlayer.showNotification(_U('used_oxygenmask'))

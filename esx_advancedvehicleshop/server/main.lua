@@ -487,7 +487,7 @@ ESX.RegisterServerCallback('esx_advancedvehicleshop:getPlayerData', function(sou
 end)
 
 -- Buy Vehicle
-ESX.RegisterServerCallback('esx_advancedvehicleshop:buyVehicle', function(source, cb, pJobS, sTypeS, vModelS, vPlateS, vCatS, vNameS, vImageS)
+ESX.RegisterServerCallback('esx_advancedvehicleshop:buyVehicle', function(source, cb, pChoiceS, pJobS, sTypeS, vModelS, vPlateS, vCatS, vNameS, vImageS)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local modelPrice, type, category
 
@@ -579,49 +579,57 @@ ESX.RegisterServerCallback('esx_advancedvehicleshop:buyVehicle', function(source
 		end
 	end
 
-	if modelPrice and xPlayer.getMoney() >= modelPrice then
-		xPlayer.removeMoney(modelPrice)
-
-		if vModelS == Config.Division.Heli1 then
-			type = 'aircraft'
-			category = 'helis'
+	if pChoiceS == 'finance' then
+		--[[if then
+			
 		else
-			if pJobS == 'ambulance' or pJobS == 'police' or pJobS == 'mechanic' or pJobS == 'taxi' then
-				type = 'car'
-				category = 'cars'
-			elseif pJobS == 'civ' and sTypeS == 'aircraft' and vCatS == 'helis' or pJobS == 'civ' and sTypeS == 'vipaircraft' and vCatS == 'helis' then
+			
+		end]]--
+	elseif pChoiceS == 'payfull' then
+		if modelPrice and xPlayer.getMoney() >= modelPrice then
+			xPlayer.removeMoney(modelPrice)
+
+			if vModelS == Config.Division.Heli1 then
 				type = 'aircraft'
 				category = 'helis'
-			elseif pJobS == 'civ' and sTypeS == 'aircraft' and vCatS == 'planes' or pJobS == 'civ' and sTypeS == 'vipaircraft' and vCatS == 'planes' then
-				type = 'aircraft'
-				category = 'planes'
-			elseif pJobS == 'civ' and sTypeS == 'boat' and vCatS == 'boats' or pJobS == 'civ' and sTypeS == 'vipboat' and vCatS == 'boats' then
-				type = 'boat'
-				category = 'boats'
-			elseif pJobS == 'civ' and sTypeS == 'boat' and vCatS == 'subs' or pJobS == 'civ' and sTypeS == 'vipboat' and vCatS == 'subs' then
-				type = 'boat'
-				category = 'subs'
 			else
-				type = 'car'
-				category = vCatS
+				if pJobS == 'ambulance' or pJobS == 'police' or pJobS == 'mechanic' or pJobS == 'taxi' then
+					type = 'car'
+					category = 'cars'
+				elseif pJobS == 'civ' and sTypeS == 'aircraft' and vCatS == 'helis' or pJobS == 'civ' and sTypeS == 'vipaircraft' and vCatS == 'helis' then
+					type = 'aircraft'
+					category = 'helis'
+				elseif pJobS == 'civ' and sTypeS == 'aircraft' and vCatS == 'planes' or pJobS == 'civ' and sTypeS == 'vipaircraft' and vCatS == 'planes' then
+					type = 'aircraft'
+					category = 'planes'
+				elseif pJobS == 'civ' and sTypeS == 'boat' and vCatS == 'boats' or pJobS == 'civ' and sTypeS == 'vipboat' and vCatS == 'boats' then
+					type = 'boat'
+					category = 'boats'
+				elseif pJobS == 'civ' and sTypeS == 'boat' and vCatS == 'subs' or pJobS == 'civ' and sTypeS == 'vipboat' and vCatS == 'subs' then
+					type = 'boat'
+					category = 'subs'
+				else
+					type = 'car'
+					category = vCatS
+				end
 			end
-		end
 
-		MySQL.Async.execute('INSERT INTO owned_vehicles (owner, plate, vehicle, type, job, category, name, image) VALUES (@owner, @plate, @vehicle, @type, @job, @category, @name, @image)', {
-			['@owner'] = xPlayer.identifier,
-			['@plate'] = vPlateS,
-			['@vehicle'] = json.encode({model = GetHashKey(vModelS), plate = vPlateS}),
-			['@type'] = type,
-			['@job'] = pJobS,
-			['@category'] = category,
-			['@name'] = vNameS,
-			['@image'] = vImageS
-		}, function(rowsChanged)
-			xPlayer.showNotification(_U('vehicle_belongs', vNameS, vPlateS))
-			cb(true)
-		end)
-	else
-		cb(false)
+			MySQL.Async.execute('INSERT INTO owned_vehicles (owner, plate, vehicle, type, job, category, name, image) VALUES (@owner, @plate, @vehicle, @type, @job, @category, @name, @image)', {
+				['@owner'] = xPlayer.identifier,
+				['@plate'] = vPlateS,
+				['@vehicle'] = json.encode({model = GetHashKey(vModelS), plate = vPlateS}),
+				['@type'] = type,
+				['@job'] = pJobS,
+				['@category'] = category,
+				['@name'] = vNameS,
+				['@image'] = vImageS
+			}, function(rowsChanged)
+				xPlayer.showNotification(_U('vehicle_belongs', vNameS, vPlateS))
+				cb(true)
+			end)
+		else
+			cb(false)
+		end
 	end
 end)
 

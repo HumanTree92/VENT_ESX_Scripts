@@ -386,7 +386,7 @@ end
 -- Start of Store Menu
 function OpenStoreMenu(_pJob, _vType)
 	local pJob, vType = _pJob, _vType
-	local playerPed  = GetPlayerPed(-1)
+	local playerPed = GetPlayerPed(-1)
 
 	if IsPedInAnyVehicle(playerPed,  false) then
 		local playerPed = GetPlayerPed(-1)
@@ -728,7 +728,7 @@ Citizen.CreateThread(function()
 					local distance2 = #(playerCoords - v.Deleter)
 					local distance3 = #(playerCoords - v.Deleter2)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceP then
 						letSleep = false
 
 						if Config.Police.Markers.Points.Type ~= -1 then
@@ -740,7 +740,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance2 < Config.Main.DrawDistance then
+					if distance2 < Config.Main.DrawDistanceD then
 						letSleep = false
 
 						if Config.Police.Markers.Delete.Type ~= -1 then
@@ -754,7 +754,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance3 < Config.Main.DrawDistance then
+					if distance3 < Config.Main.DrawDistanceD then
 						letSleep = false
 
 						if Config.Police.Markers.Delete.Type ~= -1 then
@@ -776,7 +776,7 @@ Citizen.CreateThread(function()
 				for k,v in pairs(Config.Police.Pounds) do
 					local distance = #(playerCoords - v.Marker)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceP then
 						letSleep = false
 
 						if Config.Police.Markers.Pounds.Type ~= -1 then
@@ -797,7 +797,7 @@ Citizen.CreateThread(function()
 					local distance = #(playerCoords - v.Marker)
 					local distance2 = #(playerCoords - v.Deleter)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceP then
 						letSleep = false
 
 						if Config.Mechanic.Markers.Points.Type ~= -1 then
@@ -809,7 +809,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance2 < Config.Main.DrawDistance then
+					if distance2 < Config.Main.DrawDistanceD then
 						letSleep = false
 
 						if Config.Mechanic.Markers.Delete.Type ~= -1 then
@@ -831,7 +831,7 @@ Citizen.CreateThread(function()
 				for k,v in pairs(Config.Mechanic.Pounds) do
 					local distance = #(playerCoords - v.Marker)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceP then
 						letSleep = false
 
 						if Config.Mechanic.Markers.Pounds.Type ~= -1 then
@@ -852,7 +852,7 @@ Citizen.CreateThread(function()
 					local distance = #(playerCoords - v.Marker)
 					local distance2 = #(playerCoords - v.Deleter)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceP then
 						letSleep = false
 
 						if Config.Taxi.Markers.Points.Type ~= -1 then
@@ -864,7 +864,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance2 < Config.Main.DrawDistance then
+					if distance2 < Config.Main.DrawDistanceD then
 						letSleep = false
 
 						if Config.Taxi.Markers.Delete.Type ~= -1 then
@@ -886,7 +886,7 @@ Citizen.CreateThread(function()
 				for k,v in pairs(Config.Taxi.Pounds) do
 					local distance = #(playerCoords - v.Marker)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceP then
 						letSleep = false
 
 						if Config.Taxi.Markers.Pounds.Type ~= -1 then
@@ -906,7 +906,7 @@ Citizen.CreateThread(function()
 				local distance = #(playerCoords - v.Marker)
 				local distance2 = #(playerCoords - v.Deleter)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceP then
 					letSleep = false
 
 					if Config.Aircrafts.Markers.Points.Type ~= -1 then
@@ -918,7 +918,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				if distance2 < Config.Main.DrawDistance then
+				if distance2 < Config.Main.DrawDistanceD then
 					letSleep = false
 
 					if Config.Aircrafts.Markers.Delete.Type ~= -1 then
@@ -936,7 +936,7 @@ Citizen.CreateThread(function()
 			for k,v in pairs(Config.Aircrafts.Pounds) do
 				local distance = #(playerCoords - v.Marker)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceP then
 					letSleep = false
 
 					if Config.Aircrafts.Markers.Pounds.Type ~= -1 then
@@ -955,7 +955,7 @@ Citizen.CreateThread(function()
 				local distance = #(playerCoords - v.Marker)
 				local distance2 = #(playerCoords - v.Deleter)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceP then
 					letSleep = false
 
 					if Config.Boats.Markers.Points.Type ~= -1 then
@@ -967,7 +967,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				if distance2 < Config.Main.DrawDistance then
+				if distance2 < Config.Main.DrawDistanceD then
 					letSleep = false
 
 					if Config.Boats.Markers.Delete.Type ~= -1 then
@@ -985,7 +985,7 @@ Citizen.CreateThread(function()
 			for k,v in pairs(Config.Boats.Pounds) do
 				local distance = #(playerCoords - v.Marker)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceP then
 					letSleep = false
 
 					if Config.Boats.Markers.Pounds.Type ~= -1 then
@@ -1004,7 +1004,7 @@ Citizen.CreateThread(function()
 				local distance = #(playerCoords - v.Marker)
 				local distance2 = #(playerCoords - v.Deleter)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceP then
 					letSleep = false
 
 					if Config.Cars.Markers.Points.Type ~= -1 then
@@ -1016,7 +1016,7 @@ Citizen.CreateThread(function()
 					end
 				end
 
-				if distance2 < Config.Main.DrawDistance then
+				if distance2 < Config.Main.DrawDistanceD then
 					letSleep = false
 
 					if Config.Cars.Markers.Delete.Type ~= -1 then
@@ -1034,7 +1034,7 @@ Citizen.CreateThread(function()
 			for k,v in pairs(Config.Cars.Pounds) do
 				local distance = #(playerCoords - v.Marker)
 
-				if distance < Config.Main.DrawDistance then
+				if distance < Config.Main.DrawDistanceP then
 					letSleep = false
 
 					if Config.Cars.Markers.Pounds.Type ~= -1 then
@@ -1054,7 +1054,7 @@ Citizen.CreateThread(function()
 					local distance = #(playerCoords - v.Marker)
 					local distance2 = #(playerCoords - v.Deleter)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceP then
 						letSleep = false
 
 						if Config.Pvt.Markers.Points.Type ~= -1 then
@@ -1066,7 +1066,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance2 < Config.Main.DrawDistance then
+					if distance2 < Config.Main.DrawDistanceD then
 						letSleep = false
 
 						if Config.Pvt.Markers.Delete.Type ~= -1 then
