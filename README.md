@@ -1,8 +1,8 @@
 # About VENT_ESX_Scripts:
-ESX Scripts Made by Human Tree92 ([Velociti Entertainment Customs & Wiki]( http://www.velocitientertainment.com/customs/ ))
+ESX Scripts Made by Human Tree92 ([Velociti Entertainment Customs]( http://www.velocitientertainment.com/customs/ ))
 
 # Creating Issues:
-* Check the [Closed Topics]( https://github.com/HumanTree92/VENT_ESX_Scripts/issues?q=is%3Aissue+is%3Aclosed ) & [Wiki]( http://www.velocitientertainment.com/customs/ ) before opening an issue to see if your issue has already been Answered.
+* Check the [Closed Topics]( https://github.com/HumanTree92/VENT_ESX_Scripts/issues?q=is%3Aissue+is%3Aclosed ) & [Wiki]( https://github.com/HumanTree92/VENT_ESX_Scripts/wiki ) before opening an issue to see if your issue has already been Answered.
 * Do NOT Delete the Pre-Written Text in the issue.
 * Failue to due any of the above will result in Topic being Deleted & you being Blocked. The Pre-Written text helps me with getting to the Bottom of the Issues & i hate explaining things over & over.
 
