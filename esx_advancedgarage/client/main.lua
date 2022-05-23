@@ -396,6 +396,12 @@ function OpenStoreMenu(_pJob, _vType)
 		local current = GetPlayersLastVehicle(GetPlayerPed(-1), true)
 		local engineHealth = GetVehicleEngineHealth(current)
 		local plate = vehicleProps.plate
+		
+		-- TRAILERS
+		local retval, trailer = GetVehicleTrailerVehicle(vehicle)
+		local trailerProps = ESX.Game.GetVehicleProperties(trailer)
+		local trailerplate = trailerProps.plate
+		--
 
 		ESX.TriggerServerCallback('esx_advancedgarage:storeVehicle', function(valid)
 			if valid then
@@ -449,6 +455,12 @@ function OpenStoreMenu(_pJob, _vType)
 					end
 				else
 					StoreVehicle(vehicle, vehicleProps)
+					-- TRAILERS
+					if retval then
+						print(plate)
+						StoreVehicle(trailer, trailerProps)
+					end
+					-- 
 				end	
 			else
 				ESX.ShowNotification(_U('cannot_store_vehicle'))
