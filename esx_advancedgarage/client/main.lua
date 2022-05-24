@@ -658,7 +658,7 @@ Citizen.CreateThread(function()
 					local distance2 = #(playerCoords - v.Deleter)
 					local distance3 = #(playerCoords - v.Deleter2)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceP then
 						letSleep = false
 
 						if Config.Ambulance.Markers.Points.Type ~= -1 then
@@ -670,7 +670,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance2 < Config.Main.DrawDistance then
+					if distance2 < Config.Main.DrawDistanceD then
 						letSleep = false
 
 						if Config.Ambulance.Markers.Delete.Type ~= -1 then
@@ -684,7 +684,7 @@ Citizen.CreateThread(function()
 						end
 					end
 
-					if distance3 < Config.Main.DrawDistance then
+					if distance3 < Config.Main.DrawDistanceD then
 						letSleep = false
 
 						if Config.Ambulance.Markers.Delete.Type ~= -1 then
@@ -706,7 +706,7 @@ Citizen.CreateThread(function()
 				for k,v in pairs(Config.Ambulance.Pounds) do
 					local distance = #(playerCoords - v.Marker)
 
-					if distance < Config.Main.DrawDistance then
+					if distance < Config.Main.DrawDistanceP then
 						letSleep = false
 
 						if Config.Ambulance.Markers.Pounds.Type ~= -1 then
