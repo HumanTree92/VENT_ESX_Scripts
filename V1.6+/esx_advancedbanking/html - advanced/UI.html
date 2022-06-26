@@ -1,0 +1,289 @@
+<html>
+    <head>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width">
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+        <style>
+			 #depositUI, #withdrawUI, #transferUI, #general, #topbar, #waiting
+			 {display: none;}
+		</style>
+	</head>
+    <body>
+    	<div class="container">
+    		<div id="result"></div>
+    		<div class="topbar" id="topbar">
+    			<div class="cont-p-1">
+    				<div class="parale-1 "></div>
+    			</div>
+    			<div class="cont-p-2">
+    				<div class="parale-2"></div>
+    			</div>
+    			<div class="cont-p-3">
+    				<div class="parale-3"></div>
+    			</div>
+    			<nav>
+    				<div class="logo-topbar"></div>
+    				<button class="btn-sign-out">Would you like to Disconnect?<i class="fas fa-sign-out-alt"></i></button>
+    			</nav>
+    		</div>
+<!-- GENERAL -->
+    		<div class="cont-content" id="general">
+    			<div class="flex">
+    				<div class="balance box-shadow">
+	    				<p>Welcome<br>
+	    					<span class="name"><span class="username1"></span></span><br>
+	    					You have<br>
+	    					<span class="money"><span class="euro">$</span><span class="curbalance"></span></span>
+	    				</p>
+		    		</div>
+		    		<div class="list-btn">
+		    			<button class="btn btn-blue" id="deposit">
+		    				<i class="far fa-money-bill-alt"></i>
+		    				<span class="far fa-money-bill-alt icon"></span>
+		    				<p>Deposit<br>
+		    				<span>Deposit Money into the Bank</span></p>
+		    			</button>
+			    		<button class="btn btn-violet" id="withdraw">
+			    			<i class="far fa-credit-card"></i>
+		    				<span class="far fa-credit-card icon"></span>
+		    				<p>Withdraw<br>
+		    				<span>Withdraw Money from the Bank</span></p>
+			    		</button>
+			    		<button class="btn btn-orange" id="transfer">
+			    			<i class="fas fa-exchange-alt"></i>
+		    				<span class="fas fa-exchange-alt icon"></span>
+		    				<p>Transfer<br>
+		    				<span>Transfer Money to Someone Else</span></p>
+			    		</button>
+		    		</div>
+    			</div>
+    			<div class="flex">
+    				<div class="pub box-shadow confiance">
+    					<p>
+    						<span>You can Trust Us</span><br>
+    						The number of Account Creations for The Bank of Los Santos has increased by 69% since 2013
+    					</p>
+    					<div class="circle-confiance"></div>
+    				</div>
+    				<div class="pub box-shadow social">
+    					<button class="btn btn-blue" id="esx_invest">
+							<i class="far fa-handshake"></i>
+							<span class="far fa-handshake icon"></span>
+							<p>Invest your Money<br>
+							<span>Invest into Businesses</span></p>
+						</button>
+    				</div>
+    			</div>
+	    	</div>
+<!-- DEPOSIT -->
+	    	<div class="cont-content" id="depositUI">
+    			<div class="flex">
+    				<div class="btn btn-blue banniere">
+    					<p>Deposit Money<br>
+		    			<span>We are the most Secure Bank in the City</span></p>
+    				</div>
+    				<button class="btn btn-grey back">
+    					<i class="fas fa-bars"></i>
+	    				<span class="fas fa-arrow-left icon"></span>
+	    				<p>Return<br>
+	    				<span>To the Main Menu</span></p>
+    				</button>
+    			</div>
+    			<form id="deposit1">
+    				<div class="input-cont box-shadow">
+    					<label>How much do you want to Deposit?</label>
+    					<input id="amount" type="number" placeholder="$0">
+    				</div>
+    				<button class="btn btn-green" type="submit">
+    					<i class="fas fa-check"></i>
+	    				<span class="fas fa-check icon"></span>
+	    				<p>Validate<br>
+	    				<span>Your Deposit</span></p>
+    				</button>
+				</form>
+	    	</div>
+<!-- WITHDRAW -->
+	    	<div class="cont-content" id="withdrawUI">
+    			<div class="flex">
+    				<div class="btn btn-violet banniere">
+    					<p>Withdraw Money<br>
+		    			<span>from your Bank Account</span></p>
+    				</div>
+    				<button class="btn btn-grey back">
+    					<i class="fas fa-bars"></i>
+	    				<span class="fas fa-arrow-left icon"></span>
+	    				<p>Return<br>
+	    				<span>to the Main Menu</span></p>
+    				</button>
+    			</div>
+    			<form id="withdraw1">
+    				<div class="input-cont box-shadow">
+    					<label>How much do you want to Withdraw?</label>
+    					<input id="amountw" type="number" placeholder="$0">
+    				</div>
+    				<button class="btn btn-green" type="submit">
+    					<i class="fas fa-check"></i>
+	    				<span class="fas fa-check icon"></span>
+	    				<p>Validate<br>
+	    				<span>Your Withdrawal</span></p>
+    				</button>
+				</form>
+	    	</div>
+<!-- TRANSFER -->
+	    	<div class="cont-content" id="transferUI">
+    			<div class="flex">
+    				<div class="btn btn-orange banniere">
+    					<p>Make a Transfer<br>
+		    			<span>To a Friend or Family Member</span></p>
+    				</div>
+    				<button class="btn btn-grey back">
+    					<i class="fas fa-bars"></i>
+	    				<span class="fas fa-arrow-left icon"></span>
+	    				<p>Return<br>
+	    				<span>To the Main Menu</span></p>
+    				</button>
+    			</div>
+    			<form id="transfer1">
+    				<div class="double-input">
+    					<div class="input-cont box-shadow">
+	    					<label>How much do you want to give?</label>
+	    					<input id="amountt" type="number" placeholder="$0">
+	    				</div>
+	    				<div class="input-cont box-shadow">
+	    					<label>Who would you like to Transfer to?</label>
+	    					<input id="target" type="text" placeholder="ID">
+	    				</div>
+    				</div>
+    				<button class="btn btn-green" type="submit">
+    					<i class="fas fa-check"></i>
+	    				<span class="fas fa-check icon"></span>
+	    				<p>Validate<br>
+	    				<span>Your Transfer</span></p>
+    				</button>
+				</form>
+	    	</div>
+<!-- WAITING -->
+	    	<div class="cont-waiting" id="waiting">
+	    		<div class="content-waiting">
+    				<div class="mainlogo"></div>
+    				<p><span>Please</span> Log In<br>
+    				by the help <span>of</span> your Fingerprint</p>
+    				<div id="fingerprint-content">
+    					<div class="fingerprint-default"></div>
+    					<div class="fingerprint-active"></div>
+    					<div class="fingerprint-bar"></div>
+    				</div>
+    			</div>
+    			<div class="bg-waiting">
+    				<div class="cont-p-4">
+    					<div class="parale-4"></div>
+    				</div>
+    				<div class="cont-p-5">
+    					<div class="parale-5"></div>
+    				</div>
+    				<div class="cont-p-6">
+    					<div class="parale-6"></div>
+    				</div>
+    				<div class="cont-p-7">
+    					<div class="parale-7"></div>
+    				</div>
+    			</div>
+	    	</div>
+    	</div>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    	<script type="text/javascript">
+    		$(function() {
+				/* open the UI for user */
+				window.addEventListener('message', function(event) {
+					if (event.data.type === 'openGeneral'){
+		                $('#waiting').show();
+		                $('body').addClass('active');
+					} else if(event.data.type === 'balanceHUD') {
+							$('.username1').html(event.data.player);
+							$('.curbalance').html(event.data.balance);
+					} else if (event.data.type === 'closeAll'){
+		                $('#waiting, #general, #transferUI, #withdrawUI, #depositUI, #topbar').hide();
+		                $('body').removeClass('active');
+					}
+					else if (event.data.type === 'result') {
+						if (event.data.t == 'success')
+							$('#result').attr('class', 'alert-green');
+						else
+							$('#result').attr('class', 'alert-orange');
+						$('#result').html(event.data.m).show().delay(5000).fadeOut();
+					}
+				});
+			});
+    		$('.btn-sign-out').click(function(){
+	            $('#general, #waiting, #transferUI, #withdrawUI, #depositUI, #topbar').hide();
+	            $('body').removeClass('active');
+	            $.post('http://esx_advancedbanking/NUIFocusOff', JSON.stringify({}));
+	        })
+	        $('.back').click(function(){
+	            $('#depositUI, #withdrawUI, #transferUI').hide();
+	            $('#general').show();
+	        })
+	        $('#deposit').click(function(){
+	            $('#general').hide();
+	            $('#depositUI').show();
+	        })
+	        $('#withdraw').click(function(){
+	            $('#general').hide();
+	            $('#withdrawUI').show();
+	        })
+	        $('#transfer').click(function(){
+	            $('#general').hide();
+	            $('#transferUI').show();
+	        })
+			$('#esx_invest').click(function(){
+				$.post('http://esx_advancedbanking/esx_invest', '{}')
+	        })
+	        $('#fingerprint-content').click(function(){
+	            $('.fingerprint-active, .fingerprint-bar').addClass('active')
+	            setTimeout(function(){
+		  			$('#general').css('display', 'block')
+					$('#topbar').css('display', 'flex')
+					$('#waiting').css('display', 'none')
+					$('.fingerprint-active, .fingerprint-bar').removeClass('active')
+				}, 1400);
+	        })
+	        $('#deposit1').submit(function(e) {
+		        e.preventDefault(); // Prevent form from submitting
+		        $.post('http://esx_advancedbanking/deposit', JSON.stringify({
+		            amount: $('#amount').val()
+		        }));
+				$('#depositUI').hide();
+				$('#general').show();
+				$('#amount').val('');
+			});
+			$('#transfer1').submit(function(e) {
+		        e.preventDefault(); // Prevent form from submitting
+		        $.post('http://esx_advancedbanking/transfer', JSON.stringify({
+					target: $('#target').val(),
+		            amountt: $('#amountt').val()
+		        }));
+				$('#transferUI').hide();
+				$('#general').show();
+				$('#amountt').val('');
+			});
+			$('#withdraw1').submit(function(e) {
+				e.preventDefault(); // Prevent form from submitting
+		        $.post('http://esx_advancedbanking/withdrawl', JSON.stringify({
+		            amountw: $('#amountw').val()
+		        }));
+				$('#withdrawUI').hide();
+				$('#general').show();
+				$('#amountw').val('');
+			});
+			document.onkeyup = function(data){
+		        if (data.which == 27){
+		            $('#general, #waiting, #transferUI, #withdrawUI, #depositUI, #topbar').hide();
+		            $('body').removeClass('active');
+		            $.post('http://esx_advancedbanking/NUIFocusOff', JSON.stringify({}));
+		        }
+		    }
+    	</script>
+    </body>
+</html>

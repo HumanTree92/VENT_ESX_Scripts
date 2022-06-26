@@ -9,10 +9,12 @@ ESX Scripts Made by Human Tree92 ([Velociti Entertainment Customs]( http://www.v
 # Helpfull Info:
 * I have decided to Combine all my Scripts into 1 Massive Script to make downloading Easier.
 * Each Script has their Own README file so make sure you READ it so you know how to install everything.
+* There are 2 different versions. V1.3 - Unsupported & V1.6+.
+  * I will not be doing Support for V1.3 - Unsupported.
 
 # Requirements:
 * Required:
-  * [ESX Legacy V1.3 Final]( https://github.com/esx-framework/esx-legacy/tree/1.3.0-final )
+  * Read the ReadMe's of Each Script before asking for any help!!!
 
 # Download & Installation:
 1) Download Master & Extract the .zip or Open the .zip Or [Click Me]( https://github.com/HumanTree92/VENT_ESX_Scripts/archive/refs/heads/main.zip )
