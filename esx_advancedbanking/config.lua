@@ -1,23 +1,23 @@
 Config = {}
-Config.Locale = 'en'
-Config.DrawDistance = 25
+Config.Locale = 'en' -- Set Locale file to use.
+Config.DrawDistance = 25 -- Marker Draw Distance.
 
-Config.UseAdvancedHoldup = false -- true = Using esx_advancedholdup | false = Not using esx_advancedholdup
+Config.UseAdvancedHoldup = false -- true = Using esx_advancedholdup.
 
-Config.ShowCharName = true -- true = Use Character Names | false = Use Steam Name
-Config.ShowFirstLast = true -- true = Use Characters First & Last Name | false = Use Characters First Name
+Config.ShowCharName = true -- true = Use Character Names. | false = Use Steam Name.
+Config.ShowFirstLast = true -- true = Use Characters First & Last Name. | false = Use Characters First Name.
 
-Config.UseATMBlips = false -- true = Use ATM Blips | false = Does the Opposite | NOTE: Its best to leave this at false. There is a LOT of ATMs
-Config.ATMBlip = {Sprite = 277, Color = 0, Display = 2, Scale = 1.0}
-Config.ATMMarker = {Type = 29, r = 0, g = 255, b = 0, x = 1.0, y = 1.0, z = 1.0}
+Config.UseATMBlips = false -- true = Use ATM Blips. | NOTE: Its best to leave this at false. There is a LOT of ATMs.
+Config.ATMBlip = {Sprite = 277, Color = 0, Display = 2, Scale = 1.0} -- ATM Blip Settings.
+Config.ATMMarker = {Type = 29, r = 0, g = 255, b = 0, x = 1.5, y = 1.5, z = 1.5} -- ATM Marker Settings.
 
-Config.UseBankBlips = false -- true = Use Bank Blips | false = Does the Opposite
-Config.BankBlip = {Sprite = 108, Color = 0, Display = 2, Scale = 1.0}
-Config.BankMarker = {Type = 29, r = 0, g = 255, b = 0, x = 1.5, y = 1.5, z = 1.5}
+Config.UseBankBlips = false -- true = Use Bank Blips.
+Config.BankBlip = {Sprite = 108, Color = 0, Display = 2, Scale = 1.0} -- Bank Blip Settings.
+Config.BankMarker = {Type = 29, r = 0, g = 255, b = 0, x = 1.5, y = 1.5, z = 1.5} -- Bank Marker Settings.
 
 Config.Animation = {
-	Active = true,
-	Time = 2500 -- Miliseconds
+	Active = true, -- true = Use Animation.
+	Time = 2500 -- Time in Miliseconds.
 }
 
 Config.Locations = {

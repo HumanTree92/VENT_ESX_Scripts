@@ -97,7 +97,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(Config.JailTimeSyncInterval)
+		Citizen.Wait(60000 * Config.JailTimeSyncInterval)
 		local tasks = {}
 
 		for playerId,data in pairs(playersInJail) do

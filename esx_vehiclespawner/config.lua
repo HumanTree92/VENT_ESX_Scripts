@@ -1,12 +1,12 @@
 Config = {}
-Config.Locale = 'en'
+Config.Locale = 'en' -- Set Locale file to use.
 
-Config.DrawDistance = 20
-Config.MenuMarker = {Type = 1, r = 0, g = 255, b = 0, x = 1.5, y = 1.5, z = 1.0} -- Menu Marker | Green w/Standard Size
-Config.DelMarker = {Type = 1, r = 255, g = 0, b = 0, x = 5.0, y = 5.0, z = 1.0} -- Delete Marker | Red w/Large Size
-Config.BlipVehicleSpawner = {Sprite = 479, Color = 2, Display = 2, Scale = 1.0}
+Config.DrawDistance = 20 -- Marker Draw Distance.
+Config.MenuMarker = {Type = 1, r = 0, g = 255, b = 0, x = 1.5, y = 1.5, z = 1.0} -- Enter Location Marker Settings.
+Config.DelMarker = {Type = 1, r = 255, g = 0, b = 0, x = 5.0, y = 5.0, z = 1.0} -- Delete Location Marker Settings.
+Config.BlipVehicleSpawner = {Sprite = 479, Color = 2, Display = 2, Scale = 1.0} -- Blip Settings.
 
-Config.UseBlips = false -- true = Use Vehicle Spawner Blips
+Config.UseBlips = false -- true = Use Vehicle Spawner Blips.
 
 Config.Zones = {
 	VehicleSpawner1 = { -- Los Santos Docks

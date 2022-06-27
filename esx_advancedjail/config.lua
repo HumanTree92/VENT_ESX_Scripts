@@ -1,18 +1,18 @@
 Config = {}
-Config.Locale = 'en'
+Config.Locale = 'en' -- Set Locale file to use.
 
-Config.DrawDistance = 10
-Config.MarkerInfo = {Type = 27, r = 100, g = 100, b = 204, x = 1.5, y = 1.5, z = 2.0}
-Config.JailTimeSyncInterval = 60000 * 1
+Config.DrawDistance = 10 -- Marker Draw Distance.
+Config.MarkerInfo = {Type = 27, r = 100, g = 100, b = 204, x = 1.5, y = 1.5, z = 2.0} -- Marker Settings.
+Config.JailTimeSyncInterval = 1 -- Jail Time Sync Interval in Seconds.
 
-Config.AllowEscape = false -- If true then players can Escape Jail & will notify Police.
-Config.OnlyFirstname = false -- If true it will only show 1st Name if someone tries to Escape.
+Config.AllowEscape = false -- true = Allows Players to Escape Jail & will notify Police.
+Config.OnlyFirstname = false -- true = Will only show 1st Name if someone tries to Escape.
 
-Config.RemoveLoadout = false -- If true it will remove players Loadout when Jailed & UnJailed.
-Config.RemoveInventory = false -- If true it will remove players Inventory when Jailed & UnJailed.
-Config.RemoveDirtyMoney = false -- If true it will remove players Dirty Money when Jailed & UnJailed.
+Config.RemoveLoadout = false -- true = Will Remove Players Loadout when Jailed & UnJailed.
+Config.RemoveInventory = false -- true = Will Remove Players Inventory when Jailed & UnJailed.
+Config.RemoveDirtyMoney = false -- true = Will Remove Players Dirty Money when Jailed & UnJailed.
 
-Config.GiveFoodDrink = false -- If true it will give players Food & Drinks while in Jail & when they are Released.
+Config.GiveFoodDrink = false -- true = Will Give Players Food & Drinks while in Jail & when they are Released.
 Config.FoodItem = 'bread' -- Food Item to Give.
 Config.FoodAmount = 5 -- Amount of Food to Give.
 Config.DrinkItem = 'water' -- Drink Item to Give.
@@ -21,12 +21,12 @@ Config.DrinkAmount = 5 -- Amount of Water to Give.
 -- DrawMarkers | Use only if you want to see a Marker around Jail Positions
 Config.DrawMarkers = {
 	Show = false, -- Master Toggle
-	MR0 = false, -- MissionRow0
-	MR1 = false, -- MissionRow1
-	MR2 = false, -- MissionRow2
-	MR3 = false, -- MissionRow3
-	BP0 = false, -- BolingBroke0
-	BP1 = false -- BolingBroke1
+	MR0 = true, -- MissionRow0
+	MR1 = true, -- MissionRow1
+	MR2 = true, -- MissionRow2
+	MR3 = true, -- MissionRow3
+	BP0 = true, -- BolingBroke0
+	BP1 = true -- BolingBroke1
 }
 
 -- Jail Locations

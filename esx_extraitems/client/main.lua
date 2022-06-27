@@ -51,7 +51,7 @@ AddEventHandler('esx_extraitems:bandage', function(source)
 	local playerPed = GetPlayerPed(-1)
 	local health = GetEntityHealth(playerPed)
 	local maxHealth = GetEntityMaxHealth(playerPed)
-	local newHealth = math.floor(health + Config.BandageHP)
+	local newHealth = math.floor(health + Config.HealthKits.BandageHP)
 
 	if IsPedSittingInAnyVehicle(playerPed) then
 		ESX.ShowNotification(_U('error_veh'))
@@ -384,7 +384,7 @@ AddEventHandler('esx_extraitems:firstaidkit', function()
 	local health = GetEntityHealth(playerPed)
 	local maxHealth = GetEntityMaxHealth(playerPed)
 
-	if Config.Heal then
+	if Config.HealthKits.Heal then
 		if IsPedSittingInAnyVehicle(playerPed) then
 			ESX.ShowNotification(_U('error_veh'))
 		else

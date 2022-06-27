@@ -1,23 +1,23 @@
 Config = {}
-Config.Locale = 'en'
+Config.Locale = 'en' -- Set Locale file to use.
 
-Config.DrawDistance = 10
+Config.DrawDistance = 10 -- Marker Draw Distance.
 Config.MedicRequired = 2 -- Amount of Medics online to prevent Healers.
 
-Config.HospMarker = {Type = 1, r = 102, g = 102, b = 204, x = 1.5, y = 1.5, z = 1.0} -- Hospital Marker | Blue w/Normal Size
-Config.BlipHospital = {Sprite = 403, Color = 2, Display = 2, Scale = 1.0}
-Config.SurgMarker = {Type = 1, r = 102, g = 102, b = 204, x = 1.5, y = 1.5, z = 1.0} -- Surgery Marker | Blue w/Normal Size
-Config.BlipSurgery = {Sprite = 403, Color = 0, Display = 2, Scale = 1.0}
+Config.HospMarker = {Type = 1, r = 102, g = 102, b = 204, x = 1.5, y = 1.5, z = 1.0} -- Hospital Marker Settings.
+Config.BlipHospital = {Sprite = 403, Color = 2, Display = 2, Scale = 1.0} -- Hospital Blip Settings.
+Config.SurgMarker = {Type = 1, r = 102, g = 102, b = 204, x = 1.5, y = 1.5, z = 1.0} -- Surgery Marker Settings.
+Config.BlipSurgery = {Sprite = 403, Color = 0, Display = 2, Scale = 1.0} -- Surgery Blip Settings.
 
-Config.UseHospital = false -- Allows players to Heal Themselves
-Config.UseHospitalBlips = false -- true = Uses Hospital Blips
-Config.HealingPrice = 100
+Config.UseHospital = false -- true = Allows Players to Heal Themselves.
+Config.UseHospitalBlips = false -- true = Use Hospital Blips.
+Config.HealingPrice = 100 -- Healing Price.
 
-Config.RevivePrice = 750
+Config.RevivePrice = 750 -- Revive Price.
 
-Config.UseSurgeon = false -- Allows players to edit their Character
-Config.UseSurgeonBlips = false -- true = Uses Surgery Blips
-Config.SurgeryPrice = 3700
+Config.UseSurgeon = false -- true = Allows Players to edit their Character.
+Config.UseSurgeonBlips = false -- true = Use Surgery Blips.
+Config.SurgeryPrice = 3700 -- Surgery Price.
 
 Config.Locations = {
 	Locs = {

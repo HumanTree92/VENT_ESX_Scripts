@@ -56,10 +56,10 @@ end)
 RegisterServerEvent('esx_extraitems:givebandages')
 AddEventHandler('esx_extraitems:givebandages', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer.canCarryItem('bandage', 3) then
+	if xPlayer.canCarryItem('bandage', Config.HealthKits.HealGive) then
 		xPlayer.removeInventoryItem('firstaidkit', 1)
 		xPlayer.showNotification(_U('used_firstaidkit'))
-		xPlayer.addInventoryItem('bandage', 3)
+		xPlayer.addInventoryItem('bandage', Config.HealthKits.HealGive)
 	else
 		xPlayer.showNotification(_U('player_cannot_hold', 'Bandages'))
 	end

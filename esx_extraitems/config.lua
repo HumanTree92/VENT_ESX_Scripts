@@ -1,8 +1,8 @@
 Config = {}
-Config.Locale = 'en'
+Config.Locale = 'en' -- Set Locale file to use.
 
 Config.Removeables = {
-	-- true = Removes when used | false = Does opposite of true
+	-- true = Removes if/when used.
 	Bandage = true,
 	BulletProofVest = true,
 	Defib = false,
@@ -16,11 +16,11 @@ Config.Removeables = {
 	TireKit = true,
 	WeaKit = false,
 	AmmoBoxes = true,
-	-- true = Removes if Failed | false = Doesn't remove if Failed
+	-- true = Removes if Failed.
 	LockPick = true
 }
 
--- Item Scenario Wait Times in MS
+-- Item Scenario Wait Times in Miliseconds.
 Config.Wait = {
 	Drill = 10000,
 	LockPick = 10000,
@@ -30,46 +30,51 @@ Config.Wait = {
 }
 
 -- Health Kits
-Config.Heal = true -- true = Will allow First Aid Kits to Heal Players | false = Will give 3 Bandages
-Config.BandageHP = 10
+Config.HealthKits = {
+	Heal = false, -- true = Will allow First Aid Kits to Heal Players. | false = Will give 'Config.HealGive' Bandages.
+	HealGive = 3, -- Amount of Bandages to Give if Config.Heal = false.
+	BandageHP = 10 -- How much HP Bandages will Heal a Player.
+}
 
 -- Binoculars
 Config.BinocularsPutAway = 177 -- Backspace Key
 
 -- Life Raft
 Config.LifeRaft = {
-	Use = false,
-	Vehs = {'lraft'}
+	Use = false, -- true = Will allow Players to spawn a Life Raft.
+	Vehs = {'lraft'} -- Must provide your Own Model.
 }
 
 -- Oxygen Mask
 Config.Scuba = {
-	Wait1 = 2.5, -- How long in Minutes before it gets to 75% Oxygen
-	Wait2 = 2.5, -- How long in Minutes before it gets to 50% Oxygen
-	Wait3 = 2.5, -- How long in Minutes before it gets to 25% Oxygen
-	Wait4 = 2.5 -- How long in Minutes before it gets to 0% Oxygen
+	Wait1 = 2.5, -- How long in Minutes before it gets to 75% Oxygen.
+	Wait2 = 2.5, -- How long in Minutes before it gets to 50% Oxygen.
+	Wait3 = 2.5, -- How long in Minutes before it gets to 25% Oxygen.
+	Wait4 = 2.5 -- How long in Minutes before it gets to 0% Oxygen.
 }
 
 -- Repair Kits
 Config.RepairKit = {
-	LegacyFuel = true, -- If using LegacyFuel then set this to true
-	EngOnly = true, -- true = Will only Repair Engine | false = Will Repair the Entire Vehicle
-	EngHealth = 365.0, -- If EngOnly is true how much should the Engine Health be Repaired to. Value must be between 1.0 - 1000.0
-	Emergency = true, -- true = Will give Emergency Services more Engine Health | false = Will give Emergency Services the Above Value
-	EmergEngHealth = 805.0
+	LegacyFuel = false, -- If using LegacyFuel then set this to true.
+	EngOnly = false, -- true = Will only Repair Engine. | false = Will Repair the Entire Vehicle.
+	EngHealth = 365.0, -- If 'EngOnly' is true how much should the Engine Health be Repaired to. Value must be between (1.0 - 1000.0).
+	Emergency = false, -- true = Will give Emergency Services 'EmergEngHealth' Value | false = Will give Emergency Services 'EngHealth' Value
+	EmergEngHealth = 805.0 -- If 'EngOnly' & 'Emergency' = true how much should the Engine Health be Repair to for Emergency Services.
 }
 
 -- Weapon Ammos
 Config.AmmoBoxes = {
-	Pistol = 50, -- 9mm @ 0.28 per round | 50 x 1.05 = 14
-	SMG = 50, -- 9mm @ 0.28 per round | 50 x 1.05 = 14
-	Shotgun = 25, -- 12g @ 0.36 per round | 25 x 0.36 = 9
-	Rifle = 25, -- 5.56 @ 0.47 per round | 25 x 0.47 = 11.75 (12)
-	MG = 50, -- 5.56 @ 0.47 per round | 50 x 0.47 = 23.50 (24)
-	Sniper = 20, -- 7.62 @ 1.05 per round | 20 x 1.05 = 21
-	Flare = 5, -- Not doing Realistic Price
-	BoxBig = 100,
-	BoxSmall = 50
+	-- Advanced
+	Pistol = 50, -- Amount of Pistol Ammo to Give. | 9mm @ 0.28 per round | 50 x 1.05 = 14
+	SMG = 50, -- Amount of SMG Ammo to Give. | 9mm @ 0.28 per round | 50 x 1.05 = 14
+	Shotgun = 25, -- Amount of Shotgun Ammo to Give. | 12g @ 0.36 per round | 25 x 0.36 = 9
+	Rifle = 25, -- Amount of Assault Rifle Ammo to Give. | 5.56 @ 0.47 per round | 25 x 0.47 = 11.75 (12)
+	MG = 50, -- Amount of LMG Ammo to Give. | 5.56 @ 0.47 per round | 50 x 0.47 = 23.50 (24)
+	Sniper = 20, -- Amount of Sniper Rifle Ammo to Give. | 7.62 @ 1.05 per round | 20 x 1.05 = 21
+	Flare = 5, -- Amount of Flare Gun Ammo to Give.
+	-- Basic
+	BoxBig = 100, -- Amount of Box Big Ammo to Give.
+	BoxSmall = 50 -- Amount of Box Small Ammo to Give.
 }
 
 Config.WeaponList = {
@@ -144,7 +149,7 @@ Config.WeaponList = {
 }
 
 -- Weapon Components
-Config.AllowRemove = true -- Allows removing Weapon Attachments
+Config.AllowRemove = true -- true = Allows removing Weapon Attachments.
 
 Config.ComponentList = {
 	Melee = {
@@ -241,18 +246,18 @@ Config.WeaponUpgrades = {
 
 -- Vape
 Config.Vape = {
-	SmokeSize = 0.5, -- Size of Vape Clouds
-	FailurePerc = 100, -- Odds of Vape Exploding | 10594 = 0.0001% Chance
-	HealAmt = 10, -- How much to Heal the Player
-	Cooldown = 4000, -- Amount of Time in MS must wait to take Hit again
-	SmokeTime = 2800 -- Amount of Time in MS the smoke will linger
+	SmokeSize = 0.5, -- Size of Vape Clouds.
+	FailurePerc = 100, -- Odds of Vape Exploding. | 100 = 1% Chance
+	HealAmt = 10, -- How much to the Vape Heals Players.
+	Cooldown = 4000, -- Amount of Time in Miliseconds Players must wait to take Hit again.
+	SmokeTime = 2800 -- Amount of Time in Miliseconds the Smoke will Linger.
 }
 
 -- Vehicle GPS
 Config.GPS = {
-	VehicleGPS = false, -- Set to true to use Vehicle GPS.
-	LimitedVehicles = false, -- Set to true to only allow Aircrafts, Boats, & Cars to use GPS.
-	OnlyFrontSeats = false, -- Set to true to only allow the front 2 seats to be able to see Radar if they used it.
+	VehicleGPS = false, -- true = Disable Radar except in Vehicles if they Use GPS Item.
+	LimitedVehicles = false, -- true = Allow only Aircrafts, Boats, & Cars to use GPS.
+	OnlyFrontSeats = false, -- true = Allow the front 2 seats to be able to see Radar if they used it.
 	BikeGPS = {
 		'sanchez'
 	}

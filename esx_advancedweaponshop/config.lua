@@ -1,17 +1,17 @@
 Config = {}
-Config.Locale = 'en'
+Config.Locale = 'en' -- Set Locale file to use.
 
-Config.DrawDistance = 10
-Config.MarkerInfo = {Type = 1, r = 0, g = 128, b = 255, x = 1.5, y = 1.5, z = 0.5}
+Config.DrawDistance = 10 -- Marker Draw Distance.
+Config.MarkerInfo = {Type = 1, r = 0, g = 128, b = 255, x = 1.5, y = 1.5, z = 0.5} -- Marker Settings.
 
-Config.UseBlips = false -- true = Use Weapon Shop Blips
-Config.LicenseEnable = false -- Only turn this on if using esx_license
+Config.UseBlips = false -- true = Use Weapon Shop Blips.
+Config.LicenseEnable = false -- Only turn this on if using esx_license.
 Config.RequireMeleeLicense = false -- Will Require Players to have Melee License to Purchase Melee Weapons.
 
 --{name = 'NAME_HERE', price = 0000, discount = 0000},
 Config.Zones = {
 	GunShop = {
-		Legal = true,
+		Legal = true, -- DO NOT CHANGE
 		Misc = {
 			{cat = 'Misc', name = 'GADGET_PARACHUTE', price = 800, discount = 600},
 			{cat = 'Misc', name = 'WEAPON_FIREEXTINGUISHER', price = 100, discount = 75}
@@ -113,7 +113,7 @@ Config.Zones = {
 	},
 
 	BlackShop = {
-		Legal = false,
+		Legal = false, -- DO NOT CHANGE
 		Misc = {},
 		Throw = {
 			{cat = 'Throw', name = 'WEAPON_BZGAS', price = 500, discount = 375},
