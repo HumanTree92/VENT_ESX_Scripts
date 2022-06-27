@@ -24,8 +24,8 @@ ESX Scripts Made by Human Tree92 ([Velociti Entertainment Customs]( http://www.v
 # KNOWN BUGS:
 * People not using their Brains. Read the README's!!!
 
-# Other Scripts:
-* [FiveM_CustomMapAddons]( https://github.com/HumanTree92/FiveM_CustomMapAddons )
+# Other Files for FiveM:
+* [VENT_FiveM_Customs]( https://github.com/HumanTree92/VENT_FiveM_Customs )
 
 # Scripts moved to this Pack:
 * [esx_advancedbanking]( https://github.com/HumanTree92/esx_advancedbanking )
