@@ -9,8 +9,8 @@ ESX Scripts Made by Human Tree92 ([Velociti Entertainment Customs]( http://www.v
 # Helpfull Info:
 * I have decided to Combine all my Scripts into 1 Massive Script to make downloading Easier.
 * Each Script has their Own README file so make sure you READ it so you know how to install everything.
-* There are 2 different versions. V1.3 - Unsupported & V1.6+.
-  * I will not be doing Support for V1.3 - Unsupported.
+* I will not be doing Support for V1.3 - Unsupported.zip.
+* Each Script Supports ESX V1.4+ but has mainly been tested on ESX V1.6+.
 
 # Requirements:
 * Required:
