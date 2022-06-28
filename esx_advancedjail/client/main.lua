@@ -90,18 +90,33 @@ AddEventHandler('esx_advancedjail:jailPlayer', function(_jailTime, _jailLoc, _na
 	local playerPed = PlayerPedId()
 	StartJailTimer()
 
-	if location == 'mr1' then -- MissionRow1
-		JailLoc = Config.JailLocations.MissionRow1
-		UnJailLoc = Config.JailLocations.MissionRow0
-	elseif location == 'mr2' then -- MissionRow2
-		JailLoc = Config.JailLocations.MissionRow2
-		UnJailLoc = Config.JailLocations.MissionRow0
-	elseif location == 'mr3' then -- MissionRow3
-		JailLoc = Config.JailLocations.MissionRow3
-		UnJailLoc = Config.JailLocations.MissionRow0
-	elseif location == 'bp1' then -- BolingBroke1
-		JailLoc = Config.JailLocations.BolingBroke1
-		UnJailLoc = Config.JailLocations.BolingBroke0
+	if location == 'LSMR1' then
+		JailLoc = Config.JL.LSMR1
+		UnJailLoc = Config.JL.LSMR0
+	elseif location == 'LSMR2' then
+		JailLoc = Config.JL.LSMR2
+		UnJailLoc = Config.JL.LSMR0
+	elseif location == 'LSMR3' then
+		JailLoc = Config.JL.LSMR3
+		UnJailLoc = Config.JL.LSMR0
+	elseif location == 'LSMR4' then
+		JailLoc = Config.JL.LSMR4
+		UnJailLoc = Config.JL.LSMR0
+	elseif location == 'SSSD1' then
+		JailLoc = Config.JL.SSSD1
+		UnJailLoc = Config.JL.SSSD0
+	elseif location == 'SSSD2' then
+		JailLoc = Config.JL.SSSD2
+		UnJailLoc = Config.JL.SSSD0
+	elseif location == 'PBSD1' then
+		JailLoc = Config.JL.PBSD1
+		UnJailLoc = Config.JL.PBSD0
+	elseif location == 'PBSD2' then
+		JailLoc = Config.JL.PBSD2
+		UnJailLoc = Config.JL.PBSD0
+	elseif location == 'SSBP1' then
+		JailLoc = Config.JL.SSBP1
+		UnJailLoc = Config.JL.SSBP0
 	end
 
 	if DoesEntityExist(playerPed) then
@@ -137,67 +152,147 @@ AddEventHandler('esx_advancedjail:jailPlayer', function(_jailTime, _jailLoc, _na
 
 			Wait(20000)
 
-			if location == 'mr1' then
-				JailLoc = Config.JailLocations.MissionRow1
-				UnJailLoc = Config.JailLocations.MissionRow0
+			if location == 'LSMR1' then
+				JailLoc = Config.JL.LSMR1
+				UnJailLoc = Config.JL.LSMR0
 
 				if #(GetEntityCoords(playerPed) - JailLoc) > 2.5 then
 					if Config.AllowEscape then
-						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'mr')
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'LSMR')
 						TriggerServerEvent('esx_advancedjail:rununjail')
 						isInJail, unJail = false, true
 						return
 					else
 						ESX.Game.Teleport(playerPed, JailLoc)
-						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'mr')
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'LSMR')
 						TriggerEvent('chat:addMessage', {args = {_U('judge'), _U('escape_attempt')}, color = {147, 196, 109}})
 					end
 				end
-			elseif location == 'mr2' then
-				JailLoc = Config.JailLocations.MissionRow2
-				UnJailLoc = Config.JailLocations.MissionRow0
+			elseif location == 'LSMR2' then
+				JailLoc = Config.JL.LSMR2
+				UnJailLoc = Config.JL.LSMR0
 
 				if #(GetEntityCoords(playerPed) - JailLoc) > 2.5 then
 					if Config.AllowEscape then
-						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'mr')
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'LSMR')
 						TriggerServerEvent('esx_advancedjail:rununjail')
 						isInJail, unJail = false, true
 						return
 					else
 						ESX.Game.Teleport(playerPed, JailLoc)
-						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'mr')
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'LSMR')
 						TriggerEvent('chat:addMessage', {args = {_U('judge'), _U('escape_attempt')}, color = {147, 196, 109}})
 					end
 				end
-			elseif location == 'mr3' then
-				JailLoc = Config.JailLocations.MissionRow3
-				UnJailLoc = Config.JailLocations.MissionRow0
+			elseif location == 'LSMR3' then
+				JailLoc = Config.JL.LSMR3
+				UnJailLoc = Config.JL.LSMR0
 
 				if #(GetEntityCoords(playerPed) - JailLoc) > 2.5 then
 					if Config.AllowEscape then
-						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'mr')
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'LSMR')
 						TriggerServerEvent('esx_advancedjail:rununjail')
 						isInJail, unJail = false, true
 						return
 					else
 						ESX.Game.Teleport(playerPed, JailLoc)
-						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'mr')
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'LSMR')
 						TriggerEvent('chat:addMessage', {args = {_U('judge'), _U('escape_attempt')}, color = {147, 196, 109}})
 					end
 				end
-			elseif location == 'bp1' then
-				JailLoc = Config.JailLocations.BolingBroke1
-				UnJailLoc = Config.JailLocations.BolingBroke0
+			elseif location == 'LSMR4' then
+				JailLoc = Config.JL.LSMR4
+				UnJailLoc = Config.JL.LSMR0
+
+				if #(GetEntityCoords(playerPed) - JailLoc) > 2.5 then
+					if Config.AllowEscape then
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'LSMR')
+						TriggerServerEvent('esx_advancedjail:rununjail')
+						isInJail, unJail = false, true
+						return
+					else
+						ESX.Game.Teleport(playerPed, JailLoc)
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'LSMR')
+						TriggerEvent('chat:addMessage', {args = {_U('judge'), _U('escape_attempt')}, color = {147, 196, 109}})
+					end
+				end
+			elseif location == 'SSSD1' then
+				JailLoc = Config.JL.SSSD1
+				UnJailLoc = Config.JL.SSSD0
+
+				if #(GetEntityCoords(playerPed) - JailLoc) > 2.5 then
+					if Config.AllowEscape then
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'SSSD')
+						TriggerServerEvent('esx_advancedjail:rununjail')
+						isInJail, unJail = false, true
+						return
+					else
+						ESX.Game.Teleport(playerPed, JailLoc)
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'SSSD')
+						TriggerEvent('chat:addMessage', {args = {_U('judge'), _U('escape_attempt')}, color = {147, 196, 109}})
+					end
+				end
+			elseif location == 'SSSD2' then
+				JailLoc = Config.JL.SSSD2
+				UnJailLoc = Config.JL.SSSD0
+
+				if #(GetEntityCoords(playerPed) - JailLoc) > 2.5 then
+					if Config.AllowEscape then
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'SSSD')
+						TriggerServerEvent('esx_advancedjail:rununjail')
+						isInJail, unJail = false, true
+						return
+					else
+						ESX.Game.Teleport(playerPed, JailLoc)
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'SSSD')
+						TriggerEvent('chat:addMessage', {args = {_U('judge'), _U('escape_attempt')}, color = {147, 196, 109}})
+					end
+				end
+			elseif location == 'PBSD1' then
+				JailLoc = Config.JL.PBSD1
+				UnJailLoc = Config.JL.PBSD0
+
+				if #(GetEntityCoords(playerPed) - JailLoc) > 2.5 then
+					if Config.AllowEscape then
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'PBSD')
+						TriggerServerEvent('esx_advancedjail:rununjail')
+						isInJail, unJail = false, true
+						return
+					else
+						ESX.Game.Teleport(playerPed, JailLoc)
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'PBSD')
+						TriggerEvent('chat:addMessage', {args = {_U('judge'), _U('escape_attempt')}, color = {147, 196, 109}})
+					end
+				end
+			elseif location == 'PBSD2' then
+				JailLoc = Config.JL.PBSD2
+				UnJailLoc = Config.JL.PBSD0
+
+				if #(GetEntityCoords(playerPed) - JailLoc) > 2.5 then
+					if Config.AllowEscape then
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'PBSD')
+						TriggerServerEvent('esx_advancedjail:rununjail')
+						isInJail, unJail = false, true
+						return
+					else
+						ESX.Game.Teleport(playerPed, JailLoc)
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'PBSD')
+						TriggerEvent('chat:addMessage', {args = {_U('judge'), _U('escape_attempt')}, color = {147, 196, 109}})
+					end
+				end
+			elseif location == 'SSBP1' then
+				JailLoc = Config.JL.SSBP1
+				UnJailLoc = Config.JL.SSBP0
 
 				if #(GetEntityCoords(playerPed) - JailLoc) > 25 then
 					if Config.AllowEscape then
-						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'bp')
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'run', 'SSBP')
 						TriggerServerEvent('esx_advancedjail:rununjail')
 						isInJail, unJail = false, true
 						return
 					else
 						ESX.Game.Teleport(playerPed, JailLoc)
-						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'bp')
+						TriggerServerEvent('esx_advancedjail:playerEscape', name, 'attempt', 'SSBP')
 						TriggerEvent('chat:addMessage', {args = {_U('judge'), _U('escape_attempt')}, color = {147, 196, 109}})
 					end
 				end
@@ -282,29 +377,61 @@ CreateThread(function()
 	while true do
 		Wait(0)
 
-		if Config.DrawMarkers.Show then
-			if Config.DrawMarkers.MR0 then
-				DrawMarker(1, Config.JailLocations.MissionRow0, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+		if Config.DM.Show then
+			-- Los Santos Mission Row
+			if Config.DM.LSMR0 then
+				DrawMarker(1, Config.JL.LSMR0, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
 			end
 
-			if Config.DrawMarkers.MR1 then
-				DrawMarker(1, Config.JailLocations.MissionRow1, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			if Config.DM.LSMR1 then
+				DrawMarker(1, Config.JL.LSMR1, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
 			end
 
-			if Config.DrawMarkers.MR2 then
-				DrawMarker(1, Config.JailLocations.MissionRow2, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			if Config.DM.LSMR2 then
+				DrawMarker(1, Config.JL.LSMR2, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
 			end
 
-			if Config.DrawMarkers.MR3 then
-				DrawMarker(1, Config.JailLocations.MissionRow3, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			if Config.DM.LSMR3 then
+				DrawMarker(1, Config.JL.LSMR3, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
 			end
 
-			if Config.DrawMarkers.BP0 then
-				DrawMarker(1, Config.JailLocations.BolingBroke0, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			if Config.DM.LSMR4 then
+				DrawMarker(1, Config.JL.LSMR4, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
 			end
 
-			if Config.DrawMarkers.BP1 then
-				DrawMarker(1, Config.JailLocations.BolingBroke1, 0, 0, 0, 0, 0, 0, 25.0 * 2, 25.0 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			-- Sandy Shores Sheriffs Dept
+			if Config.DM.SSSD0 then
+				DrawMarker(1, Config.JL.SSSD0, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			end
+
+			if Config.DM.SSSD1 then
+				DrawMarker(1, Config.JL.SSSD1, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			end
+
+			if Config.DM.SSSD2 then
+				DrawMarker(1, Config.JL.SSSD2, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			end
+
+			-- Paleto Bay Sheriffs Dept
+			if Config.DM.PBSD0 then
+				DrawMarker(1, Config.JL.PBSD0, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			end
+
+			if Config.DM.PBSD1 then
+				DrawMarker(1, Config.JL.PBSD1, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			end
+
+			if Config.DM.PBSD2 then
+				DrawMarker(1, Config.JL.PBSD2, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			end
+
+			-- Sandy Shores Bolingbroke Penitentiary
+			if Config.DM.SSBP0 then
+				DrawMarker(1, Config.JL.SSBP0, 0, 0, 0, 0, 0, 0, 2.5 * 2, 2.5 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
+			end
+
+			if Config.DM.SSBP1 then
+				DrawMarker(1, Config.JL.SSBP1, 0, 0, 0, 0, 0, 0, 25.0 * 2, 25.0 * 2, 0.8001, 0, 155, 255, 200, 0,0, 0,0)
 			end
 		end
 	end
@@ -314,12 +441,32 @@ function FloatingJailText()
 	while true do
 		Wait(0)
 
-		-- Mission Row
-		if GetDistanceBetweenCoords(463.8985, -998.0825, 23.95, GetEntityCoords(GetPlayerPed(-1))) < 5.0 then
-			-- Default Jail Cells
-			Draw3DText(461.8, -993.3, 25.0  -1.400, "Cell 1", 4, 0.1, 0.1)
-			Draw3DText(461.8, -998.8, 25.0  -1.400, "Cell 2", 4, 0.1, 0.1)
-			Draw3DText(461.8, -1002.4, 25.0  -1.400, "Cell 3", 4, 0.1, 0.1)
+		if Config.TL.Show then
+			-- Los Santos Mission Row
+			if Config.TL.ShowLSMR then
+				if GetDistanceBetweenCoords(Config.TL.LSMR0.x, Config.TL.LSMR0.y, Config.TL.LSMR0.z, GetEntityCoords(GetPlayerPed(-1))) < Config.TL.LSMR0.d then
+					Draw3DText(Config.TL.LSMR1.x, Config.TL.LSMR1.y, Config.TL.LSMR1.z, Config.TL.LSMR1.text, 4, 0.1, 0.1)
+					Draw3DText(Config.TL.LSMR2.x, Config.TL.LSMR2.y, Config.TL.LSMR2.z, Config.TL.LSMR2.text, 4, 0.1, 0.1)
+					Draw3DText(Config.TL.LSMR3.x, Config.TL.LSMR3.y, Config.TL.LSMR3.z, Config.TL.LSMR3.text, 4, 0.1, 0.1)
+					Draw3DText(Config.TL.LSMR4.x, Config.TL.LSMR4.y, Config.TL.LSMR4.z, Config.TL.LSMR4.text, 4, 0.1, 0.1)
+				end
+			end
+
+			-- Sandy Shores Sheriffs Dept
+			if Config.TL.ShowSSSD then
+				if GetDistanceBetweenCoords(Config.TL.SSSD0.x, Config.TL.SSSD0.y, Config.TL.SSSD0.z, GetEntityCoords(GetPlayerPed(-1))) < Config.TL.SSSD0.d then
+					Draw3DText(Config.TL.SSSD1.x, Config.TL.SSSD1.y, Config.TL.SSSD1.z, Config.TL.SSSD1.text, 4, 0.1, 0.1)
+					Draw3DText(Config.TL.SSSD2.x, Config.TL.SSSD2.y, Config.TL.SSSD2.z, Config.TL.SSSD2.text, 4, 0.1, 0.1)
+				end
+			end
+
+			-- Paleto Bay Sheriffs Dept
+			if Config.TL.ShowPBSD then
+				if GetDistanceBetweenCoords(Config.TL.PBSD0.x, Config.TL.PBSD0.y, Config.TL.PBSD0.z, GetEntityCoords(GetPlayerPed(-1))) < Config.TL.PBSD0.d then
+					Draw3DText(Config.TL.PBSD1.x, Config.TL.PBSD1.y, Config.TL.PBSD1.z, Config.TL.PBSD1.text, 4, 0.1, 0.1)
+					Draw3DText(Config.TL.PBSD2.x, Config.TL.PBSD2.y, Config.TL.PBSD2.z, Config.TL.PBSD2.text, 4, 0.1, 0.1)
+				end
+			end
 		end
 	end
 end

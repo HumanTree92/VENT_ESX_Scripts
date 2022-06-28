@@ -35,7 +35,7 @@ function checkJail()
 end
 
 ESX.RegisterCommand('jail', 'admin', function(xPlayer, args, showError)
-	TriggerEvent('esx_advancedjail:sendToJail', args.playerId, args.time * 60, 'bp1', false)
+	TriggerEvent('esx_advancedjail:sendToJail', args.playerId, args.time * 60, 'SSBP1', false)
 end, true, {help = 'Jail a Player', validate = true, arguments = {
 	{name = 'playerId', help = 'Player Id', type = 'playerId'},
 	{name = 'time', help = 'Jail Time in Minutes', type = 'number'}
@@ -97,7 +97,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(60000 * Config.JailTimeSyncInterval)
+		Citizen.Wait(60000 * Config.Sync)
 		local tasks = {}
 
 		for playerId,data in pairs(playersInJail) do
@@ -154,15 +154,23 @@ AddEventHandler('esx_advancedjail:playerEscape', function(name, type, location)
 		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
 		if xPlayer.job.name == 'police' then
 			if type == 'run' then
-				if location == 'mr' then
+				if location == 'LSMR' then
 					xPlayer.showNotification(_U('player_escaped', name, _U('mission_row')))
-				elseif location == 'bp' then
+				elseif location == 'SSSD' then
+					xPlayer.showNotification(_U('player_escaped', name, _U('sandy_shores')))
+				elseif location == 'PBSD' then
+					xPlayer.showNotification(_U('player_escaped', name, _U('paleto_bay')))
+				elseif location == 'SSBP' then
 					xPlayer.showNotification(_U('player_escaped', name, _U('bolingbroke_pen')))
 				end
 			elseif type == 'attempt' then
-				if location == 'mr' then
+				if location == 'LSMR' then
 					xPlayer.showNotification(_U('player_escape_attempt', name, _U('mission_row')))
-				elseif location == 'bp' then
+				elseif location == 'SSSD' then
+					xPlayer.showNotification(_U('player_escape_attempt', name, _U('sandy_shores')))
+				elseif location == 'PBSD' then
+					xPlayer.showNotification(_U('player_escape_attempt', name, _U('paleto_bay')))
+				elseif location == 'SSBP' then
 					xPlayer.showNotification(_U('player_escape_attempt', name, _U('bolingbroke_pen')))
 				end
 			end
