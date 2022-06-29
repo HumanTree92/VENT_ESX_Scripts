@@ -134,7 +134,7 @@ function OpenGarageMenu(_pJob, _vType)
 				table.insert(elements, {label = _U('compacts'), value = 'compacts', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
 			end
 		end, pJob, 'compacts')
-		
+
 		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
 			if #ownedVehicles > 0 then
 				table.insert(elements, {label = _U('coupes'), value = 'coupes', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
@@ -400,7 +400,7 @@ function OpenStoreMenu(_pJob, _vType)
 	local pJob, vType = _pJob, _vType
 	local playerPed = GetPlayerPed(-1)
 
-	if IsPedInAnyVehicle(playerPed,  false) then
+	if IsPedInAnyVehicle(playerPed, false) then
 		local playerPed = GetPlayerPed(-1)
 		local coords = GetEntityCoords(playerPed)
 		local vehicle = GetVehiclePedIsIn(playerPed, false)
@@ -513,7 +513,7 @@ function StoreVehicle(vehicle, vehicleProps)
 	end
 
 	if Config.Main.LegacyFuel then
-		currentFuel = exports['LegacyFuel']:GetFuel(vehicle)
+		local currentFuel = exports['LegacyFuel']:GetFuel(vehicle)
 		TriggerServerEvent('esx_advancedgarage:setVehicleFuel', vehicleProps.plate, currentFuel)
 	end
 
@@ -677,7 +677,7 @@ CreateThread(function()
 	while true do
 		Wait(0)
 		local playerCoords = GetEntityCoords(PlayerPedId())
-		local isInMarker, letSleep, currentZone = false, true
+		local isInMarker, letSleep, currentZone = false, true, nil
 
 		if Config.Ambulance.UseG then
 			if ESX.PlayerData.job and ESX.PlayerData.job.name == 'ambulance' then

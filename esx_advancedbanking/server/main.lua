@@ -25,7 +25,7 @@ RegisterServerEvent('esx_advancedbanking:balance')
 AddEventHandler('esx_advancedbanking:balance', function()
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
-	balance = xPlayer.getAccount('bank').money
+	local balance = xPlayer.getAccount('bank').money
 	TriggerClientEvent('esx_advancedbanking:currentBalance', _source, balance)
 end)
 
@@ -53,7 +53,7 @@ AddEventHandler('esx_advancedbanking:withdraw', function(amount)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 	amount = tonumber(amount)
-	account = xPlayer.getAccount('bank').money
+	local account = xPlayer.getAccount('bank').money
 
 	if amount == nil or amount <= 0 then
 		xPlayer.showNotification(_U('invalid_amount'))
@@ -77,7 +77,6 @@ AddEventHandler('esx_advancedbanking:transfer', function(target, amountt)
 
 	if tPlayer ~= nil and GetPlayerEndpoint(target) ~= nil then
 		account = xPlayer.getAccount('bank').money
-		taccount = tPlayer.getAccount('bank').money
 
 		if tonumber(_source) == tonumber(target) then
 			xPlayer.showNotification(_U('invalid_self'))

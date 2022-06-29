@@ -177,7 +177,7 @@ CreateThread(function()
 	while true do
 		Wait(0)
 		local playerCoords = GetEntityCoords(PlayerPedId())
-		local isInMarker, letSleep, currentZone = false, true
+		local isInMarker, letSleep, currentZone = false, true, nil
 
 		for k,v in pairs(Config.Locations) do
 			for i=1, #v.ATMs, 1 do
@@ -229,7 +229,7 @@ CreateThread(function()
 		if letSleep then
 			Wait(500)
 		end
-	end	
+	end
 end)
 
 -- Key Controls

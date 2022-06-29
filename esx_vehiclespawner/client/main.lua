@@ -131,7 +131,7 @@ CreateThread(function()
 	while true do
 		Wait(0)
 		local playerCoords = GetEntityCoords(PlayerPedId())
-		local isInMarker, letSleep, currentZone = false, true
+		local isInMarker, letSleep, currentZone = false, true, nil
 
 		for k,v in pairs(Config.Zones) do
 			local distance = #(playerCoords - v.Pos)

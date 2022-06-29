@@ -89,7 +89,7 @@ Citizen.CreateThread(function()
 			playersInJail[playerId].timeRemaining = data.timeRemaining - 1
 
 			if data.timeRemaining < 1 then
-				unjailPlayer(playerId, false)
+				unjailPlayer(playerId)
 			end
 		end
 	end

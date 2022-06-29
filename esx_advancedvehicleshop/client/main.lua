@@ -2,7 +2,7 @@ local CurrentActionData, JobBlips, RegBlips, thisShop = {}, {}, {}, {}
 local CategoriesAJ, CategoriesPJ, CategoriesD, CategoriesMJ, CategoriesTJ, CategoriesA, CategoriesB, CategoriesC, CategoriesT, CategoriesVA, CategoriesVB, CategoriesVC = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
 local VehiclesAJ, VehiclesPJ, VehiclesD, VehiclesMJ, VehiclesTJ, VehiclesA, VehiclesB, VehiclesC, VehiclesT, VehiclesVA, VehiclesVB, VehiclesVC = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
 local HasAlreadyEnteredMarker, IsInMainMenu, YesAlready, ContinuePurchase = false, false, false, false
-local LastZone, CurrentAction, CurrentActionMsg, currentDisplayVehicle, CurrentVehicleData
+local LastZone, CurrentAction, CurrentActionMsg, currentDisplayVehicle
 local sCategories, sVehicles
 
 function getVehicles()
@@ -100,7 +100,7 @@ function getVehicles()
 		ESX.TriggerServerCallback('esx_advancedvehicleshop:getCategoriesVA', function(categoriesva)
 			CategoriesVA = categoriesva
 		end)
-		
+
 		ESX.TriggerServerCallback('esx_advancedvehicleshop:getVehiclesVA', function(vehiclesva)
 			VehiclesVA = vehiclesva
 		end)
@@ -110,7 +110,7 @@ function getVehicles()
 		ESX.TriggerServerCallback('esx_advancedvehicleshop:getCategoriesVB', function(categoriesvb)
 			CategoriesVB = categoriesvb
 		end)
-		
+
 		ESX.TriggerServerCallback('esx_advancedvehicleshop:getVehiclesVB', function(vehiclesvb)
 			VehiclesVB = vehiclesvb
 		end)
@@ -120,7 +120,7 @@ function getVehicles()
 		ESX.TriggerServerCallback('esx_advancedvehicleshop:getCategoriesVC', function(categoriesvc)
 			CategoriesVC = categoriesvc
 		end)
-		
+
 		ESX.TriggerServerCallback('esx_advancedvehicleshop:getVehiclesVC', function(vehiclesvc)
 			VehiclesVC = vehiclesvc
 		end)
@@ -427,7 +427,7 @@ function BuyVehicleShopMenu(pJobC, sTypeC)
 
 			if purchaseChoice == 'finance' and not YesAlready or purchaseChoice == 'payfull' and not YesAlready then
 				YesAlready = true
-				spawnloc, spawnhead = thisShop.Outside, thisShop.OutsideH
+				local spawnloc, spawnhead = thisShop.Outside, thisShop.OutsideH
 				local generatedPlate = GeneratePlate()
 
 				if pJobC == 'ambulance' and sTypeC == 'car' or pJobC == 'police' and sTypeC == 'car' or pJobC == 'mechanic' and sTypeC == 'car' or pJobC == 'taxi' and sTypeC == 'car' then
@@ -441,6 +441,9 @@ function BuyVehicleShopMenu(pJobC, sTypeC)
 					if vehicleData.model == Config.Division.Heli1 then
 						ContinuePurchase = true
 						spawnloc, spawnhead = thisShop.Outside2, thisShop.OutsideH2
+					else
+						ContinuePurchase = true
+					end
 				elseif pJobC == 'civ' and sTypeC == 'truck' then
 					if vehicleData.model == 'pbus2' then
 						ContinuePurchase = true
@@ -1045,7 +1048,7 @@ CreateThread(function()
 	while true do
 		Wait(0)
 		local playerCoords = GetEntityCoords(PlayerPedId())
-		local isInMarker, letSleep, currentZone = false, true
+		local isInMarker, letSleep, currentZone = false, true, nil
 
 		if Config.Ambulance.Shop then
 			if ESX.PlayerData.job and ESX.PlayerData.job.name == 'ambulance' then

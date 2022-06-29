@@ -16,7 +16,7 @@ end)
 -- Start Robbery Timer
 RegisterNetEvent('esx_advancedholdup:startRobTimer')
 AddEventHandler('esx_advancedholdup:startRobTimer', function(zone)
-	isInRobberyZone, isRobberyDone, IsRobberyStarted, loopAlarm = true, false, true, true
+	isInRobberyZone, isRobberyDone, isRobberyStarted, loopAlarm = true, false, true, true
 	RobberyZoneEvents(zone)
 	TriggerEvent('esx_advancedholdup:loopAlarm', zone)
 
@@ -57,7 +57,7 @@ function RobberyZoneEvents(zone)
 					TriggerServerEvent('esx_advancedholdup:robberyCanceled', zone, true)
 					Wait(1000)
 					loopAlarm = false
-					IsRobberyStarted = false
+					isRobberyStarted = false
 				end
 			end
 		end
@@ -76,7 +76,7 @@ end)
 RegisterNetEvent('esx_advancedholdup:robCompNotif')
 AddEventHandler('esx_advancedholdup:robCompNotif', function()
 	isRobberyDone = true
-	IsRobberyStarted = false
+	isRobberyStarted = false
 	PlaySoundFrontend(-1, 'HACKING_SUCCESS', 0, 1)
 	ESX.ShowNotification(_U('rob_complete'))
 	Wait(20000)
@@ -139,11 +139,11 @@ CreateThread(function()
 	while true do
 		Wait(0)
 		local playerCoords = GetEntityCoords(PlayerPedId())
-		local isInMarker, isEnoughPolice, letSleep, currentZone = false, false, true
+		local isInMarker, isEnoughPolice, letSleep, currentZone = false, false, true, nil
 
 		if IsPedArmed(PlayerPedId(), 4) then
 			isPedArmed = true
-			
+
 			for k,v in pairs(Config.Zones) do
 				local distance = #(playerCoords - v.Coords)
 
@@ -191,7 +191,7 @@ CreateThread(function()
 				if IsPedSittingInAnyVehicle(PlayerPedId()) then
 					ESX.ShowNotification(_U('rob_vehicle'))
 				else
-					if not IsRobberyStarted then
+					if not isRobberyStarted then
 						if ESX.PlayerData.job and ESX.PlayerData.job.name == 'unemployed' then
 							ESX.TriggerServerCallback('esx_advancedholdup:checkRob', function(success)
 								if success then

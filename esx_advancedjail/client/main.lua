@@ -1,7 +1,7 @@
 local HasAlreadyEnteredMarker, isInJail, unJail = false, false, false
 local LastZone, CurrentAction, CurrentActionMsg
 local CurrentActionData = {}
-local jailTime, fastTimer = 0, 0
+local jailTime = 0
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
@@ -18,7 +18,6 @@ end)
 CreateThread(function()
 	while true do
 		Wait(1)
-		local playerPed = PlayerPedId()
 
 		if isInJail then
 			DisableControlAction(0, 24, true) -- Attack
@@ -85,8 +84,8 @@ AddEventHandler('esx_advancedjail:jailPlayer', function(_jailTime, _jailLoc, _na
 	end
 
 	jailTime = _jailTime
-	location = _jailLoc
-	name = _name
+	local location = _jailLoc
+	local name = _name
 	local playerPed = PlayerPedId()
 	StartJailTimer()
 
@@ -362,7 +361,7 @@ end
 
 RegisterNetEvent('esx_advancedjail:unjailPlayer')
 AddEventHandler('esx_advancedjail:unjailPlayer', function()
-	unJail, jailTime, fastTimer = true, 0, 0
+	unJail, jailTime = true, 0
 end)
 
 -- When Player Respawns/Joins
@@ -503,7 +502,6 @@ function PrisonClothingMenu()
 			{label = _U('citizen_wear'), value = 'citizen_wear'},
 			{label = _U('jail_wear'), value = 'jail_wear'},
 	}}, function(data, menu)
-		local ped = GetPlayerPed(-1)
 		menu.close()
 
 		if data.current.value == 'citizen_wear' then
@@ -559,7 +557,7 @@ CreateThread(function()
 	while true do
 		Wait(0)
 		local playerCoords = GetEntityCoords(PlayerPedId())
-		local isInMarker, letSleep, currentZone = false, true
+		local isInMarker, letSleep, currentZone = false, true, nil
 
 		for k,v in pairs(Config.Zones) do
 			local distance = #(playerCoords - v)

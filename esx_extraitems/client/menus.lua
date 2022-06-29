@@ -41,10 +41,10 @@ function OpenWeaMenu()
 				if action2 == 'melee_menu' then
 					local elements2 = {}
 					local weaponCat = Config.ComponentList.Melee
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
-						local components, label = {}
+						local components, label = {}, nil
 						local hasWeapon = HasPedGotWeapon(playerPed, GetHashKey(v.weapon), false)
 
 						if v.components then
@@ -135,10 +135,10 @@ function OpenWeaMenu()
 				elseif action2 == 'pistol_menu' then
 					local elements2 = {}
 					local weaponCat = Config.ComponentList.Pistols
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
-						local components, label = {}
+						local components, label = {}, nil
 						local hasWeapon = HasPedGotWeapon(playerPed, GetHashKey(v.weapon), false)
 
 						if v.components then
@@ -229,10 +229,10 @@ function OpenWeaMenu()
 				elseif action2 == 'smg_menu' then
 					local elements2 = {}
 					local weaponCat = Config.ComponentList.SMGs
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
-						local components, label = {}
+						local components, label = {}, nil
 						local hasWeapon = HasPedGotWeapon(playerPed, GetHashKey(v.weapon), false)
 
 						if v.components then
@@ -323,10 +323,10 @@ function OpenWeaMenu()
 				elseif action2 == 'shot_menu' then
 					local elements2 = {}
 					local weaponCat = Config.ComponentList.Shotguns
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
-						local components, label = {}
+						local components, label = {}, nil
 						local hasWeapon = HasPedGotWeapon(playerPed, GetHashKey(v.weapon), false)
 
 						if v.components then
@@ -417,10 +417,10 @@ function OpenWeaMenu()
 				elseif action2 == 'ar_menu' then
 					local elements2 = {}
 					local weaponCat = Config.ComponentList.Rifles
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
-						local components, label = {}
+						local components, label = {}, nil
 						local hasWeapon = HasPedGotWeapon(playerPed, GetHashKey(v.weapon), false)
 
 						if v.components then
@@ -511,10 +511,10 @@ function OpenWeaMenu()
 				elseif action2 == 'mg_menu' then
 					local elements2 = {}
 					local weaponCat = Config.ComponentList.MGs
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
-						local components, label = {}
+						local components, label = {}, nil
 						local hasWeapon = HasPedGotWeapon(playerPed, GetHashKey(v.weapon), false)
 
 						if v.components then
@@ -605,10 +605,10 @@ function OpenWeaMenu()
 				elseif action2 == 'sniper_menu' then
 					local elements2 = {}
 					local weaponCat = Config.ComponentList.Snipers
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
-						local components, label = {}
+						local components, label = {}, nil
 						local hasWeapon = HasPedGotWeapon(playerPed, GetHashKey(v.weapon), false)
 
 						if v.components then
@@ -758,7 +758,7 @@ function OpenWeaMenu()
 				if action2 == 'pistol_menu' then
 					local elements2 = {}
 					local weaponCat = Config.WeaponUpgrades.Pistols
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
 						local upgrade, label = v.upgrade, {}
@@ -818,7 +818,7 @@ function OpenWeaMenu()
 				elseif action2 == 'smg_menu' then
 					local elements2 = {}
 					local weaponCat = Config.WeaponUpgrades.SMGs
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
 						local upgrade, label = v.upgrade, {}
@@ -878,7 +878,7 @@ function OpenWeaMenu()
 				elseif action2 == 'shot_menu' then
 					local elements2 = {}
 					local weaponCat = Config.WeaponUpgrades.Shotguns
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
 						local upgrade, label = v.upgrade, {}
@@ -938,7 +938,7 @@ function OpenWeaMenu()
 				elseif action2 == 'ar_menu' then
 					local elements2 = {}
 					local weaponCat = Config.WeaponUpgrades.Rifles
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
 						local upgrade, label = v.upgrade, {}
@@ -998,7 +998,7 @@ function OpenWeaMenu()
 				elseif action2 == 'mg_menu' then
 					local elements2 = {}
 					local weaponCat = Config.WeaponUpgrades.MGs
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
 						local upgrade, label = v.upgrade, {}
@@ -1058,7 +1058,7 @@ function OpenWeaMenu()
 				elseif action2 == 'sniper_menu' then
 					local elements2 = {}
 					local weaponCat = Config.WeaponUpgrades.Snipers
-			
+
 					for k,v in ipairs(weaponCat) do
 						local weaponNum, weapon = ESX.GetWeapon(v.weapon)
 						local upgrade, label = v.upgrade, {}

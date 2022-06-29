@@ -540,8 +540,6 @@ end)
 
 -- Store Vehicles
 ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function(source, cb, vehicleProps)
-	local ownedCars = {}
-	local vehplate = vehicleProps.plate:match('^%s*(.-)%s*$')
 	local vehiclemodel = vehicleProps.model
 	local xPlayer = ESX.GetPlayerFromId(source)
 

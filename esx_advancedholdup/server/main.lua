@@ -24,11 +24,9 @@ end, false, {help = 'Reset Robbery Timer'})
 
 -- See if there is an On Going Robbery & Cool Down has Ended
 ESX.RegisterServerCallback('esx_advancedholdup:checkRob', function(source, cb)
-	local xPlayer = ESX.GetPlayerFromId(source)
 	if isCurrentRobbery == false and coolDown == false then
 		cb(true)
 	else
-		--xPlayer.showNotification(_U('rob_cooldown'))
 		cb(false)
 	end
 end)
@@ -96,7 +94,6 @@ AddEventHandler('esx_advancedholdup:robInProgress', function(mainZone)
 			end
 
 			xPlayer.showNotification(_U('rob_started'))
-			--TriggerClientEvent('esx:showNotification', source, _U('rob_started'))
 			TriggerClientEvent('esx_advancedholdup:startRobTimer', source, mainZone)
 			TriggerEvent('esx_advancedholdup:startTimer')
 
@@ -120,7 +117,6 @@ AddEventHandler('esx_advancedholdup:robInProgress', function(mainZone)
 			end)
 		else
 			xPlayer.showNotification(_U('rob_in_prog'))
-			--TriggerClientEvent('esx:showNotification', xPlayer.source, _U('rob_in_prog'))
 		end
 	end
 end)

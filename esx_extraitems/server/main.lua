@@ -401,7 +401,7 @@ end)
 -- Start of Weapon Components
 ESX.RegisterServerCallback('esx_extraitems:AddWeaponComponent', function(source, cb, weaponCat, weaponName, componentNum)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local authorizedWeapons, selectedWeapon = weaponCat
+	local authorizedWeapons, selectedWeapon = weaponCat, nil
 
 	for k,v in ipairs(authorizedWeapons) do
 		if v.weapon == weaponName then
@@ -429,7 +429,7 @@ end)
 
 ESX.RegisterServerCallback('esx_extraitems:RemoveWeaponComponent', function(source, cb, weaponCat, weaponName, componentNum)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local authorizedWeapons, selectedWeapon = weaponCat
+	local authorizedWeapons, selectedWeapon = weaponCat, nil
 
 	for k,v in ipairs(authorizedWeapons) do
 		if v.weapon == weaponName then
@@ -459,7 +459,7 @@ end)
 -- Start of Weapon Upgrades
 ESX.RegisterServerCallback('esx_extraitems:UpgradeWeapon', function(source, cb, weaponCat, weaponName, weaponUpgrade, weaponAmmo)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local authorizedWeapons, selectedWeapon = weaponCat
+	local authorizedWeapons, selectedWeapon = weaponCat, nil
 
 	for k,v in ipairs(authorizedWeapons) do
 		if v.weapon == weaponName then
