@@ -13,7 +13,7 @@ Have you made changes to anything besides the `config.lua`?:
 Have you looked through the Closed Topics?: 
 Have you looked through the Wiki?: 
 Are you using a Pre-Installed ESX? If Yes who?: 
-Are you using ESX Legacy V1.3 Final?: 
+What Verison of ESX Legacy are you using?: 
 Are you using OneSync?: 
 Linux or Windows?: 
 
