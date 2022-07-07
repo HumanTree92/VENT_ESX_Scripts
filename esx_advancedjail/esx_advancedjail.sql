@@ -1,4 +1,4 @@
 USE `es_extended`;
 
 ALTER TABLE `users` ADD COLUMN `jail_time` INT(11) NOT NULL DEFAULT 0;
-ALTER TABLE `users` ADD COLUMN `jail_loc` VARCHAR(3) DEFAULT NULL;
+ALTER TABLE `users` ADD COLUMN `jail_loc` VARCHAR(5) DEFAULT NULL;

@@ -404,13 +404,11 @@ function OpenStoreMenu(_pJob, _vType)
 		local playerPed = GetPlayerPed(-1)
 		local coords = GetEntityCoords(playerPed)
 		local vehicle = GetVehiclePedIsIn(playerPed, false)
+		local retval, trailer = GetVehicleTrailerVehicle(vehicle)
+		local trailerProps = ESX.Game.GetVehicleProperties(trailer)
 		local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
 		local current = GetPlayersLastVehicle(GetPlayerPed(-1), true)
 		local engineHealth = GetVehicleEngineHealth(current)
-		local plate = vehicleProps.plate
-		local retval, trailer = GetVehicleTrailerVehicle(vehicle)
-		local trailerProps = ESX.Game.GetVehicleProperties(trailer)
-		local trailerplate = trailerProps.plate
 
 		ESX.TriggerServerCallback('esx_advancedgarage:storeVehicle', function(valid)
 			if valid then
