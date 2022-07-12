@@ -146,6 +146,7 @@ function OpenShopMenu(wvalue, zone)
 	if wvalue == 'wea_misc' then
 		for i=1, #Config.Zones[zone].Misc, 1 do
 			local item = Config.Zones[zone].Misc[i]
+			item.label = ESX.GetWeaponLabel(item.name)
 
 			table.insert(elements, {
 				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
@@ -157,6 +158,7 @@ function OpenShopMenu(wvalue, zone)
 	elseif wvalue == 'wea_throw' then
 		for i=1, #Config.Zones[zone].Throw, 1 do
 			local item = Config.Zones[zone].Throw[i]
+			item.label = ESX.GetWeaponLabel(item.name)
 
 			table.insert(elements, {
 				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
@@ -168,6 +170,7 @@ function OpenShopMenu(wvalue, zone)
 	elseif wvalue == 'wea_melee' then
 		for i=1, #Config.Zones[zone].Melee, 1 do
 			local item = Config.Zones[zone].Melee[i]
+			item.label = ESX.GetWeaponLabel(item.name)
 
 			table.insert(elements, {
 				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
@@ -179,6 +182,7 @@ function OpenShopMenu(wvalue, zone)
 	elseif wvalue == 'wea_handgun' then
 		for i=1, #Config.Zones[zone].Handgun, 1 do
 			local item = Config.Zones[zone].Handgun[i]
+			item.label = ESX.GetWeaponLabel(item.name)
 
 			table.insert(elements, {
 				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
@@ -190,6 +194,7 @@ function OpenShopMenu(wvalue, zone)
 	elseif wvalue == 'wea_smg' then
 		for i=1, #Config.Zones[zone].SMG, 1 do
 			local item = Config.Zones[zone].SMG[i]
+			item.label = ESX.GetWeaponLabel(item.name)
 
 			table.insert(elements, {
 				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
@@ -201,6 +206,7 @@ function OpenShopMenu(wvalue, zone)
 	elseif wvalue == 'wea_shotgun' then
 		for i=1, #Config.Zones[zone].Shotgun, 1 do
 			local item = Config.Zones[zone].Shotgun[i]
+			item.label = ESX.GetWeaponLabel(item.name)
 
 			table.insert(elements, {
 				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
@@ -212,6 +218,7 @@ function OpenShopMenu(wvalue, zone)
 	elseif wvalue == 'wea_assault' then
 		for i=1, #Config.Zones[zone].Assault, 1 do
 			local item = Config.Zones[zone].Assault[i]
+			item.label = ESX.GetWeaponLabel(item.name)
 
 			table.insert(elements, {
 				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
@@ -223,6 +230,7 @@ function OpenShopMenu(wvalue, zone)
 	elseif wvalue == 'wea_lmg' then
 		for i=1, #Config.Zones[zone].LMG, 1 do
 			local item = Config.Zones[zone].LMG[i]
+			item.label = ESX.GetWeaponLabel(item.name)
 
 			table.insert(elements, {
 				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
@@ -234,6 +242,7 @@ function OpenShopMenu(wvalue, zone)
 	elseif wvalue == 'wea_sniper' then
 		for i=1, #Config.Zones[zone].Sniper, 1 do
 			local item = Config.Zones[zone].Sniper[i]
+			item.label = ESX.GetWeaponLabel(item.name)
 
 			table.insert(elements, {
 				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
