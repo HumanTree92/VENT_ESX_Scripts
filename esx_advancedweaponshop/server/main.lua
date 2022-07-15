@@ -61,7 +61,7 @@ function getPrice(weaponCat, weaponName, zone)
 		end
 
 		if weapon then
-			return v.price
+			return weapon.price
 		else
 			return 0
 		end
@@ -76,7 +76,7 @@ function getPrice(weaponCat, weaponName, zone)
 		end
 
 		if weapon then
-			return v.price
+			return weapon.price
 		else
 			return 0
 		end
@@ -91,7 +91,7 @@ function getPrice(weaponCat, weaponName, zone)
 		end
 
 		if weapon then
-			return v.price
+			return weapon.price
 		else
 			return 0
 		end
@@ -106,7 +106,7 @@ function getPrice(weaponCat, weaponName, zone)
 		end
 
 		if weapon then
-			return v.price
+			return weapon.price
 		else
 			return 0
 		end
@@ -121,7 +121,7 @@ function getPrice(weaponCat, weaponName, zone)
 		end
 
 		if weapon then
-			return v.price
+			return weapon.price
 		else
 			return 0
 		end
@@ -136,7 +136,7 @@ function getPrice(weaponCat, weaponName, zone)
 		end
 
 		if weapon then
-			return v.price
+			return weapon.price
 		else
 			return 0
 		end
@@ -151,7 +151,7 @@ function getPrice(weaponCat, weaponName, zone)
 		end
 
 		if weapon then
-			return v.price
+			return weapon.price
 		else
 			return 0
 		end
@@ -166,7 +166,7 @@ function getPrice(weaponCat, weaponName, zone)
 		end
 
 		if weapon then
-			return v.price
+			return weapon.price
 		else
 			return 0
 		end
@@ -181,7 +181,7 @@ function getPrice(weaponCat, weaponName, zone)
 		end
 
 		if weapon then
-			return v.price
+			return weapon.price
 		else
 			return 0
 		end
