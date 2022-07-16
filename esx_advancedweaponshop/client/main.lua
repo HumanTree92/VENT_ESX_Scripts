@@ -79,6 +79,7 @@ function OpenMainMenu(zone)
 			table.insert(elements, {label = _U('wea_sniper'), value = 'wea_sniper'})
 		end
 	end
+	Wait(500)
 
 	ESX.UI.Menu.CloseAll()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'weapon_cat', {
@@ -267,6 +268,7 @@ function OpenShopMenu(wvalue, zone)
 			table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))), price = item.price, weaponName = item.name, weaponCat = item.cat})
 		end
 	end
+	Wait(500)
 
 	--ESX.UI.Menu.CloseAll()
 	--PlaySoundFrontend(-1, 'BACK', 'HUD_AMMO_SHOP_SOUNDSET', false)
