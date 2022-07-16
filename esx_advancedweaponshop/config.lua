@@ -5,12 +5,48 @@ Config.DrawDistance = 10 -- Marker Draw Distance.
 Config.MarkerInfo = {Type = 1, r = 0, g = 128, b = 255, x = 1.5, y = 1.5, z = 0.5} -- Marker Settings.
 
 Config.UseBlips = false -- true = Use Weapon Shop Blips.
-Config.LicenseEnable = false -- Only turn this on if using esx_license.
-Config.RequireMeleeLicense = false -- Will Require Players to have Melee License to Purchase Melee Weapons.
 
---{cat = 'CAT_HERE', name = 'NAME_HERE', price = 0000},
+-- Require Licenses | Use only if you are using esx_license
+Config.License = {
+	Master = false, -- Master Toggle | Set to true if using esx_license.
+	Melee = false, -- true = Will Require Players to have a Melee License to Purchase Melee Weapons.
+	Handgun = true, -- true = Will Require Players to have a Handgun License to Purchase Handguns.
+	SMG = true, -- true = Will Require Players to have a SMG License to Purchase SMGs.
+	Shotgun = true, -- true = Will Require Players to have a Shotgun License to Purchase Shotguns.
+	Assault = true, -- true = Will Require Players to have a Assault License to Purchase Assault Rifles.
+	LMG = true, -- true = Will Require Players to have a LMG License to Purchase LMGs.
+	Sniper = true -- true = Will Require Players to have a Sniper License to Purchase Sniper Rifles.
+}
+
+-- true = This shop has Weapons
+Config.HasWeapons = {
+	LegalShop = {
+		Misc = true,
+		Throw = true,
+		Melee = true,
+		Handgun = true,
+		SMG = true,
+		Shotgun = true,
+		Assault = true,
+		LMG = true,
+		Sniper = true
+	},
+
+	IllegalShop = {
+		Misc = false,
+		Throw = true,
+		Melee = true,
+		Handgun = true,
+		SMG = true,
+		Shotgun = true,
+		Assault = true,
+		LMG = false,
+		Sniper = false
+	}
+}
+
 Config.Zones = {
-	GunShop = {
+	LegalShop = {
 		Legal = true, -- DO NOT CHANGE
 		Misc = {
 			{cat = 'Misc', name = 'GADGET_PARACHUTE', price = 800},
@@ -112,9 +148,11 @@ Config.Zones = {
 		}
 	},
 
-	BlackShop = {
+	IllegalShop = {
 		Legal = false, -- DO NOT CHANGE
-		Misc = {},
+		Misc = {
+			--{cat = 'Misc', name = 'NAME_HERE', price = 1}
+		},
 		Throw = {
 			{cat = 'Throw', name = 'WEAPON_BZGAS', price = 500},
 			{cat = 'Throw', name = 'WEAPON_MOLOTOV', price = 150},
@@ -148,8 +186,12 @@ Config.Zones = {
 			{cat = 'Assault', name = 'WEAPON_ASSAULTRIFLE', price = 2400},
 			{cat = 'Assault', name = 'WEAPON_CARBINERIFLE', price = 4800}
 		},
-		LMG = {},
-		Sniper = {},
+		LMG = {
+			--{cat = 'LMG', name = 'NAME_HERE', price = 1}
+		},
+		Sniper = {
+			--{cat = 'Sniper', name = 'NAME_HERE', price = 1}
+		},
 		Locations = {
 			vector3(119.47, -1977.88, 19.93)
 		}

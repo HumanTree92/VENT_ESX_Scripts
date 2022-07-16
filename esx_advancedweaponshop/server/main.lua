@@ -5,14 +5,24 @@ ESX.RegisterServerCallback('esx_advancedweaponshop:buyWeapon', function(source, 
 	local price = getPrice(weaponCat, weaponName, zone)
 
 	if price == 0 then
-		print(('esx_advancedweaponshop: %s attempted to buy a unknown weapon!'):format(xPlayer.identifier))
+		print(('esx_advancedweaponshop: %s Attempted to buy a UNKNOWN Weapon!'):format(xPlayer.identifier))
 		cb(false)
 	else
 		if xPlayer.hasWeapon(weaponName) then
 			xPlayer.showNotification(_U('already_owned'))
 			cb(false)
 		else
-			if zone == 'BlackShop' then
+			if zone == 'LegalShop' then
+				if xPlayer.getMoney() >= price then
+					xPlayer.removeMoney(price)
+					xPlayer.addWeapon(weaponName, 50)
+
+					cb(true)
+				else
+					xPlayer.showNotification(_U('not_enough'))
+					cb(false)
+				end
+			elseif zone == 'IllegalShop' then
 				if Config.UseDirty then
 					if xPlayer.getAccount('black_money').money >= price then
 						xPlayer.removeAccountMoney('black_money', price)
@@ -35,15 +45,8 @@ ESX.RegisterServerCallback('esx_advancedweaponshop:buyWeapon', function(source, 
 					end
 				end
 			else
-				if xPlayer.getMoney() >= price then
-					xPlayer.removeMoney(price)
-					xPlayer.addWeapon(weaponName, 50)
-
-					cb(true)
-				else
-					xPlayer.showNotification(_U('not_enough'))
-					cb(false)
-				end
+				print(('esx_advancedweaponshop: %s Attempted to access a UNKNOWN Weapon Shop!'):format(xPlayer.identifier))
+				cb(false)
 			end
 		end
 	end

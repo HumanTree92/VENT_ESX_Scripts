@@ -4,40 +4,98 @@ local CurrentActionData = {}
 
 -- Open Main Menu
 function OpenMainMenu(zone)
+	local elements = {}
+
+	if zone == 'LegalShop' then
+		if Config.HasWeapons.LegalShop.Misc then
+			table.insert(elements, {label = _U('wea_misc'), value = 'wea_misc'})
+		end
+
+		if Config.HasWeapons.LegalShop.Throw then
+			table.insert(elements, {label = _U('wea_throw'), value = 'wea_throw'})
+		end
+
+		if Config.HasWeapons.LegalShop.Melee then
+			table.insert(elements, {label = _U('wea_melee'), value = 'wea_melee'})
+		end
+
+		if Config.HasWeapons.LegalShop.Handgun then
+			table.insert(elements, {label = _U('wea_handgun'), value = 'wea_handgun'})
+		end
+
+		if Config.HasWeapons.LegalShop.SMG then
+			table.insert(elements, {label = _U('wea_smg'), value = 'wea_smg'})
+		end
+
+		if Config.HasWeapons.LegalShop.Shotgun then
+			table.insert(elements, {label = _U('wea_shotgun'), value = 'wea_shotgun'})
+		end
+
+		if Config.HasWeapons.LegalShop.Assault then
+			table.insert(elements, {label = _U('wea_assault'), value = 'wea_assault'})
+		end
+
+		if Config.HasWeapons.LegalShop.LMG then
+			table.insert(elements, {label = _U('wea_lmg'), value = 'wea_lmg'})
+		end
+
+		if Config.HasWeapons.LegalShop.Sniper then
+			table.insert(elements, {label = _U('wea_sniper'), value = 'wea_sniper'})
+		end
+	elseif zone == 'IllegalShop' then
+		if Config.HasWeapons.IllegalShop.Misc then
+			table.insert(elements, {label = _U('wea_misc'), value = 'wea_misc'})
+		end
+
+		if Config.HasWeapons.IllegalShop.Throw then
+			table.insert(elements, {label = _U('wea_throw'), value = 'wea_throw'})
+		end
+
+		if Config.HasWeapons.IllegalShop.Melee then
+			table.insert(elements, {label = _U('wea_melee'), value = 'wea_melee'})
+		end
+
+		if Config.HasWeapons.IllegalShop.Handgun then
+			table.insert(elements, {label = _U('wea_handgun'), value = 'wea_handgun'})
+		end
+
+		if Config.HasWeapons.IllegalShop.SMG then
+			table.insert(elements, {label = _U('wea_smg'), value = 'wea_smg'})
+		end
+
+		if Config.HasWeapons.IllegalShop.Shotgun then
+			table.insert(elements, {label = _U('wea_shotgun'), value = 'wea_shotgun'})
+		end
+
+		if Config.HasWeapons.IllegalShop.Assault then
+			table.insert(elements, {label = _U('wea_assault'), value = 'wea_assault'})
+		end
+
+		if Config.HasWeapons.IllegalShop.LMG then
+			table.insert(elements, {label = _U('wea_lmg'), value = 'wea_lmg'})
+		end
+
+		if Config.HasWeapons.IllegalShop.Sniper then
+			table.insert(elements, {label = _U('wea_sniper'), value = 'wea_sniper'})
+		end
+	end
+
 	ESX.UI.Menu.CloseAll()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'weapon_cat', {
 		title = _U('weapon_cat'),
 		align = GetConvar('esx_MenuAlign', 'top-left'),
-		elements = {
-			{label = _U('wea_misc'), value = 'wea_misc'},
-			{label = _U('wea_throw'), value = 'wea_throw'},
-			{label = _U('wea_melee'), value = 'wea_melee'},
-			{label = _U('wea_handgun'), value = 'wea_handgun'},
-			{label = _U('wea_smg'), value = 'wea_smg'},
-			{label = _U('wea_shotgun'), value = 'wea_shotgun'},
-			{label = _U('wea_assault'), value = 'wea_assault'},
-			{label = _U('wea_lmg'), value = 'wea_lmg'},
-			{label = _U('wea_sniper'), value = 'wea_sniper'}
-	}}, function(data, menu)
+		elements = elements
+	}, function(data, menu)
 		local action = data.current.value
 
 		if action == 'wea_misc' then
-			if Config.Zones[zone].Legal then
-				menu.close()
-				OpenShopMenu(action, zone)
-			else
-				ESX.ShowNotification(_U('no_wea'))
-			end
+			menu.close()
+			OpenShopMenu(action, zone)
 		elseif action == 'wea_throw' then
-			if Config.Zones[zone].Legal then
-				menu.close()
-				OpenShopMenu(action, zone)
-			else
-				menu.close()
-				OpenShopMenu(action, zone)
-			end
+			menu.close()
+			OpenShopMenu(action, zone)
 		elseif action == 'wea_melee' then
-			if Config.LicenseEnable and Config.RequireMeleeLicense and Config.Zones[zone].Legal then
+			if Config.Zones[zone].Legal and Config.License.Master and Config.License.Melee then
 				ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
 					if hasLicense then
 						menu.close()
@@ -51,7 +109,7 @@ function OpenMainMenu(zone)
 				OpenShopMenu(action, zone)
 			end
 		elseif action == 'wea_handgun' then
-			if Config.LicenseEnable and Config.Zones[zone].Legal then
+			if Config.Zones[zone].Legal and Config.License.Master and Config.License.Handgun then
 				ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
 					if hasLicense then
 						menu.close()
@@ -65,7 +123,7 @@ function OpenMainMenu(zone)
 				OpenShopMenu(action, zone)
 			end
 		elseif action == 'wea_smg' then
-			if Config.LicenseEnable and Config.Zones[zone].Legal then
+			if Config.Zones[zone].Legal and Config.License.Master and Config.License.SMG then
 				ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
 					if hasLicense then
 						menu.close()
@@ -79,7 +137,7 @@ function OpenMainMenu(zone)
 				OpenShopMenu(action, zone)
 			end
 		elseif action == 'wea_shotgun' then
-			if Config.LicenseEnable and Config.Zones[zone].Legal then
+			if Config.Zones[zone].Legal and Config.License.Master and Config.License.Shotgun then
 				ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
 					if hasLicense then
 						menu.close()
@@ -93,7 +151,7 @@ function OpenMainMenu(zone)
 				OpenShopMenu(action, zone)
 			end
 		elseif action == 'wea_assault' then
-			if Config.LicenseEnable and Config.Zones[zone].Legal then
+			if Config.Zones[zone].Legal and Config.License.Master and Config.License.Assault then
 				ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
 					if hasLicense then
 						menu.close()
@@ -107,7 +165,7 @@ function OpenMainMenu(zone)
 				OpenShopMenu(action, zone)
 			end
 		elseif action == 'wea_lmg' then
-			if Config.LicenseEnable and Config.Zones[zone].Legal then
+			if Config.Zones[zone].Legal and Config.License.Master and Config.License.LMG then
 				ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
 					if hasLicense then
 						menu.close()
@@ -117,10 +175,11 @@ function OpenMainMenu(zone)
 					end
 				end, GetPlayerServerId(PlayerId()), 'weapon_lmg')
 			else
-				ESX.ShowNotification(_U('no_wea'))
+				menu.close()
+				OpenShopMenu(action, zone)
 			end
 		elseif action == 'wea_sniper' then
-			if Config.LicenseEnable and Config.Zones[zone].Legal then
+			if Config.Zones[zone].Legal and Config.License.Master and Config.License.Sniper then
 				ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
 					if hasLicense then
 						menu.close()
@@ -130,7 +189,8 @@ function OpenMainMenu(zone)
 					end
 				end, GetPlayerServerId(PlayerId()), 'weapon_sniper')
 			else
-				ESX.ShowNotification(_U('no_wea'))
+				menu.close()
+				OpenShopMenu(action, zone)
 			end
 		end
 	end, function(data, menu)
@@ -148,108 +208,63 @@ function OpenShopMenu(wvalue, zone)
 			local item = Config.Zones[zone].Misc[i]
 			item.label = ESX.GetWeaponLabel(item.name)
 
-			table.insert(elements, {
-				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
-				price = item.price,
-				weaponName = item.name,
-				weaponCat = item.cat
-			})
+			table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))), price = item.price, weaponName = item.name, weaponCat = item.cat})
 		end
 	elseif wvalue == 'wea_throw' then
 		for i=1, #Config.Zones[zone].Throw, 1 do
 			local item = Config.Zones[zone].Throw[i]
 			item.label = ESX.GetWeaponLabel(item.name)
 
-			table.insert(elements, {
-				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
-				price = item.price,
-				weaponName = item.name,
-				weaponCat = item.cat
-			})
+			table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))), price = item.price, weaponName = item.name, weaponCat = item.cat})
 		end
 	elseif wvalue == 'wea_melee' then
 		for i=1, #Config.Zones[zone].Melee, 1 do
 			local item = Config.Zones[zone].Melee[i]
 			item.label = ESX.GetWeaponLabel(item.name)
 
-			table.insert(elements, {
-				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
-				price = item.price,
-				weaponName = item.name,
-				weaponCat = item.cat
-			})
+			table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))), price = item.price, weaponName = item.name, weaponCat = item.cat})
 		end
 	elseif wvalue == 'wea_handgun' then
 		for i=1, #Config.Zones[zone].Handgun, 1 do
 			local item = Config.Zones[zone].Handgun[i]
 			item.label = ESX.GetWeaponLabel(item.name)
 
-			table.insert(elements, {
-				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
-				price = item.price,
-				weaponName = item.name,
-				weaponCat = item.cat
-			})
+			table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))), price = item.price, weaponName = item.name, weaponCat = item.cat})
 		end
 	elseif wvalue == 'wea_smg' then
 		for i=1, #Config.Zones[zone].SMG, 1 do
 			local item = Config.Zones[zone].SMG[i]
 			item.label = ESX.GetWeaponLabel(item.name)
 
-			table.insert(elements, {
-				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
-				price = item.price,
-				weaponName = item.name,
-				weaponCat = item.cat
-			})
+			table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))), price = item.price, weaponName = item.name, weaponCat = item.cat})
 		end
 	elseif wvalue == 'wea_shotgun' then
 		for i=1, #Config.Zones[zone].Shotgun, 1 do
 			local item = Config.Zones[zone].Shotgun[i]
 			item.label = ESX.GetWeaponLabel(item.name)
 
-			table.insert(elements, {
-				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
-				price = item.price,
-				weaponName = item.name,
-				weaponCat = item.cat
-			})
+			table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))), price = item.price, weaponName = item.name, weaponCat = item.cat})
 		end
 	elseif wvalue == 'wea_assault' then
 		for i=1, #Config.Zones[zone].Assault, 1 do
 			local item = Config.Zones[zone].Assault[i]
 			item.label = ESX.GetWeaponLabel(item.name)
 
-			table.insert(elements, {
-				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
-				price = item.price,
-				weaponName = item.name,
-				weaponCat = item.cat
-			})
+			table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))), price = item.price, weaponName = item.name, weaponCat = item.cat})
 		end
 	elseif wvalue == 'wea_lmg' then
 		for i=1, #Config.Zones[zone].LMG, 1 do
 			local item = Config.Zones[zone].LMG[i]
 			item.label = ESX.GetWeaponLabel(item.name)
 
-			table.insert(elements, {
-				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
-				price = item.price,
-				weaponName = item.name,
-				weaponCat = item.cat
-			})
+			table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))), price = item.price, weaponName = item.name, weaponCat = item.cat})
 		end
 	elseif wvalue == 'wea_sniper' then
 		for i=1, #Config.Zones[zone].Sniper, 1 do
 			local item = Config.Zones[zone].Sniper[i]
 			item.label = ESX.GetWeaponLabel(item.name)
 
-			table.insert(elements, {
-				label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))),
-				price = item.price,
-				weaponName = item.name,
-				weaponCat = item.cat
-			})
+			table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(item.label, _U('shop_menu_item', ESX.Math.GroupDigits(item.price))), price = item.price, weaponName = item.name, weaponCat = item.cat})
 		end
 	end
 
@@ -307,7 +322,7 @@ end
 
 -- Entered Marker
 AddEventHandler('esx_advancedweaponshop:hasEnteredMarker', function(zone)
-	if zone == 'GunShop' or zone == 'BlackShop' then
+	if zone == 'LegalShop' or zone == 'IllegalShop' then
 		CurrentAction = 'shop_menu'
 		CurrentActionMsg = _U('shop_menu_prompt')
 		CurrentActionData = {zone = zone}
@@ -378,7 +393,7 @@ CreateThread(function()
 		for k,v in pairs(Config.Zones) do
 			for i=1, #v.Locations, 1 do
 				if GetDistanceBetweenCoords(coords, v.Locations[i], true) < Config.MarkerInfo.x then
-					isInMarker, ShopMelee, ShopHandgun, ShopSMG, ShopShotgun, ShopAssault, ShopLMG, ShopSniper, currentZone, LastZone = true, v.Misc, v.Throw, v.Melee, v.Handgun, v.SMG, v.Shotgun, v.Assault, k, k
+					isInMarker, currentZone, LastZone = true, k, k
 				end
 			end
 		end
