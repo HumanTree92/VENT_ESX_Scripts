@@ -543,8 +543,8 @@ ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function(source, c
 	local vehiclemodel = vehicleProps.model
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND plate = ?', {xPlayer.identifier, vehicleProps.plate}, function(result)
-		if result ~= nil then
+	MySQL.single('SELECT * FROM owned_vehicles WHERE owner = ? AND plate = ?', {xPlayer.identifier, vehicleProps.plate}, function(result)
+		if result then
 			local originalvehprops = json.decode(result.vehicle)
 			if originalvehprops.model == vehiclemodel then
 				MySQL.update('UPDATE owned_vehicles SET vehicle = ? WHERE owner = ? AND plate = ?', {json.encode(vehicleProps), xPlayer.identifier, vehicleProps.plate}, function(rowsChanged)
