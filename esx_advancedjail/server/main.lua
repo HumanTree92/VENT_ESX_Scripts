@@ -207,6 +207,4 @@ AddEventHandler('esx_advancedjail:removeInventory', function()
 		xPlayer.addInventoryItem(Config.FoodItem, Config.FoodAmount)
 		xPlayer.addInventoryItem(Config.DrinkItem, Config.DrinkAmount)
 	end
-
-	Core.SavePlayer(xPlayer)
 end)
