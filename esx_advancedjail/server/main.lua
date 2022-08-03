@@ -208,5 +208,5 @@ AddEventHandler('esx_advancedjail:removeInventory', function()
 		xPlayer.addInventoryItem(Config.DrinkItem, Config.DrinkAmount)
 	end
 
-	ESX.SavePlayer(xPlayer)
+	Core.SavePlayer(xPlayer)
 end)
