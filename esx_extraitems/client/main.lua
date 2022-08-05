@@ -46,6 +46,8 @@ end)
 -- End of Dark Net
 
 -- Start of Bandage
+local usingBandage = false
+
 RegisterNetEvent('esx_extraitems:bandage')
 AddEventHandler('esx_extraitems:bandage', function(source)
 	local playerPed = GetPlayerPed(-1)
@@ -56,7 +58,8 @@ AddEventHandler('esx_extraitems:bandage', function(source)
 	if IsPedSittingInAnyVehicle(playerPed) then
 		ESX.ShowNotification(_U('error_veh'))
 	else
-		if IsPedOnFoot(playerPed) then
+		if IsPedOnFoot(playerPed) and not usingBandage then
+			usingBandage = true
 			local lib, anim = 'anim@heists@narcotics@funding@gang_idle', 'gang_chatting_idle01'
 			ESX.Streaming.RequestAnimDict(lib, function()
 				TaskPlayAnim(playerPed, lib, anim, 8.0, -8.0, -1, 0, 0, false, false, false)
@@ -68,6 +71,7 @@ AddEventHandler('esx_extraitems:bandage', function(source)
 				end
 
 				SetEntityHealth(playerPed, newHealth)
+				usingBandage = false
 			end)
 		else
 			ESX.ShowNotification(_U('error_no_foot'))
@@ -77,13 +81,11 @@ end)
 -- End of Bandage
 
 -- Start of Binoculars
-local fov_max = 70.0
-local fov_min = 5.0
+local fov_min, fov_max = 5.0, 70.0
 local zoomspeed = 10.0
-local speed_lr = 8.0
-local speed_ud = 8.0
-local binoculars = false
+local speed_lr, speed_ud = 8.0, 8.0
 local fov = (fov_max+fov_min)*0.5
+local usingBinoculars = false
 
 CreateThread(function()
 	while true do
@@ -91,8 +93,8 @@ CreateThread(function()
 		local playerPed = GetPlayerPed(-1)
 		local vehicle = GetVehiclePedIsIn(playerPed)
 
-		if binoculars then
-			binoculars = true
+		if usingBinoculars then
+			usingBinoculars = true
 			if not (IsPedSittingInAnyVehicle(playerPed)) then
 				CreateThread(function()
 					TaskStartScenarioInPlace(GetPlayerPed(-1), 'WORLD_HUMAN_BINOCULARS', 0, 1)
@@ -111,8 +113,6 @@ CreateThread(function()
 				Wait(10)
 			end
 
-			local playerPed = GetPlayerPed(-1)
-			local vehicle = GetVehiclePedIsIn(playerPed)
 			local cam = CreateCam('DEFAULT_SCRIPTED_FLY_CAMERA', true)
 
 			AttachCamToEntity(cam, playerPed, 0.0,0.0,1.0, true)
@@ -123,11 +123,11 @@ CreateThread(function()
 			PushScaleformMovieFunctionParameterInt(0) -- 0 for nothing, 1 for LSPD logo
 			PopScaleformMovieFunctionVoid()
 
-			while binoculars and not IsEntityDead(playerPed) and (GetVehiclePedIsIn(playerPed) == vehicle) and true do
-				if IsControlJustPressed(0, Config.BinocularsPutAway) then -- Toggle binoculars
+			while usingBinoculars and not IsEntityDead(playerPed) and (GetVehiclePedIsIn(playerPed) == vehicle) and true do
+				if IsControlJustPressed(0, Config.BinocularsPutAway) then -- Toggle Binoculars
 					PlaySoundFrontend(-1, 'SELECT', 'HUD_FRONTEND_DEFAULT_SOUNDSET', false)
 					ClearPedTasks(GetPlayerPed(-1))
-					binoculars = false
+					usingBinoculars = false
 				end
 
 				local zoomvalue = (1.0/(fov_max-fov_min))*(fov-fov_min)
@@ -140,7 +140,7 @@ CreateThread(function()
 				Wait(5)
 			end
 
-			binoculars = false
+			usingBinoculars = false
 			ClearTimecycleModifier()
 			fov = (fov_max+fov_min)*0.5
 			RenderScriptCams(false, false, 0, 1, 0)
@@ -238,6 +238,8 @@ end)
 -- End of Bullet Proof Vest
 
 -- Start of Clean Kit
+local usingCleanKit = false
+
 RegisterNetEvent('esx_extraitems:cleankit')
 AddEventHandler('esx_extraitems:cleankit', function()
 	local playerPed = GetPlayerPed(-1)
@@ -247,7 +249,8 @@ AddEventHandler('esx_extraitems:cleankit', function()
 	if IsPedSittingInAnyVehicle(playerPed) then
 		ESX.ShowNotification(_U('error_veh'))
 	else
-		if DoesEntityExist(vehicle) and IsPedOnFoot(playerPed) then
+		if DoesEntityExist(vehicle) and IsPedOnFoot(playerPed) and not usingCleanKit then
+			usingCleanKit = true
 			TaskStartScenarioInPlace(playerPed, 'PROP_HUMAN_BUM_BIN', 0, true)
 			CreateThread(function()
 				Wait(Config.Wait.CleanKit)
@@ -256,6 +259,7 @@ AddEventHandler('esx_extraitems:cleankit', function()
 				ClearPedTasksImmediately(playerPed)
 				TriggerServerEvent('esx_extraitems:removecleankit')
 				ESX.ShowNotification(_U('clean_done'))
+				usingCleanKit = false
 			end)
 		else
 			ESX.ShowNotification(_U('error_no_veh'))
@@ -265,6 +269,8 @@ end)
 -- End of Clean Kit
 
 -- Start of Defib
+local usingDefib = false
+
 RegisterNetEvent('esx_extraitems:defib')
 AddEventHandler('esx_extraitems:defib', function(source)
 	local playerPed = GetPlayerPed(-1)
@@ -272,7 +278,7 @@ AddEventHandler('esx_extraitems:defib', function(source)
 	if IsPedSittingInAnyVehicle(playerPed) then
 		ESX.ShowNotification(_U('error_veh'))
 	else
-		if IsPedOnFoot(playerPed) then
+		if IsPedOnFoot(playerPed) and not usingDefib then
 			local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
 			if closestPlayer == -1 or closestDistance > 3.0 then
 				ESX.ShowNotification(_U('error_no_ped'))
@@ -281,6 +287,7 @@ AddEventHandler('esx_extraitems:defib', function(source)
 				local chance = math.random(100)
 
 				if IsPedDeadOrDying(closestPlayerPed, 1) then
+					usingDefib = true
 					local playerPed = PlayerPedId()
 					local lib, anim = 'mini@cpr@char_a@cpr_str', 'cpr_pumpchest'
 					ESX.ShowNotification(_U('revive_inprogress'))
@@ -296,8 +303,10 @@ AddEventHandler('esx_extraitems:defib', function(source)
 					if chance <= 50 then
 						TriggerServerEvent('esx_ambulancejob:revive', GetPlayerServerId(closestPlayer))
 						ESX.ShowNotification(_U('defib_worked'))
+						usingDefib = false
 					else
 						ESX.ShowNotification(_U('defib_failed'))
+						usingDefib = false
 					end
 				else
 					ESX.ShowNotification(_U('player_not_unconscious'))
@@ -311,6 +320,8 @@ end)
 -- End of Defib
 
 -- Start of Drill
+local usingDrill = false
+
 RegisterNetEvent('esx_extraitems:drill')
 AddEventHandler('esx_extraitems:drill', function(source)
 	local playerPed = GetPlayerPed(-1)
@@ -318,12 +329,14 @@ AddEventHandler('esx_extraitems:drill', function(source)
 	if IsPedSittingInAnyVehicle(playerPed) then
 		ESX.ShowNotification(_U('error_veh'))
 	else
-		if IsPedOnFoot(playerPed) then
+		if IsPedOnFoot(playerPed) and not usingDrill then
+			usingDrill = true
 			TriggerServerEvent('esx_extraitems:removedrill')
 			TaskStartScenarioInPlace(playerPed, 'WORLD_HUMAN_CONST_DRILL', 0, true)
 			CreateThread(function()
 				Wait(Config.Wait.Drill)
 				ClearPedTasksImmediately(playerPed)
+				usingDrill = false
 			end)
 		else
 			ESX.ShowNotification(_U('error_no_foot'))
@@ -335,49 +348,58 @@ end)
 -- Start of Firework
 local box = nil
 local animlib = 'anim@mp_fireworks'
+local usingFirework = false
 
 RegisterNetEvent('esx_extraitems:firework')
 AddEventHandler('esx_extraitems:firework', function()
-	RequestAnimDict(animlib)
+	if usingFirework then
+		ESX.ShowNotification(_U('already_using'))
+	else
+		usingFirework = true
+		RequestAnimDict(animlib)
 
-	while not HasAnimDictLoaded(animlib) do
-		Wait(10)
-	end
-
-	if not HasNamedPtfxAssetLoaded('scr_indep_fireworks') then
-		RequestNamedPtfxAsset('scr_indep_fireworks')
-
-		while not HasNamedPtfxAssetLoaded('scr_indep_fireworks') do
+		while not HasAnimDictLoaded(animlib) do
 			Wait(10)
 		end
+
+		if not HasNamedPtfxAssetLoaded('scr_indep_fireworks') then
+			RequestNamedPtfxAsset('scr_indep_fireworks')
+
+			while not HasNamedPtfxAssetLoaded('scr_indep_fireworks') do
+				Wait(10)
+			end
+		end
+
+		local pedcoords = GetEntityCoords(GetPlayerPed(-1))
+		local ped = GetPlayerPed(-1)
+		local times = 20
+
+		TaskPlayAnim(ped, animlib, 'place_firework_3_box', -1, -8.0, 3000, 0, 0, false, false, false)
+		Wait(4000)
+		ClearPedTasks(ped)
+		usingFirework = false
+
+		box = CreateObject(GetHashKey('ind_prop_firework_03'), pedcoords, true, false, false)
+		PlaceObjectOnGroundProperly(box)
+		FreezeEntityPosition(box, true)
+		local firecoords = GetEntityCoords(box)
+
+		Wait(10000)
+		repeat
+		UseParticleFxAssetNextCall('scr_indep_fireworks')
+		local part1 = StartNetworkedParticleFxNonLoopedAtCoord('scr_indep_firework_trailburst', firecoords, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
+		times = times - 1
+		Wait(2000)
+		until(times == 0)
+		DeleteEntity(box)
+		box = nil
 	end
-
-	local pedcoords = GetEntityCoords(GetPlayerPed(-1))
-	local ped = GetPlayerPed(-1)
-	local times = 20
-
-	TaskPlayAnim(ped, animlib, 'place_firework_3_box', -1, -8.0, 3000, 0, 0, false, false, false)
-	Wait(4000)
-	ClearPedTasks(ped)
-
-	box = CreateObject(GetHashKey('ind_prop_firework_03'), pedcoords, true, false, false)
-	PlaceObjectOnGroundProperly(box)
-	FreezeEntityPosition(box, true)
-	local firecoords = GetEntityCoords(box)
-
-	Wait(10000)
-	repeat
-	UseParticleFxAssetNextCall('scr_indep_fireworks')
-	local part1 = StartNetworkedParticleFxNonLoopedAtCoord('scr_indep_firework_trailburst', firecoords, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
-	times = times - 1
-	Wait(2000)
-	until(times == 0)
-	DeleteEntity(box)
-	box = nil
 end)
 -- End of Firework
 
 -- Start of First Aid Kit
+local usingFirstAidKit = false
+
 RegisterNetEvent('esx_extraitems:firstaidkit')
 AddEventHandler('esx_extraitems:firstaidkit', function()
 	local playerPed = GetPlayerPed(-1)
@@ -388,8 +410,9 @@ AddEventHandler('esx_extraitems:firstaidkit', function()
 		if IsPedSittingInAnyVehicle(playerPed) then
 			ESX.ShowNotification(_U('error_veh'))
 		else
-			if IsPedOnFoot(playerPed) then
+			if IsPedOnFoot(playerPed) and not usingFirstAidKit then
 				if health > 0 and health < maxHealth then
+					usingFirstAidKit = true
 					local lib, anim = 'anim@heists@narcotics@funding@gang_idle', 'gang_chatting_idle01'
 					ESX.Streaming.RequestAnimDict(lib, function()
 						TaskPlayAnim(playerPed, lib, anim, 8.0, -8.0, -1, 0, 0, false, false, false)
@@ -402,6 +425,7 @@ AddEventHandler('esx_extraitems:firstaidkit', function()
 
 						TriggerServerEvent('esx_extraitems:removefirstaidkit')
 						SetEntityHealth(playerPed, maxHealth)
+						usingFirstAidKit = false
 					end)
 				end
 			else
@@ -477,13 +501,15 @@ end
 -- End of Life Raft
 
 -- Start of Lock Pick
+local usingLockPick = false
+
 RegisterNetEvent('esx_extraitems:lockpick')
 AddEventHandler('esx_extraitems:lockpick', function()
 	--local playerPed = PlayerPedId()
 	local playerPed = GetPlayerPed(-1)
 	local coords = GetEntityCoords(playerPed)
 
-	if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 5.0) then
+	if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 5.0) and not usingLockPick then
 		local vehicle
 
 		if IsPedInAnyVehicle(playerPed, false) then
@@ -496,6 +522,8 @@ AddEventHandler('esx_extraitems:lockpick', function()
 		local alarm = math.random(100)
 
 		if DoesEntityExist(vehicle) then
+			usingLockPick = true
+
 			if alarm <= 50 then
 				SetVehicleAlarm(vehicle, true)
 				StartVehicleAlarm(vehicle)
@@ -511,6 +539,7 @@ AddEventHandler('esx_extraitems:lockpick', function()
 					SetVehicleDoorsLockedForAllPlayers(vehicle, false)
 					ClearPedTasksImmediately(playerPed)
 					ESX.ShowNotification(_U('veh_unlocked'))
+					usingLockPick = false
 					--SetVehicleNeedsToBeHotwired(vehicle, true)
 					--IsVehicleNeedsToBeHotwired(vehicle)
 					--TaskEnterVehicle(playerPed, vehicle, 10.0, -1, 1.0, 1, 0)
@@ -518,6 +547,7 @@ AddEventHandler('esx_extraitems:lockpick', function()
 					TriggerServerEvent('esx_extraitems:removelockpick')
 					ESX.ShowNotification(_U('hijack_failed'))
 					ClearPedTasksImmediately(playerPed)
+					usingLockPick = false
 				end
 
 				Wait(500)
@@ -536,7 +566,7 @@ end)
 -- End of Lock Pick
 
 -- Start of Oxygen Mask
-local oxygenMask = false
+local usingOxygenMask = false
 
 RegisterNetEvent('esx_extraitems:oxygenmask')
 AddEventHandler('esx_extraitems:oxygenmask', function()
@@ -545,9 +575,9 @@ AddEventHandler('esx_extraitems:oxygenmask', function()
 	local boneIndex = GetPedBoneIndex(playerPed, 12844)
 	local boneIndex2 = GetPedBoneIndex(playerPed, 24818)
 
-	if not oxygenMask then
+	if not usingOxygenMask then
 		TriggerServerEvent('esx_extraitems:removeoxygenmask')
-		oxygenMask = true
+		usingOxygenMask = true
 
 		ESX.Game.SpawnObject('p_s_scuba_mask_s', {
 			x = coords.x,
@@ -581,7 +611,7 @@ AddEventHandler('esx_extraitems:oxygenmask', function()
 				DeleteObject(object)
 				DeleteObject(object2)
 				ClearPedSecondaryTask(playerPed)
-				oxygenMask = false
+				usingOxygenMask = false
 			end)
 		end)
 	else
@@ -591,6 +621,8 @@ end)
 -- End of Oxygen Mask
 
 -- Start of Repair Kit
+local usingRepairKit = false
+
 RegisterNetEvent('esx_extraitems:repairkit')
 AddEventHandler('esx_extraitems:repairkit', function()
 	local playerPed = GetPlayerPed(-1)
@@ -602,7 +634,8 @@ AddEventHandler('esx_extraitems:repairkit', function()
 	if IsPedSittingInAnyVehicle(playerPed) then
 		ESX.ShowNotification(_U('error_veh'))
 	else
-		if DoesEntityExist(vehicle) and IsPedOnFoot(playerPed) then
+		if DoesEntityExist(vehicle) and IsPedOnFoot(playerPed) and not usingRepairKit then
+			usingRepairKit = true
 			TaskStartScenarioInPlace(playerPed, 'PROP_HUMAN_BUM_BIN', 0, true)
 			CreateThread(function()
 				Wait(Config.Wait.RepairKit)
@@ -630,6 +663,7 @@ AddEventHandler('esx_extraitems:repairkit', function()
 				ClearPedTasksImmediately(playerPed)
 				TriggerServerEvent('esx_extraitems:removerepairkit')
 				ESX.ShowNotification(_U('repair_done'))
+				usingRepairKit = false
 			end)
 		else
 			ESX.ShowNotification(_U('error_no_veh'))
@@ -639,6 +673,8 @@ end)
 -- End of Repair Kit
 
 -- Start of Tire Kit
+local usingTireKit = false
+
 RegisterNetEvent('esx_extraitems:tirekit')
 AddEventHandler('esx_extraitems:tirekit', function()
 	local playerPed = GetPlayerPed(-1)
@@ -649,8 +685,9 @@ AddEventHandler('esx_extraitems:tirekit', function()
 	if IsPedSittingInAnyVehicle(playerPed) then
 		ESX.ShowNotification(_U('error_veh'))
 	else
-		if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 5.0) then
+		if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 5.0) and not usingTireKit then
 			if DoesEntityExist(vehicle) and IsPedOnFoot(playerPed) and closestTire ~= nil then
+				usingTireKit = true
 				TaskStartScenarioInPlace(playerPed, 'CODE_HUMAN_MEDIC_KNEEL', 0, true)
 				CreateThread(function()
 					Wait(Config.Wait.TireKit)
@@ -659,6 +696,7 @@ AddEventHandler('esx_extraitems:tirekit', function()
 					ClearPedTasksImmediately(playerPed)
 					TriggerServerEvent('esx_extraitems:removetirekit')
 					ESX.ShowNotification(_U('tire_done'))
+					usingTireKit = false
 				end)
 			else
 				ESX.ShowNotification(_U('error_no_tire'))

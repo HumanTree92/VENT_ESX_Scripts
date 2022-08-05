@@ -63,6 +63,7 @@ Locales ['en'] = {
 	['not_correct_wea'] = '~r~You don\'t have the correct weapon out.',
 	['player_cannot_hold'] = '~r~You can\'t hold anymore %s.',
 	['player_no'] = '~r~You don\'t have any %s.',
+	['already_using'] = '~r~Already Using this Item. Please Wait!',
 	-- Weapon Menus
 	['weapon_menu'] = 'Weapon Menu',
 	['comp_menu'] = 'Components',
