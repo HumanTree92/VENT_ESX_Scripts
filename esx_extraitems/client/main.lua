@@ -444,7 +444,7 @@ AddEventHandler('esx_extraitems:liferaft', function()
 	local playerPed = GetPlayerPed(-1)
 	local playerCoords = GetEntityCoords(playerPed)
 	local playerHeading = GetEntityHeading(playerPed)
-	local model = GetHashKey('lraft')
+	local model = GetHashKey(Config.LifeRaft.Veh)
 	
 	if IsPedSwimming(playerPed) then
 		ESX.Game.SpawnVehicle(model, playerCoords, playerHeading, function(vehicle)
@@ -465,10 +465,10 @@ CreateThread(function()
 			local playerVeh = GetVehiclePedIsIn(playerPed, false)
 			local attempt = 0
 
-			if DoesEntityExist(playerVeh) and (GetPedInVehicleSeat(playerVeh, -1) == playerPed) and LifeRaftList() == true then
+			if DoesEntityExist(playerVeh) and (GetPedInVehicleSeat(playerVeh, -1) == playerPed) and playerVeh == GetHashKey(Config.LifeRaft.Veh) then
 				ESX.ShowHelpNotification(_U('life_raft_use'))
 
-				if IsControlJustReleased(0, 38) and (GetPedInVehicleSeat(playerVeh, -1) == playerPed) and LifeRaftList() == true then
+				if IsControlJustReleased(0, 38) and (GetPedInVehicleSeat(playerVeh, -1) == playerPed) and playerVeh == GetHashKey(Config.LifeRaft.Veh) then
 					while not NetworkHasControlOfEntity(playerVeh) and attempt < 100 and DoesEntityExist(playerVeh) do
 						Wait(100)
 						NetworkRequestControlOfEntity(playerVeh)
@@ -486,18 +486,6 @@ CreateThread(function()
 		end
 	end
 end)
-
-function LifeRaftList()
-    local playerPed = PlayerPedId()
-    local currentVehicle = GetVehiclePedIsIn(playerPed)
-
-    for i,model in pairs(Config.LifeRaft.Vehs) do
-		if IsVehicleModel(currentVehicle, GetHashKey(model)) then
-			return true
-		end
-	end
-	return false
-end
 -- End of Life Raft
 
 -- Start of Lock Pick

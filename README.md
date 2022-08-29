@@ -4,13 +4,15 @@ ESX Scripts Made by Human Tree92 ([Velociti Entertainment Customs]( http://www.v
 # Creating Issues:
 * Check the [Closed Topics]( https://github.com/HumanTree92/VENT_ESX_Scripts/issues?q=is%3Aissue+is%3Aclosed ) & [Wiki]( https://github.com/HumanTree92/VENT_ESX_Scripts/wiki ) before opening an issue to see if your issue has already been Answered.
 * Do NOT Delete the Pre-Written Text in the issue.
+* Make sure you have NOT edited anything besides the `config.lua`. I will NOT be providing support if you edit anything else.
 * Failue to due any of the above will result in Topic being Deleted & you being Blocked. The Pre-Written text helps me with getting to the Bottom of the Issues & i hate explaining things over & over.
 
 # Helpfull Info:
 * I have decided to Combine all my Scripts into 1 Massive Script to make downloading Easier.
 * Each Script has their Own README file so make sure you READ it so you know how to install everything.
+* If you decide to make changes to anything outside of the `config.lua` i will not provide support for problems.
 * I will not be doing Support for V1.3 - Unsupported.zip.
-* Each Script Supports ESX V1.4+ but has mainly been tested on ESX V1.6+.
+* Each Script has been tested on ESX V1.6 and wether or not it will work on any newer versions IDK.
 
 # Requirements:
 * Required:

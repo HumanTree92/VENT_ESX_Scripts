@@ -17,9 +17,10 @@ Edited/Made by Human Tree92 ([Velociti Entertainment Customs & Wiki]( http://www
   * NONE
 
 # Download & Installation:
-1) Pick which SQL you want to use
+1) Pick which SQL you want to use:
   1.1) If you want to use Advanced Ammo Boxes Import `esx_extraitems_advammo.sql` in your database
   1.2) If you want to use Simple Ammo Boxes Import `esx_extraitems_simammo.sql` in your database
+  1.3) If you are using the new `esx_shops` please use `esx_shops.lua` on adding items
 2) Place `esx_extraitems` in your ESX Directory
 3) Add `start esx_extraitems` to your server.cfg
 4) Edit the `config.lua` to your liking

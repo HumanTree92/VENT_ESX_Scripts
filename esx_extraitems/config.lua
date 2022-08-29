@@ -42,7 +42,7 @@ Config.BinocularsPutAway = 177 -- Backspace Key
 -- Life Raft
 Config.LifeRaft = {
 	Use = false, -- true = Will allow Players to spawn a Life Raft.
-	Vehs = {'lraft'} -- Must provide your Own Model.
+	Veh = 'lraft' -- Must provide your Own Model.
 }
 
 -- Oxygen Mask
