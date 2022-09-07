@@ -141,7 +141,7 @@ CreateThread(function()
 		local playerCoords = GetEntityCoords(PlayerPedId())
 		local isInMarker, isEnoughPolice, letSleep, currentZone = false, false, true, nil
 
-		if IsPedArmed(PlayerPedId(), 4) then
+		if Config.ReqWeapon and IsPedArmed(PlayerPedId(), 4) or Config.ReqWeapon == false then
 			isPedArmed = true
 
 			for k,v in pairs(Config.Zones) do
@@ -192,7 +192,7 @@ CreateThread(function()
 					ESX.ShowNotification(_U('rob_vehicle'))
 				else
 					if not isRobberyStarted then
-						if ESX.PlayerData.job and ESX.PlayerData.job.name == 'unemployed' then
+						if isAuthorized() then
 							ESX.TriggerServerCallback('esx_advancedholdup:checkRob', function(success)
 								if success then
 									local zone = CurrentActionData.zone
@@ -230,4 +230,19 @@ function drawTxt(x, y, width, height, scale, text, r, g, b, a)
 	SetTextEntry('STRING')
 	AddTextComponentString(text)
 	DrawText(x - width/2, y - height/2 + 0.005)
+end
+
+-- Authorized Jobs
+function isAuthorized()
+	if not ESX or not ESX.PlayerData.job then
+		return false
+	end
+
+	for k,job in pairs(Config.AuthorizedJobs) do
+		if job == ESX.PlayerData.job.name then
+			return true
+		end
+	end
+
+	return false
 end

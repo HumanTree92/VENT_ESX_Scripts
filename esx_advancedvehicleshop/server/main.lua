@@ -576,7 +576,7 @@ ESX.RegisterServerCallback('esx_advancedvehicleshop:buyVehicle', function(source
 		if modelPrice and xPlayer.getMoney() >= modelPrice then
 			xPlayer.removeMoney(modelPrice)
 
-			if vModelS == Config.Division.Heli1 then
+			if vCatS == 'aviation' then
 				type = 'aircraft'
 				category = 'helis'
 			else

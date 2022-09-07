@@ -26,6 +26,8 @@ Config.Blips = {
 	JPounds = {Sprite = 67, Color = 49, Display = 2, Scale = 1.0}, -- Job Pound Blip Settings.
 }
 
+Config.LargeVehicles = {'swatmrap', 'mcc'} -- Large Vehicles that will spawn in Spawner3
+
 Config.Ambulance = {
 	UseG = false, -- true = Allows use of Ambulance Garages.
 	UseP = false, -- true = Allows use of Ambulance Pounds.

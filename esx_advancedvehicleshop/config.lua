@@ -61,6 +61,7 @@ Config.Division = {
 	Blip = {Sprite = 326, Color = 3, Display = 4, Scale = 1.0}, -- Division Blip Settings.
 	License = false, -- true = Requires a License to Buy Vehicles.
 	ResellPerc = 50, -- The Resell % of Vehicles Sold. | Example: $10,000 / 50% = $5,000 Back.
+	Helis = {'polmav'}, -- Helicopters that will spawn in Outside2.
 	Markers = {
 		Enter = {Type = 1, r = 0, g = 0, b = 255, x = 1.5, y = 1.5, z = 1.0}, -- Enter Marker Settings.
 		Resell = {Type = 1, r = 0, g = 0, b = 255, x = 5.0, y = 5.0, z = 1.0} -- Resell Marker Settings.
@@ -77,8 +78,7 @@ Config.Division = {
 			OutsideH = 177.5, -- Heading for Spawning Purchased Vehicles.
 			OutsideH2 = 177.21 -- Heading for Spawning Purchased Aircrafts.
 		}
-	},
-	Heli1 = 'polmav'
+	}
 }
 
 Config.Mechanic = {
@@ -197,6 +197,7 @@ Config.Truck = {
 	Blip = {Sprite = 67, Color = 2, Display = 4, Scale = 1.0}, -- Truck Blip Settings.
 	License = false, -- true = Requires a License to Buy Vehicles.
 	ResellPerc = 50, -- The Resell % of Vehicles Sold. | Example: $10,000 / 50% = $5,000 Back.
+	LargeVehs = {'pbus2'}, -- Large Vehicles that will spawn in Outside2.
 	Markers = {
 		Enter = {Type = 1, r = 0, g = 255, b = 0, x = 1.5, y = 1.5, z = 1.0}, -- Enter Marker Settings.
 		Resell = {Type = 1, r = 0, g = 255, b = 0, x = 5.0, y = 5.0, z = 1.0} -- Resell Marker Settings.

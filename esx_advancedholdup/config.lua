@@ -3,6 +3,10 @@ Config.Locale = 'en' -- Set Locale file to use.
 
 Config.DrawDistance	= 25 -- Marker Draw Distance.
 Config.CoolDown = 20 -- How long in Minutes before a New Robbery can be Started.
+Config.StartTimer = false -- If true it will start the CoolDown Timer when the script is Started/Restarted.
+Config.ReqWeapon = false -- If true it will Require a Weapon to be out for Markers to show up & Start Robbery.
+
+Config.AuthorizedJobs = {'unemployed', 'ballas', 'cartel', 'families', 'lostmc', 'vagos'} -- Jobs that are allowed to do Robberies.
 
 Config.Zones = {
 	-- 24/7

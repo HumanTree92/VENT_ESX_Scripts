@@ -224,7 +224,7 @@ function OpenGarageMenu(_pJob, _vType)
 					local vehVehicle, vehPlate, vehStored, vehFuel = data2.data.vehicle, data2.data.plate, data2.data.stored, data2.data.fuel
 					if data2.value == 'spawn' then
 						if vehStored then
-							if vehVehicle.model == GetHashKey('swatmrap') or vehVehicle.model == GetHashKey('mcc') then
+							if isVehicleLarge(vehVehicle.model) then
 								if ESX.Game.IsSpawnPointClear(this_Garage.Spawner3, 5.0) then
 									SpawnVehicle(this_Garage.Spawner3, this_Garage.Heading3, vehVehicle, vehPlate, vehFuel)
 									ESX.UI.Menu.CloseAll()
@@ -270,6 +270,15 @@ function OpenGarageMenu(_pJob, _vType)
 	end, function(data, menu)
 		menu.close()
 	end)
+end
+
+function isVehicleLarge(Model)
+	for _,largeVehicle in pairs(Config.LargeVehicles) do
+		if Model == GetHashKey(largeVehicle) then
+			return true
+		end
+	end
+	return false
 end
 -- End of Garage Menu
 

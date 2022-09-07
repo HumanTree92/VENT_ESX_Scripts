@@ -124,7 +124,9 @@ end)
 -- Start Timer
 AddEventHandler('onResourceStart', function(resource)
 	if resource == GetCurrentResourceName() then	
-		TriggerEvent('esx_advancedholdup:startTimer')
-		return
+		if Config.StartTimer then
+			TriggerEvent('esx_advancedholdup:startTimer')
+			return
+		end
 	end
 end)

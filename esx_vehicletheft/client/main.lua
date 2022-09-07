@@ -263,13 +263,17 @@ CreateThread(function()
 
 			if IsControlJustReleased(0, 38) and GetLastInputMethod(2) then
 				if CurrentAction == 'veh_theft_menu' then
-					ESX.TriggerServerCallback('esx_vehicletheft:checkThefts', function(success)
-						if success then
-							TriggerServerEvent('esx_vehicletheft:theftInProgress')
-						else
-							ESX.ShowNotification(_U('theft_cooldown'))
-						end
-					end)
+					if isAuthorized() then
+						ESX.TriggerServerCallback('esx_vehicletheft:checkThefts', function(success)
+							if success then
+								TriggerServerEvent('esx_vehicletheft:theftInProgress')
+							else
+								ESX.ShowNotification(_U('theft_cooldown'))
+							end
+						end)
+					else
+						ESX.ShowNotification(_U('cant_job'))
+					end
 				elseif CurrentAction == 'veh_delivered_menu' then
 					FinishDelivery()
 				end
@@ -281,3 +285,18 @@ CreateThread(function()
 		end
 	end
 end)
+
+-- Authorized Jobs
+function isAuthorized()
+	if not ESX or not ESX.PlayerData.job then
+		return false
+	end
+
+	for k,job in pairs(Config.Main.AuthorizedJobs) do
+		if job == ESX.PlayerData.job.name then
+			return true
+		end
+	end
+
+	return false
+end

@@ -16,4 +16,5 @@ Locales['en'] = {
 	['press_theft'] = 'Press ~INPUT_CONTEXT~ to Steal a Vehicle',
 	['press_deliver'] = 'Press ~INPUT_CONTEXT~ to Deliver Vehicle',
 	['theft_cooldown'] = 'There is currently a Cool Down or a Theft is already in Progress. Come back later.',
+	['cant_job'] = 'You are not the Correct Job to Start a Theft!',
 }

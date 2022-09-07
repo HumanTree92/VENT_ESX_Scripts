@@ -438,14 +438,14 @@ function BuyVehicleShopMenu(pJobC, sTypeC)
 						ESX.ShowNotification(_U('your_rank'))
 					end
 				elseif pJobC == 'ambulance' and sTypeC == 'division' or pJobC == 'police' and sTypeC == 'division' then
-					if vehicleData.model == Config.Division.Heli1 then
+					if isVehicleAircraft(vehicleData.model) then
 						ContinuePurchase = true
 						spawnloc, spawnhead = thisShop.Outside2, thisShop.OutsideH2
 					else
 						ContinuePurchase = true
 					end
 				elseif pJobC == 'civ' and sTypeC == 'truck' then
-					if vehicleData.model == 'pbus2' then
+					if isVehicleLarge(vehicleData.model) then
 						ContinuePurchase = true
 						spawnloc, spawnhead = thisShop.Outside2, thisShop.OutsideH2
 					else
@@ -509,6 +509,7 @@ function BuyVehicleShopMenu(pJobC, sTypeC)
 		local playerPed = PlayerPedId()
 
 		shopDeleteDisplayVehicle()
+		wait(100)
 		shopWaitVehicle(vehicleData.model)
 
 		ESX.Game.SpawnLocalVehicle(vehicleData.model, thisShop.Inside, thisShop.InsideH, function(vehicle)
@@ -520,6 +521,7 @@ function BuyVehicleShopMenu(pJobC, sTypeC)
 	end)
 
 	shopDeleteDisplayVehicle()
+	wait(100)
 	shopWaitVehicle(firstVehicleData.model)
 
 	ESX.Game.SpawnLocalVehicle(firstVehicleData.model, thisShop.Inside, thisShop.InsideH, function(vehicle)
@@ -528,6 +530,25 @@ function BuyVehicleShopMenu(pJobC, sTypeC)
 		FreezeEntityPosition(vehicle, true)
 		SetModelAsNoLongerNeeded(firstVehicleData.model)
 	end)
+end
+
+-- Vehicle Checks
+function isVehicleAircraft(Model)
+	for _,aircraftVehicle in pairs(Config.Division.Helis) do
+		if Model == GetHashKey(aircraftVehicle) then
+			return true
+		end
+	end
+	return false
+end
+
+function isVehicleLarge(Model)
+	for _,largeVehicle in pairs(Config.Truck.LargeVehs) do
+		if Model == GetHashKey(largeVehicle) then
+			return true
+		end
+	end
+	return false
 end
 
 -- Wait for Vehicle to Load
@@ -547,6 +568,8 @@ function shopWaitVehicle(modelHash)
 		end
 
 		BusyspinnerOff()
+	else
+		Wait(500)
 	end
 end
 

@@ -6,6 +6,7 @@ Config.Main = {
 	PoliceReq = 2, -- The Minium Amount of Police to be Online.
 	BlipTime = 10, -- Blip Update Time in Seconds.
 	CoolDown = 20, -- How long in Minutes before a New Vehicle Theft can be Started.
+	AuthorizedJobs = {'unemployed', 'ballas', 'cartel', 'families', 'lostmc', 'vagos'}, -- Jobs that are allowed to do Vehicle Thefts.
 	Plate = true, -- true = Give Vehicle Custom Plate Text.
 	SetPlate = ' STOLEN ', -- Custom Plate Text. | Max of 8 Characters including Spaces.
 	LegacyFuel = true, -- true = Using LegacyFuel.
