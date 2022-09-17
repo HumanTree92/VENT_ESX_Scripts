@@ -1,11 +1,13 @@
 Config = {}
 Config.Locale = 'en' -- Set Locale file to use.
 
+-- If you Set PlateSingleSpace & PlateDoubleSpace to false the plate will be like 'LLLLNNNN'
 Config.Main = {
 	DrawDistanceE = 20, -- Enter Marker Draw Distance.
 	DrawDistanceR = 50, -- Resell Marker Draw Distance.
-	PlateUseSpace = true, -- true = 'LLL  NNN' | false = 'LLLLNNNN' | Where L is a Random Letter & N is a Random Number.
-	MaxMigrates = 6, -- Higher Value will cause Deadlocks on the Database. 
+	PlateSingleSpace = false, -- true = 'LLL NNN' | Where L is a Random Letter & N is a Random Number.
+	PlateDoubleSpace = true, -- true = 'LLL  NNN' | Where L is a Random Letter & N is a Random Number.
+	MaxMigrates = 6, -- Higher Value will cause Deadlocks on the Database.
 	LegacyFuel = false, -- true = Using LegacyFuel.
 	Financing = false, -- WIP Feature Keep false for now.
 	Limit = false -- WIP Feature Keep false for now.

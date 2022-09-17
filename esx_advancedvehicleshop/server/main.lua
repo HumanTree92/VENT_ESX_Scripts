@@ -568,9 +568,9 @@ ESX.RegisterServerCallback('esx_advancedvehicleshop:buyVehicle', function(source
 
 	if pChoiceS == 'finance' then
 		--[[if then
-			
+
 		else
-			
+
 		end]]--
 	elseif pChoiceS == 'payfull' then
 		if modelPrice and xPlayer.getMoney() >= modelPrice then

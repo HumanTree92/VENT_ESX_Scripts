@@ -1,6 +1,5 @@
 local HasAlreadyEnteredMarker, isInJail, unJail = false, false, false
 local LastZone, CurrentAction, CurrentActionMsg
-local CurrentActionData = {}
 local jailTime = 0
 
 RegisterNetEvent('esx:playerLoaded')
@@ -11,7 +10,7 @@ end)
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
-    ESX.PlayerData.job = job
+	ESX.PlayerData.job = job
 end)
 
 -- Disable Certain Controls if Jailed
@@ -536,7 +535,6 @@ end
 AddEventHandler('esx_advancedjail:hasEnteredMarker', function(zone)
 	CurrentAction = 'prison_clothing_menu'
 	CurrentActionMsg = _U('press_access')
-	CurrentActionData = {}
 end)
 
 -- Exited Marker
@@ -588,7 +586,7 @@ CreateThread(function()
 		if letSleep then
 			Wait(500)
 		end
-	end	
+	end
 end)
 
 -- Key controls

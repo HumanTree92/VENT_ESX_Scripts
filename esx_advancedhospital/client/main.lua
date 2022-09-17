@@ -1,4 +1,3 @@
-local CurrentActionData = {}
 local HasAlreadyEnteredMarker, IsInMainMenu = false, false
 local LastZone, CurrentAction, CurrentActionMsg
 
@@ -32,7 +31,7 @@ function OpenSurgeryMenu()
 						menu.close()
 					else
 						ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
-							TriggerEvent('skinchanger:loadSkin', skin) 
+							TriggerEvent('skinchanger:loadSkin', skin)
 						end)
 
 						ESX.ShowNotification(_U('not_enough_money'))
@@ -43,7 +42,7 @@ function OpenSurgeryMenu()
 				end)
 			else
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
-					TriggerEvent('skinchanger:loadSkin', skin) 
+					TriggerEvent('skinchanger:loadSkin', skin)
 				end)
 
 				IsInMainMenu = false
@@ -55,14 +54,12 @@ function OpenSurgeryMenu()
 			FreezeEntityPosition(playerPed, false)
 			menu.close()
 			CurrentAction = 'surgery_menu'
-			CurrentActionData = {}
 		end)
 	end, function(data, menu)
 		IsInMainMenu = false
 		FreezeEntityPosition(playerPed, false)
 		menu.close()
 		CurrentAction = 'surgery_menu'
-		CurrentActionData = {}
 	end, {
 		'sex', 'face', 'skin', 'age_1', 'age_2', 'beard_1', 'beard_2', 'beard_3', 'beard_4', 'hair_1', 'hair_2', 'hair_color_1', 'hair_color_2',
 		'eye_color', 'eyebrows_1', 'eyebrows_2', 'eyebrows_3', 'eyebrows_4', 'makeup_1', 'makeup_2', 'makeup_3', 'makeup_4', 'lipstick_1',
@@ -77,11 +74,9 @@ AddEventHandler('esx_advancedhospital:hasEnteredMarker', function(zone)
 	if zone == 'HealingLocations' then
 		CurrentAction = 'healing_menu'
 		CurrentActionMsg = _U('healing_menu', ESX.Math.GroupDigits(Config.HealingPrice))
-		CurrentActionData = {}
 	elseif zone == 'SurgeryLocations' then
 		CurrentAction = 'surgery_menu'
 		CurrentActionMsg = _U('surgery_menu', ESX.Math.GroupDigits(Config.SurgeryPrice))
-		CurrentActionData = {}
 	end
 end)
 
@@ -188,7 +183,7 @@ CreateThread(function()
 				end
 			end
 		end
-		
+
 		if (isInMarker and not HasAlreadyEnteredMarker) or (isInMarker and LastZone ~= currentZone) then
 			HasAlreadyEnteredMarker, LastZone = true, currentZone
 			LastZone = currentZone

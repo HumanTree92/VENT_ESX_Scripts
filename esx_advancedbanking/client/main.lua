@@ -1,4 +1,3 @@
-local CurrentActionData = {}
 local HasAlreadyEnteredMarker, IsInMainMenu = false, false
 local LastZone, CurrentAction, CurrentActionMsg
 
@@ -78,7 +77,7 @@ end)
 
 -- Open UI Function
 function openUI()
-	if Config.Animation.Active then 
+	if Config.Animation.Active then
 		playAnim('mp_common', 'givetake1_a', Config.Animation.Time)
 		Wait(Config.Animation.Time)
 	end
@@ -94,7 +93,7 @@ function closeUI()
 	IsInMainMenu = false
 	SetNuiFocus(false, false)
 
-	if Config.Animation.Active then 
+	if Config.Animation.Active then
 		playAnim('mp_common', 'givetake1_a', Config.Animation.Time)
 		Wait(Config.Animation.Time)
 	end
@@ -107,11 +106,9 @@ AddEventHandler('esx_advancedbanking:hasEnteredMarker', function(zone)
 	if zone == 'ATMLocations' then
 		CurrentAction = 'atm_menu'
 		CurrentActionMsg = _U('press_access_atm')
-		CurrentActionData = {}
 	elseif zone == 'BankLocations' then
 		CurrentAction = 'bank_menu'
 		CurrentActionMsg = _U('press_access_bank')
-		CurrentActionData = {}
 	end
 end)
 

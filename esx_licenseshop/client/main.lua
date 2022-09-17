@@ -32,7 +32,7 @@ function OpenMainMenu()
 				for i=1, #Licenses, 1 do
 					ownedLicenses[Licenses[i].type] = true
 				end
-				
+
 				if not ownedLicenses['dmv'] then
 					ESX.ShowNotification(_U('need_dmv'))
 				else
@@ -263,7 +263,7 @@ function openESXLicenseShop()
 		for i=1, #Licenses, 1 do
 			ownedLicenses[Licenses[i].type] = true
 		end
-		
+
 		if not ownedLicenses['dmv'] then
 			ESX.ShowNotification(_U('need_dmv'))
 		else

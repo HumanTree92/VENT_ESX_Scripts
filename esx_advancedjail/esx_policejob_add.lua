@@ -1,6 +1,6 @@
 -- Step 1: Go to en.lua and add Lines 17-33 to esx_policejob/locales/en.lua
 
--- In order for this to work you must add the following to esx_policejob/client/main.lua 
+-- In order for this to work you must add the following to esx_policejob/client/main.lua
 -- Step 2: Add this to the bottom of the citizen_interaction in the elements
 -- Note: Make sure you have commas in the correct spot
 {label = _U('jail'), value = 'jail'},

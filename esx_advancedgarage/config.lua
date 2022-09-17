@@ -423,8 +423,8 @@ Config.Pvt = {
 			Deleter = vector3(-1538.56, -576.05, 24.71), -- Delete Location
 			Heading = 331.176 -- Spawn Heading
 		},
-		-- End of Lom Bank 
-		-- Start of Maze Bank West 
+		-- End of Lom Bank
+		-- Start of Maze Bank West
 		MazeBankWest_MBWOldSpiceWarm = {
 			Private = 'MBWOldSpiceWarm',
 			Marker = vector3(-1368.14, -468.01, 30.6), -- Enter Location

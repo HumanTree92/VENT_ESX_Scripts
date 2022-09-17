@@ -18,7 +18,7 @@ CreateThread(function()
 	local deliveryIds = 1
 	for k,v in pairs(Config.Delivery.Locations) do
 		table.insert(allDeliveries, {id = deliveryIds, loc = v.Marker, reward = v.Reward, veh = v.Vehicles})
-		deliveryIds = deliveryIds + 1  
+		deliveryIds = deliveryIds + 1
 	end
 end)
 
@@ -235,7 +235,7 @@ CreateThread(function()
 				end
 			end
 		end
-		
+
 		if (isInMarker and not HasAlreadyEnteredMarker) or (isInMarker and LastZone ~= currentZone) then
 			HasAlreadyEnteredMarker, LastZone = true, currentZone
 			LastZone = currentZone

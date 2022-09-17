@@ -18,10 +18,10 @@ function OpenSpawnerMenu()
 			local elements2 = {}
 
 			for i=1, #Config.Vehicles, 1 do
-				 table.insert(elements2, {
+				table.insert(elements2, {
 					label = Config.Vehicles[i].label,
 					model = Config.Vehicles[i].model
-				 })
+				})
 			end
 
 			ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'default_veh', {

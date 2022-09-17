@@ -45,8 +45,8 @@ end)
 
 -- Bandage
 ESX.RegisterUsableItem('bandage', function(source)
-    local xPlayer = ESX.GetPlayerFromId(source)
-    TriggerClientEvent('esx_extraitems:bandage', source)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	TriggerClientEvent('esx_extraitems:bandage', source)
 	if Config.Removeables.Bandage then
 		xPlayer.removeInventoryItem('bandage', 1)
 		xPlayer.showNotification(_U('used_bandage'))
@@ -99,8 +99,8 @@ end)
 
 -- Defib
 ESX.RegisterUsableItem('defib', function(source)
-    local xPlayer = ESX.GetPlayerFromId(source)
-    TriggerClientEvent('esx_extraitems:defib', source)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	TriggerClientEvent('esx_extraitems:defib', source)
 end)
 
 RegisterNetEvent('esx_extraitems:removedefib')
@@ -115,8 +115,8 @@ end)
 
 -- Drill
 ESX.RegisterUsableItem('drill', function(source)
-    local xPlayer = ESX.GetPlayerFromId(source)
-    TriggerClientEvent('esx_extraitems:drill', source)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	TriggerClientEvent('esx_extraitems:drill', source)
 end)
 
 RegisterNetEvent('esx_extraitems:removedrill')
@@ -409,7 +409,7 @@ ESX.RegisterServerCallback('esx_extraitems:AddWeaponComponent', function(source,
 			break
 		end
 	end
-	
+
 	if not selectedWeapon then
 		print(('esx_extraitems: %s attempted to Install an invalid weapon component 1.'):format(xPlayer.identifier))
 		cb(false)
@@ -437,7 +437,7 @@ ESX.RegisterServerCallback('esx_extraitems:RemoveWeaponComponent', function(sour
 			break
 		end
 	end
-	
+
 	if not selectedWeapon then
 		print(('esx_extraitems: %s attempted to Uninstall an invalid weapon component 1.'):format(xPlayer.identifier))
 		cb(false)
@@ -467,7 +467,7 @@ ESX.RegisterServerCallback('esx_extraitems:UpgradeWeapon', function(source, cb, 
 			break
 		end
 	end
-	
+
 	if not selectedWeapon then
 		print(('esx_extraitems: %s attempted to Upgrade an invalid weapon.'):format(xPlayer.identifier))
 		cb(false)

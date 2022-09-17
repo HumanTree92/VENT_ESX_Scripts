@@ -18,3 +18,4 @@ Made by Human Tree92 ([Velociti Entertainment Customs & Wiki]( http://www.veloci
 2) Place `esx_advancedjail` in your ESX Directory
 3) Add `start esx_advancedjail` to your server.cfg
 4) Edit the `config.lua` to your liking
+5) Follow `esx_policejob_add.lua` to add the Jail to esx_policejob

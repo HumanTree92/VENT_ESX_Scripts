@@ -316,7 +316,7 @@ function DisplayBoughtScaleform(weaponName, price)
 		while sec > 0 do
 			Wait(0)
 			sec = sec - 0.01
-	
+
 			DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255)
 		end
 	end)
@@ -404,7 +404,7 @@ CreateThread(function()
 			HasAlreadyEnteredMarker = true
 			TriggerEvent('esx_advancedweaponshop:hasEnteredMarker', currentZone)
 		end
-		
+
 		if not isInMarker and HasAlreadyEnteredMarker then
 			HasAlreadyEnteredMarker = false
 			TriggerEvent('esx_advancedweaponshop:hasExitedMarker', LastZone)

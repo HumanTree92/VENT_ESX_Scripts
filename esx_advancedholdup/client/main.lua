@@ -10,7 +10,7 @@ end)
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
-    ESX.PlayerData.job = job
+	ESX.PlayerData.job = job
 end)
 
 -- Start Robbery Timer

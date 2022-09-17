@@ -3,7 +3,7 @@ body, html {
 }
 /* main.css */
 
-button{ 
+button{
 	color: white;
 	background-color: #000000;
 	font-family: 'Segoe UI';
@@ -52,7 +52,7 @@ h4{
 }
 
 .general{
-    background-image: url('img/BG_White.png');
+	background-image: url('img/BG_White.png');
 	background-repeat: no-repeat;
 	font-family: 'Segoe UI';
 	background-size: 620px 430px;
@@ -61,7 +61,7 @@ h4{
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
-    padding: 10px;
+	padding: 10px;
 	position: absolute;
 	margin-top: 10%;
 	margin-left: auto;
@@ -70,7 +70,7 @@ h4{
 }
 
 .depositUI{
-    background-image: url('img/BG_White.png');
+	background-image: url('img/BG_White.png');
 	background-repeat: no-repeat;
 	font-family: 'Segoe UI';
 	background-size: 620px 430px;
@@ -79,7 +79,7 @@ h4{
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
-    padding: 10px;
+	padding: 10px;
 	position: absolute;
 	margin-top: 10%;
 	margin-left: auto;
@@ -88,7 +88,7 @@ h4{
 }
 
 .withdrawUI{
-    background-image: url('img/BG_White.png');
+	background-image: url('img/BG_White.png');
 	background-repeat: no-repeat;
 	font-family: 'Segoe UI';
 	background-size: 620px 430px;
@@ -97,7 +97,7 @@ h4{
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
-    padding: 10px;
+	padding: 10px;
 	position: absolute;
 	margin-top: 10%;
 	margin-left: auto;
@@ -106,7 +106,7 @@ h4{
 }
 
 .balanceUI{
-    background-image: url('img/BG_White.png');
+	background-image: url('img/BG_White.png');
 	background-repeat: no-repeat;
 	font-family: 'Segoe UI';
 	background-size: 620px 430px;
@@ -115,7 +115,7 @@ h4{
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
-    padding: 10px;
+	padding: 10px;
 	position: absolute;
 	margin-top: 10%;
 	margin-left: auto;
@@ -124,7 +124,7 @@ h4{
 }
 
 .transferUI{
-    background-image: url('img/BG_White.png');
+	background-image: url('img/BG_White.png');
 	background-repeat: no-repeat;
 	font-family: 'Segoe UI';
 	background-size: 620px 430px;
@@ -133,7 +133,7 @@ h4{
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
-    padding: 10px;
+	padding: 10px;
 	position: absolute;
 	margin-top: 10%;
 	margin-left: auto;

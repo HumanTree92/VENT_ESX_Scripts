@@ -141,7 +141,7 @@ end)
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
-    ESX.PlayerData.job = job
+	ESX.PlayerData.job = job
 
 	if Config.Ambulance.Blips or Config.Police.Blips or Config.Division.Blips or Config.Mechanic.Blips or Config.Taxi.Blips then
 		DeleteJobBlips()

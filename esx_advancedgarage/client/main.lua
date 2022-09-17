@@ -1,4 +1,4 @@
-local CurrentActionData, userProperties, this_Garage, vehInstance, BlipList, PrivateBlips, JobBlips = {}, {}, {}, {}, {}, {}, {}
+local userProperties, this_Garage, vehInstance, BlipList, PrivateBlips, JobBlips = {}, {}, {}, {}, {}, {}
 local HasAlreadyEnteredMarker = false
 local LastZone, CurrentAction, CurrentActionMsg
 
@@ -20,7 +20,7 @@ end)
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
-    ESX.PlayerData.job = job
+	ESX.PlayerData.job = job
 
 	DeleteJobBlips()
 	RefreshJobBlips()
@@ -475,7 +475,7 @@ function OpenStoreMenu(_pJob, _vType)
 					if retval then
 						StoreVehicle(trailer, trailerProps)
 					end
-				end	
+				end
 			else
 				ESX.ShowNotification(_U('cannot_store_vehicle'))
 			end
@@ -555,8 +555,8 @@ function GiveKeys(plate)
 	local playerPed = GetPlayerPed(-1)
 	local vehicle = GetVehiclePedIsIn(playerPed, false)
 	local vehicleLabel = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
-	--print(vehicleLabel)
-	--TriggerServerEvent('SCRIPT_NAME_HERE:EVENT_NAME_HERE', GetPlayerServerId(PlayerId()), plate, vehicleLabel)
+	print(vehicleLabel)
+	TriggerServerEvent('SCRIPT_NAME_HERE:EVENT_NAME_HERE', GetPlayerServerId(PlayerId()), plate, vehicleLabel)
 end
 
 -- Check Vehicles
@@ -582,87 +582,66 @@ AddEventHandler('esx_advancedgarage:hasEnteredMarker', function(zone)
 	if zone == 'ambulance_garage_point' then
 		CurrentAction = 'ambulance_garage_point'
 		CurrentActionMsg = _U('press_to_enter')
-		CurrentActionData = {}
 	elseif zone == 'ambulance_store_point' then
 		CurrentAction = 'ambulance_store_point'
 		CurrentActionMsg = _U('press_to_delete')
-		CurrentActionData = {}
 	elseif zone == 'ambulance_pound_point' then
 		CurrentAction = 'ambulance_pound_point'
 		CurrentActionMsg = _U('press_to_impound')
-		CurrentActionData = {}
 	elseif zone == 'police_garage_point' then
 		CurrentAction = 'police_garage_point'
 		CurrentActionMsg = _U('press_to_enter')
-		CurrentActionData = {}
 	elseif zone == 'police_store_point' then
 		CurrentAction = 'police_store_point'
 		CurrentActionMsg = _U('press_to_delete')
-		CurrentActionData = {}
 	elseif zone == 'police_pound_point' then
 		CurrentAction = 'police_pound_point'
 		CurrentActionMsg = _U('press_to_impound')
-		CurrentActionData = {}
 	elseif zone == 'mechanic_garage_point' then
 		CurrentAction = 'mechanic_garage_point'
 		CurrentActionMsg = _U('press_to_enter')
-		CurrentActionData = {}
 	elseif zone == 'mechanic_store_point' then
 		CurrentAction = 'mechanic_store_point'
 		CurrentActionMsg = _U('press_to_delete')
-		CurrentActionData = {}
 	elseif zone == 'mechanic_pound_point' then
 		CurrentAction = 'mechanic_pound_point'
 		CurrentActionMsg = _U('press_to_impound')
-		CurrentActionData = {}
 	elseif zone == 'taxi_garage_point' then
 		CurrentAction = 'taxi_garage_point'
 		CurrentActionMsg = _U('press_to_enter')
-		CurrentActionData = {}
 	elseif zone == 'taxi_store_point' then
 		CurrentAction = 'taxi_store_point'
 		CurrentActionMsg = _U('press_to_delete')
-		CurrentActionData = {}
 	elseif zone == 'taxi_pound_point' then
 		CurrentAction = 'taxi_pound_point'
 		CurrentActionMsg = _U('press_to_impound')
-		CurrentActionData = {}
 	elseif zone == 'aircraft_garage_point' then
 		CurrentAction = 'aircraft_garage_point'
 		CurrentActionMsg = _U('press_to_enter')
-		CurrentActionData = {}
 	elseif zone == 'aircraft_store_point' then
 		CurrentAction = 'aircraft_store_point'
 		CurrentActionMsg = _U('press_to_delete')
-		CurrentActionData = {}
 	elseif zone == 'aircraft_pound_point' then
 		CurrentAction = 'aircraft_pound_point'
 		CurrentActionMsg = _U('press_to_impound')
-		CurrentActionData = {}
 	elseif zone == 'boat_garage_point' then
 		CurrentAction = 'boat_garage_point'
 		CurrentActionMsg = _U('press_to_enter')
-		CurrentActionData = {}
 	elseif zone == 'boat_store_point' then
 		CurrentAction = 'boat_store_point'
 		CurrentActionMsg = _U('press_to_delete')
-		CurrentActionData = {}
 	elseif zone == 'boat_pound_point' then
 		CurrentAction = 'boat_pound_point'
 		CurrentActionMsg = _U('press_to_impound')
-		CurrentActionData = {}
 	elseif zone == 'car_garage_point' then
 		CurrentAction = 'car_garage_point'
 		CurrentActionMsg = _U('press_to_enter')
-		CurrentActionData = {}
 	elseif zone == 'car_store_point' then
 		CurrentAction = 'car_store_point'
 		CurrentActionMsg = _U('press_to_delete')
-		CurrentActionData = {}
 	elseif zone == 'car_pound_point' then
 		CurrentAction = 'car_pound_point'
 		CurrentActionMsg = _U('press_to_impound')
-		CurrentActionData = {}
 	end
 end)
 

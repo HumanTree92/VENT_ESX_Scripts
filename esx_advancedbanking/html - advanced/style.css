@@ -386,7 +386,7 @@ label{
 }
 
 .input-cont input::-webkit-input-placeholder {
-  color: #7cb732;
+color: #7cb732;
 }
 
 .double-input{

@@ -1,6 +1,7 @@
 Locales['es'] = {
 	-- Main
 	['press_to_rob'] = 'Presiona ~INPUT_CONTEXT~ para ~o~~h~Empezar el atraco!~s~',
+
 	-- Robbery Notifications
 	['rob_in_prog'] = '~r~Ya hay un atraco en proceso!',
 	['rob_started'] = 'Has empezado un Atraco, ~o~NO TE VAYAS MUY LEJOS!!!~s~',
@@ -12,6 +13,7 @@ Locales['es'] = {
 	['rob_required'] = 'Se requieren un mínimo de ~b~%s~s~ Polícias para atracar en este lugar.',
 	['rob_cooldown'] = 'Actualmente hay un enfriamiento o un robo ya está en curso. Vuelve luego.',
 	['cant_job'] = 'No eres el trabajo correcto para iniciar robos!',
+
 	-- Police Alerts
 	['police_alert'] = 'Alerta Policía',
 	['police_alert_alarm'] = '~b~10-32~s~ : Una fuerte alarma ha sido activada en ~y~%s~s~!',

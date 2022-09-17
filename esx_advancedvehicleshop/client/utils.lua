@@ -13,7 +13,9 @@ function GeneratePlate()
 		math.randomseed(GetGameTimer())
 
 		-- The Maximum Plate Length is 8 Characters (including Spaces & Symbols), DON'T GO PAST IT!!!
-		if Config.Main.PlateUseSpace then
+		if Config.Main.PlateSingleSpace then
+			generatedPlate = string.upper(GetRandomLetter(3) .. ' ' .. GetRandomNumber(3))
+		elseif Config.Main.PlateDoubleSpace then
 			generatedPlate = string.upper(GetRandomLetter(3) .. '  ' .. GetRandomNumber(3))
 		else
 			generatedPlate = string.upper(GetRandomLetter(4) .. GetRandomNumber(4))
@@ -50,7 +52,7 @@ end
 
 function GetRandomNumber(length)
 	Wait(0)
-	math.randomseed(GetGameTimer())
+
 	if length > 0 then
 		return GetRandomNumber(length - 1) .. NumberCharset[math.random(1, #NumberCharset)]
 	else
@@ -60,7 +62,7 @@ end
 
 function GetRandomLetter(length)
 	Wait(0)
-	math.randomseed(GetGameTimer())
+
 	if length > 0 then
 		return GetRandomLetter(length - 1) .. Charset[math.random(1, #Charset)]
 	else

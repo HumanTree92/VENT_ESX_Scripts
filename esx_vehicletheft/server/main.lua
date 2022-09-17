@@ -102,7 +102,7 @@ AddEventHandler('esx_vehicletheft:theftInProgress', function()
 		for _, xPlayer in pairs(xPlayers) do
 			TriggerClientEvent('esx_vehicletheft:theftPoliceNotif', xPlayer.source)
 		end
-		
+
 		xPlayer.showNotification(_U('theft_started'))
 		TriggerClientEvent('esx_vehicletheft:startTheft', _source)
 		theftPlayer = _source
@@ -152,7 +152,7 @@ end)
 
 -- Start Timer
 AddEventHandler('onResourceStart', function(resource)
-	if resource == GetCurrentResourceName() then	
+	if resource == GetCurrentResourceName() then
 		TriggerEvent('esx_vehicletheft:startTimer')
 		return
 	end
