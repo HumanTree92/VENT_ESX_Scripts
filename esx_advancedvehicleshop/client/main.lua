@@ -509,7 +509,7 @@ function BuyVehicleShopMenu(pJobC, sTypeC)
 		local playerPed = PlayerPedId()
 
 		shopDeleteDisplayVehicle()
-		wait(100)
+		Wait(100)
 		shopWaitVehicle(vehicleData.model)
 
 		ESX.Game.SpawnLocalVehicle(vehicleData.model, thisShop.Inside, thisShop.InsideH, function(vehicle)
@@ -521,7 +521,7 @@ function BuyVehicleShopMenu(pJobC, sTypeC)
 	end)
 
 	shopDeleteDisplayVehicle()
-	wait(100)
+	Wait(100)
 	shopWaitVehicle(firstVehicleData.model)
 
 	ESX.Game.SpawnLocalVehicle(firstVehicleData.model, thisShop.Inside, thisShop.InsideH, function(vehicle)
