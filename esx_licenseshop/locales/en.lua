@@ -27,4 +27,10 @@ Locales['en'] = {
 	['license_weed'] = 'Weed License',
 	-- esx_weashop Licenses
 	['license_weapon'] = 'Weapons License',
+	-- Custom Licenses
+	['license_custom1'] = 'Custom License',
+	['license_custom2'] = 'Custom License',
+	['license_custom3'] = 'Custom License',
+	['license_custom4'] = 'Custom License',
+	['license_custom5'] = 'Custom License',
 }

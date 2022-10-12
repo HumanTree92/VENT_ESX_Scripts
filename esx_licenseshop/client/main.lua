@@ -134,6 +134,38 @@ function OpenLicenseShop()
 		end
 	end
 
+	if Config.Custom.Licenses then
+		if Config.Custom.C1 then
+			if not ownedLicenses[Config.Custom.C1Name] then
+				table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(_U('license_custom1'), _U('shop_menu_item', ESX.Math.GroupDigits(Config.Prices.Custom1))), value = 'buy_license_custom1'})
+			end
+		end
+
+		if Config.Custom.C2 then
+			if not ownedLicenses[Config.Custom.C2Name] then
+				table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(_U('license_custom2'), _U('shop_menu_item', ESX.Math.GroupDigits(Config.Prices.Custom2))), value = 'buy_license_custom2'})
+			end
+		end
+
+		if Config.Custom.C3 then
+			if not ownedLicenses[Config.Custom.C3Name] then
+				table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(_U('license_custom3'), _U('shop_menu_item', ESX.Math.GroupDigits(Config.Prices.Custom3))), value = 'buy_license_custom3'})
+			end
+		end
+
+		if Config.Custom.C4 then
+			if not ownedLicenses[Config.Custom.C4Name] then
+				table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(_U('license_custom4'), _U('shop_menu_item', ESX.Math.GroupDigits(Config.Prices.Custom4))), value = 'buy_license_custom4'})
+			end
+		end
+
+		if Config.Custom.C5 then
+			if not ownedLicenses[Config.Custom.C5Name] then
+				table.insert(elements, {label = ('%s - <span style="color: green;">%s</span>'):format(_U('license_custom5'), _U('shop_menu_item', ESX.Math.GroupDigits(Config.Prices.Custom5))), value = 'buy_license_custom5'})
+			end
+		end
+	end
+
 	ESX.UI.Menu.CloseAll()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'license_shop_actions', {
 		title = _U('buy_license'),

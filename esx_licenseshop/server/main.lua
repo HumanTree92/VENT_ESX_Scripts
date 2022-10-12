@@ -202,5 +202,65 @@ AddEventHandler('esx_licenseshop:buyLicense', function(type)
 		else
 			TriggerClientEvent('esx:showNotification', _source, _U('not_enough_money'))
 		end
+	elseif type == 'buy_license_custom1' then
+		local price = Config.Prices.Custom1
+
+		if xPlayer.getMoney() >= price then
+			xPlayer.removeMoney(price)
+
+			TriggerEvent('esx_license:addLicense', _source, Config.Custom.C1Name, function()
+				LoadLicenses(_source)
+			end)
+		else
+			TriggerClientEvent('esx:showNotification', _source, _U('not_enough_money'))
+		end
+	elseif type == 'buy_license_custom2' then
+		local price = Config.Prices.Custom2
+
+		if xPlayer.getMoney() >= price then
+			xPlayer.removeMoney(price)
+
+			TriggerEvent('esx_license:addLicense', _source, Config.Custom.C2Name, function()
+				LoadLicenses(_source)
+			end)
+		else
+			TriggerClientEvent('esx:showNotification', _source, _U('not_enough_money'))
+		end
+	elseif type == 'buy_license_custom3' then
+		local price = Config.Prices.Custom3
+
+		if xPlayer.getMoney() >= price then
+			xPlayer.removeMoney(price)
+
+			TriggerEvent('esx_license:addLicense', _source, Config.Custom.C3Name, function()
+				LoadLicenses(_source)
+			end)
+		else
+			TriggerClientEvent('esx:showNotification', _source, _U('not_enough_money'))
+		end
+	elseif type == 'buy_license_custom4' then
+		local price = Config.Prices.Custom4
+
+		if xPlayer.getMoney() >= price then
+			xPlayer.removeMoney(price)
+
+			TriggerEvent('esx_license:addLicense', _source, Config.Custom.C4Name, function()
+				LoadLicenses(_source)
+			end)
+		else
+			TriggerClientEvent('esx:showNotification', _source, _U('not_enough_money'))
+		end
+	elseif type == 'buy_license_custom5' then
+		local price = Config.Prices.Custom5
+
+		if xPlayer.getMoney() >= price then
+			xPlayer.removeMoney(price)
+
+			TriggerEvent('esx_license:addLicense', _source, Config.Custom.C5Name, function()
+				LoadLicenses(_source)
+			end)
+		else
+			TriggerClientEvent('esx:showNotification', _source, _U('not_enough_money'))
+		end
 	end
 end)
