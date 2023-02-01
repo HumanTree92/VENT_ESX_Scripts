@@ -8,12 +8,14 @@ description 'ESX Vehicle Spawner'
 
 version '1.6+'
 
-shared_script '@es_extended/imports.lua'
+shared_scripts {
+	'@es_extended/imports.lua',
+	'@es_extended/locale.lua',
+	'config.lua',
+	'locales/*.lua'
+}
 
 client_scripts {
-	'@es_extended/locale.lua',
-	'locales/*.lua',
-	'config.lua',
 	'client/main.lua'
 }
 

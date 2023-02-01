@@ -231,7 +231,7 @@ RegisterNetEvent('esx_extraitems:bulletproof')
 AddEventHandler('esx_extraitems:bulletproof', function()
 	local playerPed = GetPlayerPed(-1)
 
-	SetPedComponentVariation(playerPed, 9, 27, 9, 2)
+	--SetPedComponentVariation(playerPed, 9, 27, 9, 2)
 	AddArmourToPed(playerPed, 100)
 	SetPedArmour(playerPed, 100)
 end)
@@ -736,6 +736,7 @@ AddEventHandler('esx_extraitems:vape', function()
 			RequestAnimDict('anim@heists@humane_labs@finale@keycards')
 			Wait(1)
 		end
+
 		TaskPlayAnim(playerPed, 'anim@heists@humane_labs@finale@keycards', 'ped_a_enter_loop', 8.00, -8.00, -1, (2 + 16 + 32), 0.00, 0, 0, 0)
 
 		local x,y,z = table.unpack(GetEntityCoords(playerPed))
@@ -780,10 +781,12 @@ end)
 RegisterNetEvent('esx_extraitems:VapeAnim')
 AddEventHandler('esx_extraitems:VapeAnim', function(source)
 	local ped = GetPlayerPed(-1)
+
 	while (not HasAnimDictLoaded('anim@heists@humane_labs@finale@keycards')) do
 		RequestAnimDict('anim@heists@humane_labs@finale@keycards')
 		Wait(1)
 	end
+
 	TaskPlayAnim(ped, 'anim@heists@humane_labs@finale@keycards', 'ped_a_enter_loop', 8.00, -8.00, -1, (2 + 16 + 32), 0.00, 0, 0, 0)
 end)
 
@@ -795,22 +798,27 @@ AddEventHandler('esx_extraitems:VapeSmoke', function(c_ped)
 			createdSmoke = UseParticleFxAssetNextCall('core')
 			createdPart = StartParticleFxLoopedOnEntityBone('exp_grd_bzgas_smoke', NetToPed(c_ped), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, GetPedBoneIndex(NetToPed(c_ped), bones), Config.Vape.SmokeSize, 0.0, 0.0, 0.0)
 			Wait(Config.Vape.SmokeTime)
+
 			while DoesParticleFxLoopedExist(createdSmoke) do
 				StopParticleFxLooped(createdSmoke, 1)
 				Wait(0)
 			end
+
 			while DoesParticleFxLoopedExist(createdPart) do
 				StopParticleFxLooped(createdPart, 1)
 				Wait(0)
 			end
+
 			while DoesParticleFxLoopedExist('exp_grd_bzgas_smoke') do
 				StopParticleFxLooped('exp_grd_bzgas_smoke', 1)
 				Wait(0)
 			end
+
 			while DoesParticleFxLoopedExist('core') do
 				StopParticleFxLooped('core', 1)
 				Wait(0)
 			end
+
 			Wait(Config.Vape.SmokeTime*3)
 			RemoveParticleFxFromEntity(NetToPed(c_ped))
 			break
@@ -900,6 +908,7 @@ function GPSList()
 			return true
 		end
 	end
+
 	return false
 end
 -- End of Vehicle GPS

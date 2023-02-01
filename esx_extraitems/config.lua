@@ -257,7 +257,7 @@ Config.Vape = {
 Config.GPS = {
 	VehicleGPS = false, -- true = Disable Radar except in Vehicles if they Use GPS Item.
 	LimitedVehicles = false, -- true = Allow only Aircrafts, Boats, & Cars to use GPS.
-	OnlyFrontSeats = false, -- true = Allow the front 2 seats to be able to see Radar if they used it.
+	OnlyFrontSeats = false, -- true = Allow only the front 2 seats to be able to see Radar if they used it.
 	BikeGPS = {
 		'sanchez'
 	}

@@ -67,6 +67,11 @@ AddEventHandler('esx_advancedjail:sendToJail', function(playerId, jailTime, jail
 	end
 end)
 
+RegisterNetEvent('esx_advancedjail:unjailPlayerS')
+AddEventHandler('esx_advancedjail:unjailPlayerS', function(playerId)
+	unjailPlayer(playerId)
+end)
+
 function unjailPlayer(playerId)
 	local xPlayer = ESX.GetPlayerFromId(playerId)
 
@@ -207,4 +212,6 @@ AddEventHandler('esx_advancedjail:removeInventory', function()
 		xPlayer.addInventoryItem(Config.FoodItem, Config.FoodAmount)
 		xPlayer.addInventoryItem(Config.DrinkItem, Config.DrinkAmount)
 	end
+
+	--Core.SavePlayer(xPlayer)
 end)
