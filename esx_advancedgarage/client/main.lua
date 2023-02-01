@@ -75,6 +75,18 @@ function OpenGarageMenu(_pJob, _vType)
 	elseif pJob == 'civ' and vType == 'aircrafts' then
 		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
 			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('viphelis'), value = 'viphelis', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'viphelis')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipplanes'), value = 'vipplanes', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipplanes')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
 				table.insert(elements, {label = _U('helis'), value = 'helis', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
 			end
 		end, pJob, 'helis')
@@ -87,6 +99,18 @@ function OpenGarageMenu(_pJob, _vType)
 	elseif pJob == 'civ' and vType == 'boats' then
 		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
 			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipboats'), value = 'vipboats', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipboats')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipsubs'), value = 'vipsubs', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipsubs')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
 				table.insert(elements, {label = _U('boats'), value = 'boats', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
 			end
 		end, pJob, 'boats')
@@ -97,6 +121,78 @@ function OpenGarageMenu(_pJob, _vType)
 			end
 		end, pJob, 'subs')
 	elseif pJob == 'civ' and vType == 'cars' then
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipcompacts'), value = 'vipcompacts', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipcompacts')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipcoupes'), value = 'vipcoupes', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipcoupes')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipmotos'), value = 'vipmotos', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipmotos')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipmuscles'), value = 'vipmuscles', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipmuscles')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipoffroads'), value = 'vipoffroads', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipoffroads')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipsedans'), value = 'vipsedans', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipsedans')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipsports'), value = 'vipsports', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipsports')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipsportscs'), value = 'vipsportscs', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipsportscs')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipsupers'), value = 'vipsupers', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipsupers')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipsuvs'), value = 'vipsuvs', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipsuvs')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('vipvans'), value = 'vipvans', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'vipvans')
+
+		ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
+			if #ownedVehicles > 0 then
+				table.insert(elements, {label = _U('viptrucks'), value = 'viptrucks', spawnloc = this_Garage.Spawner, spawnhead = this_Garage.Heading})
+			end
+		end, pJob, 'viptrucks')
+
 		if Config.Main.TruckShop then
 			ESX.TriggerServerCallback('esx_advancedgarage:getOwnedVehicles', function(ownedVehicles)
 				if #ownedVehicles > 0 then
@@ -340,20 +436,38 @@ function OpenImpoundMenu(_pJob, _vType)
 				ESX.ShowNotification(_U('impound_no_veh'))
 			else
 				for _,v in pairs(outOwnedCars) do
-					if pJob == 'ambulance' and vType == 'none' then
-						table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value', ESX.Math.GroupDigits(Config.Ambulance.PoundP)), '{{' .. _U('return') .. '|return}}'}})
-					elseif pJob == 'police' and vType == 'none' then
-						table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value', ESX.Math.GroupDigits(Config.Police.PoundP)), '{{' .. _U('return') .. '|return}}'}})
-					elseif pJob == 'mechanic' and vType == 'none' then
-						table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value', ESX.Math.GroupDigits(Config.Mechanic.PoundP)), '{{' .. _U('return') .. '|return}}'}})
-					elseif pJob == 'taxi' and vType == 'none' then
-						table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value', ESX.Math.GroupDigits(Config.Taxi.PoundP)), '{{' .. _U('return') .. '|return}}'}})
-					elseif pJob == 'civ' and vType == 'aircrafts' then
-						table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value', ESX.Math.GroupDigits(Config.Aircrafts.PoundP)), '{{' .. _U('return') .. '|return}}'}})
-					elseif pJob == 'civ' and vType == 'boats' then
-						table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value', ESX.Math.GroupDigits(Config.Boats.PoundP)), '{{' .. _U('return') .. '|return}}'}})
-					elseif pJob == 'civ' and vType == 'cars' then
-						table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value', ESX.Math.GroupDigits(Config.Cars.PoundP)), '{{' .. _U('return') .. '|return}}'}})
+					if Config.Main.VIPScript then
+						if pJob == 'ambulance' and vType == 'none' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_rd', ESX.Math.GroupDigits(Config.Ambulance.PoundP), ESX.Math.GroupDigits(Config.Ambulance.PoundD)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'police' and vType == 'none' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_rd', ESX.Math.GroupDigits(Config.Police.PoundP), ESX.Math.GroupDigits(Config.Police.PoundD)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'mechanic' and vType == 'none' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_rd', ESX.Math.GroupDigits(Config.Mechanic.PoundP), ESX.Math.GroupDigits(Config.Mechanic.PoundD)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'taxi' and vType == 'none' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_rd', ESX.Math.GroupDigits(Config.Taxi.PoundP), ESX.Math.GroupDigits(Config.Taxi.PoundD)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'civ' and vType == 'aircrafts' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_rd', ESX.Math.GroupDigits(Config.Aircrafts.PoundP), ESX.Math.GroupDigits(Config.Aircrafts.PoundD)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'civ' and vType == 'boats' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_rd', ESX.Math.GroupDigits(Config.Boats.PoundP), ESX.Math.GroupDigits(Config.Boats.PoundD)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'civ' and vType == 'cars' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_rd', ESX.Math.GroupDigits(Config.Cars.PoundP), ESX.Math.GroupDigits(Config.Cars.PoundD)), '{{' .. _U('return') .. '|return}}'}})
+						end
+					else
+						if pJob == 'ambulance' and vType == 'none' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_r', ESX.Math.GroupDigits(Config.Ambulance.PoundP)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'police' and vType == 'none' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_r', ESX.Math.GroupDigits(Config.Police.PoundP)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'mechanic' and vType == 'none' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_r', ESX.Math.GroupDigits(Config.Mechanic.PoundP)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'taxi' and vType == 'none' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_r', ESX.Math.GroupDigits(Config.Taxi.PoundP)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'civ' and vType == 'aircrafts' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_r', ESX.Math.GroupDigits(Config.Aircrafts.PoundP)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'civ' and vType == 'boats' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_r', ESX.Math.GroupDigits(Config.Boats.PoundP)), '{{' .. _U('return') .. '|return}}'}})
+						elseif pJob == 'civ' and vType == 'cars' then
+							table.insert(elements2.rows, {data = v, cols = {v.plate, v.vehName, _U('impound_fee_value_r', ESX.Math.GroupDigits(Config.Cars.PoundP)), '{{' .. _U('return') .. '|return}}'}})
+						end
 					end
 				end
 
@@ -422,51 +536,155 @@ function OpenStoreMenu(_pJob, _vType)
 		ESX.TriggerServerCallback('esx_advancedgarage:storeVehicle', function(valid)
 			if valid then
 				if engineHealth < 990 then
-					if Config.Main.DamageMult then
-						if pJob == 'ambulance' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Ambulance.PoundP*Config.Main.MultAmount)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'police' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Police.PoundP*Config.Main.MultAmount)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'mechanic' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Mechanic.PoundP*Config.Main.MultAmount)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'taxi' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Taxi.PoundP*Config.Main.MultAmount)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'civ' and vType == 'aircrafts' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Aircrafts.PoundP*Config.Main.MultAmount)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'civ' and vType == 'boats' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Boats.PoundP*Config.Main.MultAmount)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'civ' and vType == 'cars' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Cars.PoundP*Config.Main.MultAmount)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
+					if Config.Main.VIPScript then
+						if Config.Main.DamageMult then
+							ESX.TriggerServerCallback('esx_advancedgarage:GetVIP', function(success)
+								if success then
+									if pJob == 'ambulance' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Ambulance.PoundD*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'police' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Police.PoundD*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'mechanic' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Mechanic.PoundD*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'taxi' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Taxi.PoundD*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'aircrafts' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Aircrafts.PoundD*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'boats' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Boats.PoundD*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'cars' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Cars.PoundD*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									end
+								else
+									if pJob == 'ambulance' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Ambulance.PoundP*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'police' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Police.PoundP*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'mechanic' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Mechanic.PoundP*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'taxi' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Taxi.PoundP*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'aircrafts' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Aircrafts.PoundP*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'boats' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Boats.PoundP*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'cars' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Cars.PoundP*Config.Main.MultAmount)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									end
+								end
+							end)
+						else
+							ESX.TriggerServerCallback('esx_advancedgarage:GetVIP', function(success)
+								if success then
+									if pJob == 'ambulance' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Ambulance.PoundD)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'police' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Police.PoundD)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'mechanic' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Mechanic.PoundD)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'taxi' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Taxi.PoundD)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'aircrafts' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Aircrafts.PoundD)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'boats' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Boats.PoundD)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'cars' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Cars.PoundD)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									end
+								else
+									if pJob == 'ambulance' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Ambulance.PoundP)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'police' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Police.PoundP)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'mechanic' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Mechanic.PoundP)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'taxi' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Taxi.PoundP)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'aircrafts' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Aircrafts.PoundP)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'boats' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Boats.PoundP)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									elseif pJob == 'civ' and vType == 'cars' then
+										local apprasial = math.floor((1000 - engineHealth)/1000*Config.Cars.PoundP)
+										RepairVehicle(apprasial, vehicle, vehicleProps)
+									end
+								end
+							end)
 						end
 					else
-						if pJob == 'ambulance' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Ambulance.PoundP)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'police' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Police.PoundP)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'mechanic' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Mechanic.PoundP)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'taxi' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Taxi.PoundP)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'civ' and vType == 'aircrafts' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Aircrafts.PoundP)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'civ' and vType == 'boats' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Boats.PoundP)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
-						elseif pJob == 'civ' and vType == 'cars' then
-							local apprasial = math.floor((1000 - engineHealth)/1000*Config.Cars.PoundP)
-							RepairVehicle(apprasial, vehicle, vehicleProps)
+						if Config.Main.DamageMult then
+							if pJob == 'ambulance' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Ambulance.PoundP*Config.Main.MultAmount)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'police' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Police.PoundP*Config.Main.MultAmount)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'mechanic' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Mechanic.PoundP*Config.Main.MultAmount)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'taxi' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Taxi.PoundP*Config.Main.MultAmount)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'civ' and vType == 'aircrafts' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Aircrafts.PoundP*Config.Main.MultAmount)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'civ' and vType == 'boats' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Boats.PoundP*Config.Main.MultAmount)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'civ' and vType == 'cars' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Cars.PoundP*Config.Main.MultAmount)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							end
+						else
+							if pJob == 'ambulance' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Ambulance.PoundP)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'police' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Police.PoundP)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'mechanic' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Mechanic.PoundP)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'taxi' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Taxi.PoundP)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'civ' and vType == 'aircrafts' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Aircrafts.PoundP)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'civ' and vType == 'boats' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Boats.PoundP)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							elseif pJob == 'civ' and vType == 'cars' then
+								local apprasial = math.floor((1000 - engineHealth)/1000*Config.Cars.PoundP)
+								RepairVehicle(apprasial, vehicle, vehicleProps)
+							end
 						end
 					end
 				else
@@ -550,12 +768,13 @@ function SpawnVehicle(spawner, heading, vehicle, plate, fuel)
 	TriggerServerEvent('esx_advancedgarage:setVehicleState', plate, false)
 end
 
+-- Give Keys
 function GiveKeys(plate)
 	Wait(1000)
 	local playerPed = GetPlayerPed(-1)
 	local vehicle = GetVehiclePedIsIn(playerPed, false)
 	local vehicleLabel = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
-	print(vehicleLabel)
+	--print(vehicleLabel)
 	TriggerServerEvent('SCRIPT_NAME_HERE:EVENT_NAME_HERE', GetPlayerServerId(PlayerId()), plate, vehicleLabel)
 end
 

@@ -476,6 +476,7 @@ function BuyVehicleShopMenu(pJobC, sTypeC)
 
 									FreezeEntityPosition(playerPed, false)
 									SetEntityVisible(playerPed, true)
+									--GiveKeys(generatedPlate)
 								end)
 							else
 								ESX.ShowNotification(_U('not_enough_money'))
@@ -571,6 +572,16 @@ function shopWaitVehicle(modelHash)
 	else
 		Wait(500)
 	end
+end
+
+-- Give Keys
+function GiveKeys(plate)
+	Wait(1000)
+	local playerPed = GetPlayerPed(-1)
+	local vehicle = GetVehiclePedIsIn(playerPed, false)
+	local vehicleLabel = GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
+	--print(vehicleLabel)
+	TriggerServerEvent('SCRIPT_NAME_HERE:EVENT_NAME_HERE', GetPlayerServerId(PlayerId()), plate, vehicleLabel)
 end
 
 -- Entered Marker
@@ -1769,16 +1780,42 @@ CreateThread(function()
 					end
 				elseif CurrentAction == 'vipa_shop_enter' then
 					if Config.VIPAircraft.Shop then
-						if Config.VIPAircraft.License then
-							ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
-								if hasLicense then
-									BuyVehicleShopMenu('civ', 'vipaircraft')
-								else
-									ESX.ShowNotification(_U('aircraft_missing'))
-								end
-							end, GetPlayerServerId(PlayerId()), 'aircraft')
+						if Config.Main.VIPScript then
+							if Config.VIPAircraft.License then
+								ESX.TriggerServerCallback('esx_advancedvehicleshop:GetVIP', function(success)
+									if success then
+										ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
+											if hasLicense then
+												BuyVehicleShopMenu('civ', 'vipaircraft')
+											else
+												ESX.ShowNotification(_U('aircraft_missing'))
+											end
+										end, GetPlayerServerId(PlayerId()), 'aircraft')
+									else
+										ESX.ShowNotification(_U('vip_no'))
+									end
+								end)
+							else
+								ESX.TriggerServerCallback('esx_advancedvehicleshop:GetVIP', function(success)
+									if success then
+										BuyVehicleShopMenu('civ', 'vipaircraft')
+									else
+										ESX.ShowNotification(_U('vip_no'))
+									end
+								end)
+							end
 						else
-							BuyVehicleShopMenu('civ', 'vipaircraft')
+							if Config.VIPAircraft.License then
+								ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
+									if hasLicense then
+										BuyVehicleShopMenu('civ', 'vipaircraft')
+									else
+										ESX.ShowNotification(_U('aircraft_missing'))
+									end
+								end, GetPlayerServerId(PlayerId()), 'aircraft')
+							else
+								BuyVehicleShopMenu('civ', 'vipaircraft')
+							end
 						end
 					end
 				elseif CurrentAction == 'vipa_resell_point' then
@@ -1794,16 +1831,42 @@ CreateThread(function()
 					end
 				elseif CurrentAction == 'vipb_shop_enter' then
 					if Config.VIPBoat.Shop then
-						if Config.VIPBoat.License then
-							ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
-								if hasLicense then
-									BuyVehicleShopMenu('civ', 'vipboat')
-								else
-									ESX.ShowNotification(_U('boat_missing'))
-								end
-							end, GetPlayerServerId(PlayerId()), 'boating')
+						if Config.Main.VIPScript then
+							if Config.VIPBoat.License then
+								ESX.TriggerServerCallback('esx_advancedvehicleshop:GetVIP', function(success)
+									if success then
+										ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
+											if hasLicense then
+												BuyVehicleShopMenu('civ', 'vipboat')
+											else
+												ESX.ShowNotification(_U('boat_missing'))
+											end
+										end, GetPlayerServerId(PlayerId()), 'boating')
+									else
+										ESX.ShowNotification(_U('vip_no'))
+									end
+								end)
+							else
+								ESX.TriggerServerCallback('esx_advancedvehicleshop:GetVIP', function(success)
+									if success then
+										BuyVehicleShopMenu('civ', 'vipboat')
+									else
+										ESX.ShowNotification(_U('vip_no'))
+									end
+								end)
+							end
 						else
-							BuyVehicleShopMenu('civ', 'vipboat')
+							if Config.VIPBoat.License then
+								ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
+									if hasLicense then
+										BuyVehicleShopMenu('civ', 'vipboat')
+									else
+										ESX.ShowNotification(_U('boat_missing'))
+									end
+								end, GetPlayerServerId(PlayerId()), 'boating')
+							else
+								BuyVehicleShopMenu('civ', 'vipboat')
+							end
 						end
 					end
 				elseif CurrentAction == 'vipb_resell_point' then
@@ -1819,16 +1882,42 @@ CreateThread(function()
 					end
 				elseif CurrentAction == 'vipc_shop_enter' then
 					if Config.VIPCar.Shop then
-						if Config.VIPCar.License then
-							ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
-								if hasLicense then
-									BuyVehicleShopMenu('civ', 'vipcar')
-								else
-									ESX.ShowNotification(_U('car_missing'))
-								end
-							end, GetPlayerServerId(PlayerId()), 'drive')
+						if Config.Main.VIPScript then
+							if Config.VIPCar.License then
+								ESX.TriggerServerCallback('esx_advancedvehicleshop:GetVIP', function(success)
+									if success then
+										ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
+											if hasLicense then
+												BuyVehicleShopMenu('civ', 'vipcar')
+											else
+												ESX.ShowNotification(_U('car_missing'))
+											end
+										end, GetPlayerServerId(PlayerId()), 'drive')
+									else
+										ESX.ShowNotification(_U('vip_no'))
+									end
+								end)
+							else
+								ESX.TriggerServerCallback('esx_advancedvehicleshop:GetVIP', function(success)
+									if success then
+										BuyVehicleShopMenu('civ', 'vipcar')
+									else
+										ESX.ShowNotification(_U('vip_no'))
+									end
+								end)
+							end
 						else
-							BuyVehicleShopMenu('civ', 'vipcar')
+							if Config.VIPCar.License then
+								ESX.TriggerServerCallback('esx_license:checkLicense', function(hasLicense)
+									if hasLicense then
+										BuyVehicleShopMenu('civ', 'vipcar')
+									else
+										ESX.ShowNotification(_U('car_missing'))
+									end
+								end, GetPlayerServerId(PlayerId()), 'drive')
+							else
+								BuyVehicleShopMenu('civ', 'vipcar')
+							end
 						end
 					end
 				elseif CurrentAction == 'vipc_resell_point' then

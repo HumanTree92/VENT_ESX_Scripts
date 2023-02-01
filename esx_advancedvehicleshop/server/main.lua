@@ -1,6 +1,19 @@
 local categoriesaj, categoriespj, categoriesd, categoriesmj, categoriestj, categoriesa, categoriesb, categoriesc, categoriest, categoriesva, categoriesvb, categoriesvc = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
 local vehiclesaj, vehiclespj, vehiclesd, vehiclesmj, vehiclestj, vehiclesa, vehiclesb, vehiclesc, vehiclest, vehiclesva, vehiclesvb, vehiclesvc = {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
 
+ESX.RegisterServerCallback('esx_advancedvehicleshop:GetVIP', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	if Config.Main.VIPScript then
+		MySQL.query('SELECT is_vip FROM users WHERE identifier = ?', {xPlayer.identifier}, function(success)
+			cb(success)
+		end)
+	else
+		local success = false
+		cb(success)
+	end
+end)
+
 function RemoveOwnedVehicle(vPlateS)
 	-- Delete Vehicle
 	MySQL.update('DELETE FROM owned_vehicles WHERE plate = ?', {vPlateS})

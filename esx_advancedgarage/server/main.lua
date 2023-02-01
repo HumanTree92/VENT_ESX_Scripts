@@ -1,3 +1,33 @@
+-- Is VIP
+function getVIPData(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	if Config.Main.VIPScript then
+		MySQL.single('SELECT is_vip FROM users WHERE identifier = ?', {xPlayer.identifier}, function(result)
+			if result then
+				local data = {isVIP = result.is_vip}
+				cb(data)
+			end
+		end)
+	else
+		local data = {isVIP = 0}
+		cb(data)
+	end
+end
+
+ESX.RegisterServerCallback('esx_advancedgarage:GetVIP', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	if Config.Main.VIPScript then
+		MySQL.query('SELECT is_vip FROM users WHERE identifier = ?', {xPlayer.identifier}, function(success)
+			cb(success)
+		end)
+	else
+		local success = false
+		cb(success)
+	end
+end)
+
 -- Make sure all Vehicles are Stored on restart
 AddEventHandler('onResourceStart', function(resource)
 	if resource == GetCurrentResourceName() then
@@ -290,6 +320,132 @@ ESX.RegisterServerCallback('esx_advancedgarage:getOwnedVehicles', function(sourc
 				end
 				cb(ownedVans)
 			end)
+		elseif type == 'vipboats' then
+			local ownedVIPBoats = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'boat', 'civ', 'vipboats'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPBoats, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPBoats)
+			end)
+		elseif type == 'vipsubs' then
+			local ownedVIPSubs = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'boat', 'civ', 'vipsubs'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPSubs, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPSubs)
+			end)
+		elseif type == 'vipcompacts' then
+			local ownedVIPCompacts = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'vipcompacts'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPCompacts, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPCompacts)
+			end)
+		elseif type == 'vipcoupes' then
+			local ownedVIPCoupes = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'vipcoupes'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPCoupes, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPCoupes)
+			end)
+		elseif type == 'vipmotos' then
+			local ownedVIPMotos = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'vipmotos'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPMotos, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPMotos)
+			end)
+		elseif type == 'vipmuscles' then
+			local ownedVIPMuscles = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'vipmuscles'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPMuscles, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPMuscles)
+			end)
+		elseif type == 'vipoffroads' then
+			local ownedVIPOffRoads = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'vipoffroads'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPOffRoads, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPOffRoads)
+			end)
+		elseif type == 'vipsedans' then
+			local ownedVIPSedans = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'vipsedans'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPSedans, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPSedans)
+			end)
+		elseif type == 'vipsports' then
+			local ownedVIPSports = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'vipsports'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPSports, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPSports)
+			end)
+		elseif type == 'vipsportscs' then
+			local ownedVIPSportsCs = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'vipsportscs'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPSportsCs, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPSportsCs)
+			end)
+		elseif type == 'vipsupers' then
+			local ownedVIPSupers = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'vipsupers'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPSupers, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPSupers)
+			end)
+		elseif type == 'vipsuvs' then
+			local ownedVIPSUVs = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'vipsuvs'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPSUVs, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPSUVs)
+			end)
+		elseif type == 'vipvans' then
+			local ownedVIPVans = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'vipvans'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPVans, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPVans)
+			end)
+		elseif type == 'viptrucks' then
+			local ownedVIPTrucks = {}
+			MySQL.query('SELECT * FROM owned_vehicles WHERE owner = ? AND Type = ? AND job = ? AND category = ?', {xPlayer.identifier, 'car', 'civ', 'viptrucks'}, function(data)
+				for _,v in pairs(data) do
+					local vehicle = json.decode(v.vehicle)
+					table.insert(ownedVIPTrucks, {vehicle = vehicle, plate = v.plate, vehName = v.name, fuel = v.fuel, stored = v.stored})
+				end
+				cb(ownedVIPTrucks)
+			end)
 		end
 	end
 end)
@@ -398,143 +554,285 @@ end)
 ESX.RegisterServerCallback('esx_advancedgarage:payImpound', function(source, cb, job, type, attempt)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	if job == 'ambulance' then
-		if type == 'none' then
-			if attempt == 'check' then
-				if xPlayer.getMoney() >= Config.Ambulance.PoundP then
-					cb(true)
-				else
-					cb(false)
-				end
-			else
-				xPlayer.removeMoney(Config.Ambulance.PoundP)
-				TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Ambulance.PoundP)
-				if Config.Main.GiveSocMoney then
-					TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
-						account.addMoney(Config.Ambulance.PoundP)
-					end)
-				end
+	getVIPData(source, function(data)
+		if data.isVIP then
+			if job == 'ambulance' then
+				if type == 'none' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Ambulance.PoundD then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Ambulance.PoundD)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Ambulance.PoundD)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Ambulance.PoundD)
+							end)
+						end
 
-				cb()
+						cb()
+					end
+				end
+			elseif job == 'police' then
+				if type == 'none' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Police.PoundD then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Police.PoundD)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Police.PoundD)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Police.PoundD)
+							end)
+						end
+
+						cb()
+					end
+				end
+			elseif job == 'mechanic' then
+				if type == 'none' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Mechanic.PoundD then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Mechanic.PoundD)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Mechanic.PoundD)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Mechanic.PoundD)
+							end)
+						end
+
+						cb()
+					end
+				end
+			elseif job == 'taxi' then
+				if type == 'none' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Taxi.PoundD then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Taxi.PoundD)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Taxi.PoundD)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Taxi.PoundD)
+							end)
+						end
+
+						cb()
+					end
+				end
+			elseif job == 'civ' then
+				if type == 'aircrafts' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Aircrafts.PoundD then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Aircrafts.PoundD)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Aircrafts.PoundD)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Aircrafts.PoundD)
+							end)
+						end
+
+						cb()
+					end
+				elseif type == 'boats' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Boats.PoundD then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Boats.PoundD)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Boats.PoundD)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Boats.PoundD)
+							end)
+						end
+
+						cb()
+					end
+				elseif type == 'cars' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Cars.PoundD then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Cars.PoundD)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Cars.PoundD)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Cars.PoundD)
+							end)
+						end
+
+						cb()
+					end
+				end
+			end
+		else
+			if job == 'ambulance' then
+				if type == 'none' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Ambulance.PoundP then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Ambulance.PoundP)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Ambulance.PoundP)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Ambulance.PoundP)
+							end)
+						end
+
+						cb()
+					end
+				end
+			elseif job == 'police' then
+				if type == 'none' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Police.PoundP then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Police.PoundP)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Police.PoundP)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Police.PoundP)
+							end)
+						end
+
+						cb()
+					end
+				end
+			elseif job == 'mechanic' then
+				if type == 'none' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Mechanic.PoundP then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Mechanic.PoundP)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Mechanic.PoundP)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Mechanic.PoundP)
+							end)
+						end
+
+						cb()
+					end
+				end
+			elseif job == 'taxi' then
+				if type == 'none' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Taxi.PoundP then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Taxi.PoundP)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Taxi.PoundP)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Taxi.PoundP)
+							end)
+						end
+
+						cb()
+					end
+				end
+			elseif job == 'civ' then
+				if type == 'aircrafts' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Aircrafts.PoundP then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Aircrafts.PoundP)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Aircrafts.PoundP)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Aircrafts.PoundP)
+							end)
+						end
+
+						cb()
+					end
+				elseif type == 'boats' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Boats.PoundP then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Boats.PoundP)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Boats.PoundP)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Boats.PoundP)
+							end)
+						end
+
+						cb()
+					end
+				elseif type == 'cars' then
+					if attempt == 'check' then
+						if xPlayer.getMoney() >= Config.Cars.PoundP then
+							cb(true)
+						else
+							cb(false)
+						end
+					else
+						xPlayer.removeMoney(Config.Cars.PoundP)
+						TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Cars.PoundP)
+						if Config.Main.GiveSocMoney then
+							TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+								account.addMoney(Config.Cars.PoundP)
+							end)
+						end
+
+						cb()
+					end
+				end
 			end
 		end
-	elseif job == 'police' then
-		if type == 'none' then
-			if attempt == 'check' then
-				if xPlayer.getMoney() >= Config.Police.PoundP then
-					cb(true)
-				else
-					cb(false)
-				end
-			else
-				xPlayer.removeMoney(Config.Police.PoundP)
-				TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Police.PoundP)
-				if Config.Main.GiveSocMoney then
-					TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
-						account.addMoney(Config.Police.PoundP)
-					end)
-				end
-
-				cb()
-			end
-		end
-	elseif job == 'mechanic' then
-		if type == 'none' then
-			if attempt == 'check' then
-				if xPlayer.getMoney() >= Config.Mechanic.PoundP then
-					cb(true)
-				else
-					cb(false)
-				end
-			else
-				xPlayer.removeMoney(Config.Mechanic.PoundP)
-				TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Mechanic.PoundP)
-				if Config.Main.GiveSocMoney then
-					TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
-						account.addMoney(Config.Mechanic.PoundP)
-					end)
-				end
-
-				cb()
-			end
-		end
-	elseif job == 'taxi' then
-		if type == 'none' then
-			if attempt == 'check' then
-				if xPlayer.getMoney() >= Config.Taxi.PoundP then
-					cb(true)
-				else
-					cb(false)
-				end
-			else
-				xPlayer.removeMoney(Config.Taxi.PoundP)
-				TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Taxi.PoundP)
-				if Config.Main.GiveSocMoney then
-					TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
-						account.addMoney(Config.Taxi.PoundP)
-					end)
-				end
-
-				cb()
-			end
-		end
-	elseif job == 'civ' then
-		if type == 'aircrafts' then
-			if attempt == 'check' then
-				if xPlayer.getMoney() >= Config.Aircrafts.PoundP then
-					cb(true)
-				else
-					cb(false)
-				end
-			else
-				xPlayer.removeMoney(Config.Aircrafts.PoundP)
-				TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Aircrafts.PoundP)
-				if Config.Main.GiveSocMoney then
-					TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
-						account.addMoney(Config.Aircrafts.PoundP)
-					end)
-				end
-
-				cb()
-			end
-		elseif type == 'boats' then
-			if attempt == 'check' then
-				if xPlayer.getMoney() >= Config.Boats.PoundP then
-					cb(true)
-				else
-					cb(false)
-				end
-			else
-				xPlayer.removeMoney(Config.Boats.PoundP)
-				TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Boats.PoundP)
-				if Config.Main.GiveSocMoney then
-					TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
-						account.addMoney(Config.Boats.PoundP)
-					end)
-				end
-
-				cb()
-			end
-		elseif type == 'cars' then
-			if attempt == 'check' then
-				if xPlayer.getMoney() >= Config.Cars.PoundP then
-					cb(true)
-				else
-					cb(false)
-				end
-			else
-				xPlayer.removeMoney(Config.Cars.PoundP)
-				TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.Cars.PoundP)
-				if Config.Main.GiveSocMoney then
-					TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
-						account.addMoney(Config.Cars.PoundP)
-					end)
-				end
-
-				cb()
-			end
-		end
-	end
+	end)
 end)
 -- End of Impound Pay
 
@@ -555,17 +853,10 @@ ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function(source, c
 				end)
 			else
 				if Config.Main.KickCheaters then
-					if Config.Main.CustomKickMsg then
-						print(('esx_advancedgarage: %s attempted to Cheat! Tried Storing: %s | Original Vehicle: %s '):format(xPlayer.identifier, vehiclemodel, originalvehprops.model))
+					print(('esx_advancedgarage: %s attempted to Cheat! Tried Storing: %s | Original Vehicle: %s '):format(xPlayer.identifier, vehiclemodel, originalvehprops.model))
 
-						DropPlayer(source, _U('custom_kick'))
-						cb(false)
-					else
-						print(('esx_advancedgarage: %s attempted to Cheat! Tried Storing: %s | Original Vehicle: %s '):format(xPlayer.identifier, vehiclemodel, originalvehprops.model))
-
-						DropPlayer(source, 'You have been Kicked from the Server for Possible Garage Cheating!!!')
-						cb(false)
-					end
+					DropPlayer(source, _U('custom_kick'))
+					cb(false)
 				else
 					print(('esx_advancedgarage: %s attempted to Cheat! Tried Storing: %s | Original Vehicle: %s '):format(xPlayer.identifier, vehiclemodel, originalvehprops.model))
 					cb(false)

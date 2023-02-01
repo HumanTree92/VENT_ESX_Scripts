@@ -9,15 +9,20 @@ Config.BlipHospital = {Sprite = 403, Color = 2, Display = 2, Scale = 1.0} -- Hos
 Config.SurgMarker = {Type = 1, r = 102, g = 102, b = 204, x = 1.5, y = 1.5, z = 1.0} -- Surgery Marker Settings.
 Config.BlipSurgery = {Sprite = 403, Color = 0, Display = 2, Scale = 1.0} -- Surgery Blip Settings.
 
+Config.VIPScript = false -- true = Running a VIP Script. You must setup Script to Work with this Script.
+
 Config.UseHospital = false -- true = Allows Players to Heal Themselves.
 Config.UseHospitalBlips = false -- true = Use Hospital Blips.
 Config.HealingPrice = 100 -- Healing Price.
+Config.HealingDiscount = 75 -- Healing Discount Price.
 
 Config.RevivePrice = 750 -- Revive Price.
+Config.ReviveDiscount = 562 -- Revive Discount Price.
 
 Config.UseSurgeon = false -- true = Allows Players to edit their Character.
 Config.UseSurgeonBlips = false -- true = Use Surgery Blips.
 Config.SurgeryPrice = 3700 -- Surgery Price.
+Config.SurgeryDiscount = 2775 -- Surgery Discount Price.
 
 Config.Locations = {
 	Locs = {

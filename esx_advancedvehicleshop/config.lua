@@ -5,6 +5,7 @@ Config.Locale = 'en' -- Set Locale file to use.
 Config.Main = {
 	DrawDistanceE = 20, -- Enter Marker Draw Distance.
 	DrawDistanceR = 50, -- Resell Marker Draw Distance.
+	VIPScript = false, -- true = Running a VIP Script. You must setup Script to Work with this Script.
 	PlateSingleSpace = false, -- true = 'LLL NNN' | Where L is a Random Letter & N is a Random Number.
 	PlateDoubleSpace = true, -- true = 'LLL  NNN' | Where L is a Random Letter & N is a Random Number.
 	MaxMigrates = 6, -- Higher Value will cause Deadlocks on the Database.
@@ -21,7 +22,7 @@ Config.Ambulance = {
 	ResellPerc = 50, -- The Resell % of Vehicles Sold. | Example: $10,000 / 50% = $5,000 Back.
 	Markers = {
 		Enter = {Type = 1, r = 255, g = 0, b = 0, x = 1.5, y = 1.5, z = 1.0}, -- Enter Marker Settings.
-		Resell = {Type = 1, r = 255, g = 0, b = 0, x = 5.0, y = 5.0, z = 1.0} -- Big Size Circle.
+		Resell = {Type = 1, r = 255, g = 0, b = 0, x = 5.0, y = 5.0, z = 1.0} -- Resell Marker Settings.
 	},
 	Locations = {
 		Los_Santos = {

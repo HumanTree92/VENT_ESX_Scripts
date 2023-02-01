@@ -13,6 +13,7 @@ CREATE TABLE `owned_vehicles` (
 	`job` VARCHAR(20) NOT NULL DEFAULT 'civ',
 	`category` VARCHAR(50) DEFAULT NULL,
 	`name` varchar(60) NOT NULL DEFAULT 'Unknown',
+	`garage` VARCHAR(50) NOT NULL DEFAULT 'all',
 	`fuel` int(11) NOT NULL DEFAULT '100',
 	`stored` TINYINT(1) NOT NULL DEFAULT '0',
 	`image` longtext,
@@ -833,8 +834,8 @@ CREATE TABLE `vs_vipaircraft_categories` (
 );
 
 INSERT INTO `vs_vipaircraft_categories` (id, name, label) VALUES
-	(1, 'helis', 'Helicopters'),
-	(2, 'planes', 'Planes')
+	(1, 'viphelis', 'Helicopters'),
+	(2, 'vipplanes', 'Planes')
 ;
 
 CREATE TABLE `vs_vipaircrafts` (
@@ -849,8 +850,8 @@ CREATE TABLE `vs_vipaircrafts` (
 );
 
 INSERT INTO `vs_vipaircrafts` (id, name, model, price, category, image) VALUES
-	(1, 'Buzzard', 'buzzard2', 500000, 'helis', 'https://wiki.rage.mp/images/thumb/6/6e/Buzzard2.png/800px-Buzzard2.png'),
-	(2, 'Alpha Z1', 'alphaz1', 450000, 'planes', 'https://wiki.rage.mp/images/thumb/4/46/Alphaz1.png/800px-Alphaz1.png')
+	(1, 'Buzzard', 'buzzard2', 500000, 'viphelis', 'https://wiki.rage.mp/images/thumb/6/6e/Buzzard2.png/800px-Buzzard2.png'),
+	(2, 'Alpha Z1', 'alphaz1', 450000, 'vipplanes', 'https://wiki.rage.mp/images/thumb/4/46/Alphaz1.png/800px-Alphaz1.png')
 ;
 
 CREATE TABLE `vs_vipboat_categories` (
@@ -862,8 +863,8 @@ CREATE TABLE `vs_vipboat_categories` (
 );
 
 INSERT INTO `vs_vipboat_categories` (id, name, label) VALUES
-	(1, 'boats', 'Boats'),
-	(2, 'subs', 'Submersibles')
+	(1, 'vipboats', 'Boats'),
+	(2, 'vipsubs', 'Subs')
 ;
 
 CREATE TABLE `vs_vipboats` (
@@ -878,8 +879,8 @@ CREATE TABLE `vs_vipboats` (
 );
 
 INSERT INTO `vs_vipboats` (id, name, model, price, category, image) VALUES
-	(1, 'Tropic Yacht', 'tropic2', 27000, 'boats', 'https://wiki.rage.mp/images/thumb/a/a7/Tropic2.png/800px-Tropic2.png'),
-	(2, 'Avisa', 'avisa', 35000, 'subs', 'https://wiki.rage.mp/images/thumb/1/19/0x9A474B5E.png/800px-0x9A474B5E.png')
+	(1, 'Tropic Yacht', 'tropic2', 27000, 'vipboats', 'https://wiki.rage.mp/images/thumb/a/a7/Tropic2.png/800px-Tropic2.png'),
+	(2, 'Avisa', 'avisa', 35000, 'vipsubs', 'https://wiki.rage.mp/images/thumb/1/19/0x9A474B5E.png/800px-0x9A474B5E.png')
 ;
 
 CREATE TABLE `vs_vipcar_categories` (
@@ -891,7 +892,15 @@ CREATE TABLE `vs_vipcar_categories` (
 );
 
 INSERT INTO `vs_vipcar_categories` (id, name, label) VALUES
-	(1, 'motorcycles', 'Motos')
+	(1, 'vipmotos', 'Motorcycles'),
+	(2, 'vipmuscles', 'Muscles'),
+	(3, 'vipoffroads', 'Off-Roads'),
+	(4, 'vipsedans', 'Sedans'),
+	(5, 'vipsports', 'Sports'),
+	(6, 'vipsportscs', 'Sport Classics'),
+	(7, 'vipsupers', 'Supers'),
+	(8, 'vipsuvs', 'SUVs'),
+	(9, 'viptrucks', 'Trucks')
 ;
 
 CREATE TABLE `vs_vipcars` (
@@ -906,5 +915,13 @@ CREATE TABLE `vs_vipcars` (
 );
 
 INSERT INTO `vs_vipcars` (id, name, model, price, category, image) VALUES
-	(1, 'Shotaro', 'shotaro', 30000, 'motorcycles', 'https://wiki.rage.mp/images/thumb/e/e3/Shotaro.png/800px-Shotaro.png')
+	(1, 'Shotaro', 'shotaro', 30000, 'vipmotos', 'https://wiki.rage.mp/images/thumb/e/e3/Shotaro.png/800px-Shotaro.png'),
+	(2, 'Blade', 'blade', 15000, 'vipmuscles', 'https://wiki.rage.mp/images/thumb/a/ad/Blade.png/800px-Blade.png'),
+	(3, 'Bf Injection', 'bfinjection', 15000, 'vipoffroads', 'https://wiki.rage.mp/images/thumb/3/3d/Bfinject.png/800px-Bfinject.png'),
+	(4, 'Asea', 'asea', 15000, 'vipsedans', 'https://wiki.rage.mp/images/thumb/c/ce/Asea.png/800px-Asea.png'),
+	(5, 'Alpha', 'alpha', 50000, 'vipsports', 'https://wiki.rage.mp/images/thumb/a/a8/Alpha.png/800px-Alpha.png'),
+	(6, 'Roosevelt', 'btype', 40000, 'vipsportscs', 'https://wiki.rage.mp/images/thumb/6/64/Btype.png/800px-Btype.png'),
+	(7, 'Adder', 'adder', 250000, 'vipsupers', 'https://wiki.rage.mp/images/thumb/c/c2/Adder.png/800px-Adder.png'),
+	(8, 'Baller', 'baller', 22500, 'vipsuvs', 'https://wiki.rage.mp/images/thumb/7/79/Baller.png/800px-Baller.png'),
+	(9, 'Hauler', 'hauler', 100000, 'viptrucks', 'https://wiki.rage.mp/images/thumb/8/83/Hauler.png/800px-Hauler.png'),
 ;
