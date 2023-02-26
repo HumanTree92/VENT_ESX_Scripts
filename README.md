@@ -54,7 +54,7 @@ ESX Scripts Made by Human Tree92 ([Velociti Entertainment Customs]( http://www.v
 # Visit Velociti Entertainment:
 * [Discord]( https://discord.velocitientertainment.com )
 * [Website]( https://velocitientertainment.com )
-* [Donate]( https://velocitientertainment.com/donations )
+* [Donate]( https://donate.velocitientertainment.com )
 * [Patreon]( https://www.patreon.com/VelocitiEntertainment?fan_landing=true )
 * [Steam Group]( https://steamcommunity.com/groups/velocitientertainment )
 * [Facebook]( https://facebook.com/VelocitiEntertainment )
