@@ -1,5 +1,7 @@
 # About VENT_ESX_Scripts:
-ESX Scripts Made by Human Tree92 ([Velociti Entertainment Customs]( http://www.velocitientertainment.com/customs/ ))
+ESX Scripts Made by Human Tree92
+
+I have at this time decided I will no longer be working on ESX. I have no Interest to further develop Scripts or work on Scripts for FiveM. I will keep the Github open just in case other people want to keep the scripts updated. If you want to rework my Scripts please contact me for Permission.
 
 # Creating Issues:
 * Check the [Closed Topics]( https://github.com/HumanTree92/VENT_ESX_Scripts/issues?q=is%3Aissue+is%3Aclosed ) & [Wiki]( https://github.com/HumanTree92/VENT_ESX_Scripts/wiki ) before opening an issue to see if your issue has already been Answered.
@@ -22,9 +24,6 @@ ESX Scripts Made by Human Tree92 ([Velociti Entertainment Customs]( http://www.v
 1) Download Master & Extract the .zip or Open the .zip Or [Click Me]( https://github.com/HumanTree92/VENT_ESX_Scripts/archive/refs/heads/main.zip )
 2) Add `setr esx_MenuAlign "top-right"` to your server.cfg & Change top-right to whatever side you want
 3) Read the README's of whatever script you plan on using.
-
-# KNOWN BUGS:
-* People not using their Brains. Read the README's!!!
 
 # Other Files for FiveM:
 * [VENT_FiveM_Customs]( https://github.com/HumanTree92/VENT_FiveM_Customs )
