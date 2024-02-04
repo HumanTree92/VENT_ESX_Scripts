@@ -64,7 +64,7 @@ I have at this time decided I will no longer be working on ESX. I have no Intere
 
 # Legal
 ### License
-Copyright (C) 2023 Velociti Entertainment
+Copyright (C) 2024 Velociti Entertainment
 
 This program Is free software: you can redistribute it And/Or modify it under the terms Of the GNU General Public License As published by the Free Software Foundation, either version 3 Of the License, Or (at your option) any later version.
 
